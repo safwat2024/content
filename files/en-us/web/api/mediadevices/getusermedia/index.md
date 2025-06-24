@@ -15,7 +15,8 @@ That stream can include, for example, a video track (produced by either a hardwa
 It returns a {{jsxref("Promise")}} that resolves to a {{domxref("MediaStream")}} object.
 If the user denies permission, or matching media is not available, then the promise is rejected with `NotAllowedError` or `NotFoundError` {{domxref("DOMException")}} respectively.
 
-> **Note:** It's possible for the returned promise to _neither_ resolve nor reject, as the user is not required to make a choice at all and may ignore the request.
+> [!NOTE]
+> It's possible for the returned promise to _neither_ resolve nor reject, as the user is not required to make a choice at all and may ignore the request.
 
 ## Syntax
 
@@ -26,7 +27,6 @@ getUserMedia(constraints)
 ### Parameters
 
 - `constraints`
-
   - : An object specifying the types of media to
     request, along with any requirements for each type.
 
@@ -37,7 +37,6 @@ getUserMedia(constraints)
     `NotFoundError` {{domxref("DOMException")}}.
 
     For both `video` and `audio`, its value is either a boolean or an object. The default value is `false`.
-
     - If `true` is specified for a media type, the resulting stream is _required_ to have that type of track in it. If one cannot be included for any reason, the returned promise will reject.
     - If `false` is specified for a media type, the resulting stream _must not_ have that type of track, or the returned promise will reject. Because both `video` and `audio` default to `false`, if the `constraints` object contains neither property or if it's not present at all, the returned promise will always reject.
     - If an object is specified for a media type, the object is read as a {{domxref("MediaTrackConstraints")}} dictionary.
@@ -50,26 +49,24 @@ object when the requested media has successfully been obtained.
 ### Exceptions
 
 - `AbortError` {{domxref("DOMException")}}
-
   - : Although the user and operating system both granted access to the hardware device,
     and no hardware issues occurred that would cause a `NotReadableError` {{domxref("DOMException")}}, throw if some
     problem occurred which prevented the device from being used.
 
 - `InvalidStateError` {{domxref("DOMException")}}
-
   - : Thrown if current document is not fully active.
 
 - `NotAllowedError` {{domxref("DOMException")}}
-
   - : Thrown if one or more of the requested source devices cannot be used at this time. This will
     happen if the browsing context is insecure (that is, the page was loaded using HTTP
     rather than HTTPS). It also happens if the user has specified that the current
     browsing instance is not permitted access to the device, the user has denied access
     for the current session, or the user has denied all access to user media devices
-    globally. On browsers that support managing media permissions with [Permissions Policy](/en-US/docs/Web/HTTP/Permissions_Policy), this error is
+    globally. On browsers that support managing media permissions with [Permissions Policy](/en-US/docs/Web/HTTP/Guides/Permissions_Policy), this error is
     returned if Permissions Policy is not configured to allow access to the input source(s).
 
-    > **Note:** Older versions of the specification used `SecurityError`
+    > [!NOTE]
+    > Older versions of the specification used `SecurityError`
     > for this instead; `SecurityError` has taken on a new meaning.
 
 - `NotFoundError` {{domxref("DOMException")}}
@@ -79,14 +76,14 @@ object when the requested media has successfully been obtained.
     occurred at the operating system, browser, or Web page level which prevented access to
     the device.
 - `OverconstrainedError` {{domxref("DOMException")}}
-
   - : Thrown if the specified constraints resulted in no candidate devices which met the criteria
     requested. The error is an object of type `OverconstrainedError`, and has a
     `constraint` property whose string value is the name of a constraint which
     was impossible to meet, and a `message` property containing a
     human-readable string explaining the problem.
 
-    > **Note:** Because this error can occur even when the user has not yet granted
+    > [!NOTE]
+    > Because this error can occur even when the user has not yet granted
     > permission to use the underlying device, it can potentially be used as a
     > [fingerprinting](/en-US/docs/Glossary/Fingerprinting) surface.
 
@@ -116,7 +113,7 @@ using HTTPS or the `file:///` URL scheme, or a page loaded from
 In addition, user permission is always required to access the user's audio and video
 inputs. Only a window's top-level document context for a valid origin can even request
 permission to use `getUserMedia()`, unless the top-level context expressly
-grants permission for a given {{HTMLElement("iframe")}} to do so using [Permissions Policy](/en-US/docs/Web/HTTP/Permissions_Policy). Otherwise, the user
+grants permission for a given {{HTMLElement("iframe")}} to do so using [Permissions Policy](/en-US/docs/Web/HTTP/Guides/Permissions_Policy). Otherwise, the user
 will never even be asked for permission to use the input devices.
 
 For additional details on these requirements and rules, how they are reflected in the
@@ -153,7 +150,7 @@ There are a number of ways security management and controls in a {{Glossary("use
 
 #### Permissions Policy
 
-The two [Permissions Policy](/en-US/docs/Web/HTTP/Permissions_Policy) directives that apply to `getUserMedia()` are `camera`
+The two [Permissions Policy](/en-US/docs/Web/HTTP/Guides/Permissions_Policy) directives that apply to `getUserMedia()` are `camera`
 and `microphone`.
 
 For example, this HTTP header will enable use of a camera by the document
@@ -202,13 +199,13 @@ situations in which `getUserMedia()` is not permitted to be called:
 
 - A document loaded into a sandboxed {{HTMLElement("iframe")}} element cannot call
   `getUserMedia()` unless the `<iframe>` has its
-  [`sandbox`](/en-US/docs/Web/HTML/Element/iframe#sandbox) attribute set to `allow-same-origin`.
+  [`sandbox`](/en-US/docs/Web/HTML/Reference/Elements/iframe#sandbox) attribute set to `allow-same-origin`.
 - A document loaded using a `data://` or `blob://` URL which has
   no origin (such as when one of these URLs is typed by the user into the address bar)
   cannot call `getUserMedia()`. These kinds of URLs loaded from JavaScript
   code inherit the script's permissions.
 - Any other situation in which there is no origin, such as when the
-  [`srcdoc`](/en-US/docs/Web/HTML/Element/iframe#srcdoc) attribute is used to specify the contents of a
+  [`srcdoc`](/en-US/docs/Web/HTML/Reference/Elements/iframe#srcdoc) attribute is used to specify the contents of a
   frame.
 
 ## Examples
@@ -243,7 +240,8 @@ navigator.mediaDevices
   });
 ```
 
-> **Note:** If the current document isn't loaded securely,
+> [!NOTE]
+> If the current document isn't loaded securely,
 > `navigator.mediaDevices` will be `undefined`, and you cannot use
 > `getUserMedia()`. See [Security](#security) for more information on this and
 > other security issues related to using `getUserMedia()`.
@@ -423,7 +421,8 @@ const constraints = {
 };
 ```
 
-> **Note:** In certain cases, it may be necessary to release the current camera facing mode before you can switch to a different one. To ensure the camera switch, it is advisable to free up the media resources by invoking the "stop()" method on the track before requesting a different facing mode.
+> [!NOTE]
+> In certain cases, it may be necessary to release the current camera facing mode before you can switch to a different one. To ensure the camera switch, it is advisable to free up the media resources by invoking the "stop()" method on the track before requesting a different facing mode.
 
 ## Specifications
 

@@ -6,7 +6,7 @@ page-type: web-api-event
 browser-compat: api.ServiceWorkerGlobalScope.notificationclose_event
 ---
 
-{{APIRef("Web Notifications")}}
+{{APIRef("Web Notifications")}}{{SecureContext_Header}}{{AvailableInWorkers("service")}}
 
 The **`notificationclose`** event of the {{domxref("ServiceWorkerGlobalScope")}} interface fires when a user closes a displayed notification spawned by {{domxref("ServiceWorkerRegistration.showNotification()")}}.
 
@@ -21,10 +21,10 @@ This event is not cancelable and does not bubble.
 
 Use the event name in methods like {{domxref("EventTarget.addEventListener", "addEventListener()")}}, or set an event handler property.
 
-```js
-addEventListener("notificationclose", (event) => {});
+```js-nolint
+addEventListener("notificationclose", (event) => { })
 
-onnotificationclose = (event) => {};
+onnotificationclose = (event) => { }
 ```
 
 ## Event type

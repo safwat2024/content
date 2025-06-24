@@ -8,7 +8,8 @@ page-type: guide
 
 With the Cookies API your extensions have access to capabilities similar to those used by websites to store and read cookies. The API's features give extensions the ability to store information on a site-by-site basis. So, as we shall see in the example, you could store details of a user's choice of background color for a site. Then, when the user revisits the site, your extension can use the API's ability to get details about cookies and read them to recover the user's choice and apply it to the website.
 
-> **Note:** The behavior of cookies can be controlled using the {{WebExtAPIRef("privacy.websites")}} `cookieConfig` property. This property controls whether and how cookies are accepted or whether all cookies are treated as session cookies.
+> [!NOTE]
+> The behavior of cookies can be controlled using the {{WebExtAPIRef("privacy.websites")}} `cookieConfig` property. This property controls whether and how cookies are accepted or whether all cookies are treated as session cookies.
 
 ## Permissions
 
@@ -88,7 +89,7 @@ Firefox provides three types of cookie store:
 - The default store, which stores cookies from normal browsing.
 - Private browsing mode stores, which stores cookies created during a private browsing session. These stores and any cookies they contain are removed when the related private browsing window closes.
 
-  > **Note:**
+  > [!NOTE]
   > Only visible if {{WebExtAPIRef("extension.isAllowedIncognitoAccess()")}} returns true. Safari doesn't support access to private cookies.
 
 - Container tabs stores, which stores cookies for each contextual identity in Firefox. Contextual identities enable a user to maintain multiple identities within one browser window. This is useful if, for example, you've a company and personal email account on Gmail. With contextual identities, you can open one tab against a personal identity and a second tab against a business identity. Each tab can then sign into Google mail with a different username, and the two accounts can be used side-by-side. For more information, see [Security/Contextual Identity Project/Containers](https://wiki.mozilla.org/Security/Contextual_Identity_Project/Containers) in the Mozilla wiki.
@@ -135,8 +136,8 @@ It then loops through all the buttons assigning them their image and creating an
 
 ```js
 for (let i = 0; i < bgBtns.length; i++) {
-  let imgName = bgBtns[i].getAttribute('class');
-  let bgImg = 'url(\'images/' + imgName + '.png\')';
+  let imgName = bgBtns[i].getAttribute("class");
+  let bgImg = `url('images/${imgName}.png')`;
   bgBtns[i].style.backgroundImage = bgImg;
 
   bgBtns[i].onclick = (e) => {
@@ -156,11 +157,12 @@ browser.cookies.set({
 The color setting is handled in a similar way, triggered by a listener on the color input field. When a color is entered the active tab is discovered and the color selection details sent, using a message, to the page's content script to be applied to the web page background. Then the color selection is added to the cookie:
 
 ```js
-    cookieVal.color = currColor;
-    browser.cookies.set({
-    url: tabs[0].url,
-    name: "bgpicker",
-    value: JSON.stringify(cookieVal)
+cookieVal.color = currColor;
+browser.cookies.set({
+  url: tabs[0].url,
+  name: "bgpicker",
+  value: JSON.stringify(cookieVal),
+});
 ```
 
 When the user clicks the reset button, which has been assigned to the variable reset:
@@ -172,11 +174,11 @@ let reset = document.querySelector(".color-reset button");
 `reset.onclick` first finds the active tab. Then, using the tab's ID it passes a message to the page's content script ([updatebg.js](https://github.com/mdn/webextensions-examples/blob/main/cookie-bg-picker/content_scripts/updatebg.js)) to get it to remove the icon and color from the page. The function then clears the cookie values (so the old values aren't carried forward and written onto a cookie created for a new icon or color selection on the same page) before removing the cookie:
 
 ```js
-    cookieVal = { image : '',
-                  color : '' };
-    browser.cookies.remove({
-    url: tabs[0].url,
-    name: "bgpicker"
+cookieVal = { image: "", color: "" };
+browser.cookies.remove({
+  url: tabs[0].url,
+  name: "bgpicker",
+});
 ```
 
 Also, so you can see what is going on with the cookies, the script reports on all changes to cookies in the console:

@@ -24,7 +24,7 @@ let searching = browser.downloads.search(query);
 
 ### Return value
 
-A [`Promise`](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise). The promise is fulfilled with an `array` of `{{WebExtAPIRef('downloads.DownloadItem')}}` objects that match the given criteria.
+A [`Promise`](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise). The promise is fulfilled with an `array` of {{WebExtAPIRef('downloads.DownloadItem')}} objects that match the given criteria.
 
 ## Browser compatibility
 
@@ -123,7 +123,8 @@ You can see this code in action in our [latest-download](https://github.com/mdn/
 
 {{WebExtExamples}}
 
-> **Note:** This API is based on Chromium's [`chrome.downloads`](https://developer.chrome.com/docs/extensions/reference/downloads/#method-search) API.
+> [!NOTE]
+> This API is based on Chromium's [`chrome.downloads`](https://developer.chrome.com/docs/extensions/reference/api/downloads#method-search) API.
 
 <!--
 // Copyright 2015 The Chromium Authors. All rights reserved.

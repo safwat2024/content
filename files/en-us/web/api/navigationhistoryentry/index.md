@@ -13,7 +13,7 @@ The **`NavigationHistoryEntry`** interface of the {{domxref("Navigation API", "N
 
 These objects are commonly accessed via the {{domxref("Navigation.currentEntry")}} property and {{domxref("Navigation.entries()")}} method.
 
-The Navigation API only exposes history entries created in the current browsing context that have the same origin as the current page (e.g. not navigations inside embedded {{htmlelement("iframe")}}s, or cross-origin navigations), providing an accurate list of all previous history entries just for your app. This makes traversing the history a much less fragile proposition than with the older {{domxref("History API", "History API", "", "nocode")}}.
+The Navigation API only exposes history entries created in the current browsing context that have the same origin as the current page (e.g., not navigations inside embedded {{htmlelement("iframe")}}s, or cross-origin navigations), providing an accurate list of all previous history entries just for your app. This makes traversing the history a much less fragile proposition than with the older {{domxref("History API", "History API", "", "nocode")}}.
 
 {{InheritanceDiagram}}
 
@@ -30,7 +30,7 @@ _Inherits properties from its parent, {{DOMxRef("EventTarget")}}._
 - {{domxref("NavigationHistoryEntry.sameDocument", "sameDocument")}} {{ReadOnlyInline}} {{Experimental_Inline}}
   - : Returns `true` if this history entry is for the same `document` as the current {{domxref("Document")}} value, or `false` otherwise.
 - {{domxref("NavigationHistoryEntry.url", "url")}} {{ReadOnlyInline}} {{Experimental_Inline}}
-  - : Returns the absolute URL of this history entry. If the entry corresponds to a different document than the current one (like `sameDocument` property is `false`), and that document was fetched with a {{httpheader("Referrer-Policy", "referrer policy")}} header set to `no-referrer` or `origin`, the property returns `null`.
+  - : Returns the absolute URL of this history entry. If the entry corresponds to a different document than the current one (like `sameDocument` property is `false`), and that document was fetched with a {{httpheader("Referrer-Policy")}} header set to `no-referrer` or `origin`, the property returns `null`.
 
 ## Instance methods
 

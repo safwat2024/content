@@ -78,7 +78,6 @@ These features are newly shipped in Firefox 122 but are disabled by default. To 
   The {{htmlelement("template")}} element now supports a `shadowrootmode` attribute which can be set to either `open` or `closed`, the same values as the `mode` option of the {{domxref("Element.attachShadow()", "attachShadow()")}} method. It allows the creation of a shadow DOM subtree declaratively. ([Firefox bug 1712140](https://bugzil.la/1712140))
 
 - **Clonable option and property for shadow DOM.**
-
   - The {{domxref("Element.attachShadow()")}} method now supports the `clonable` boolean option that specifies whether the created shadow root is clonable: the default value is `false` but when set to `true`, the shadow host cloned with {{domxref("Node.cloneNode()")}} or {{domxref("Document.importNode()")}} will include shadow root in the copy.
   - The {{domxref("ShadowRoot")}} interface now supports the {{domxref("ShadowRoot.clonable", "clonable")}} read-only property. It returns `true` if the shadow root is clonable, and `false` otherwise. It always returns `true` for shadow roots created via declarative shadow DOM.
 
@@ -90,7 +89,7 @@ These features are newly shipped in Firefox 122 but are disabled by default. To 
 
 - **Clipboard read and write:** `dom.events.asyncClipboard.clipboardItem`, `dom.events.asyncClipboard.readText` and `dom.events.asyncClipboard.writeText`.
 
-  The async {{domxref('Clipboard API')}} is now fully supported, including [`read()`](/en-US/docs/Web/API/Clipboard/read), [`readText()`](/en-US/docs/Web/API/Clipboard/readText), and [`write()`](/en-US/docs/Web/API/Clipboard/write) methods and the {{domxref('ClipboardItem')}} interface. A paste context menu will appear for the user to confirm when reading clipboard data not provided by the same-origin page. ([Firefox bug 1809106](https://bugzil.la/1809106))
+  The async [Clipboard API](/en-US/docs/Web/API/Clipboard_API) is now fully supported, including [`read()`](/en-US/docs/Web/API/Clipboard/read), [`readText()`](/en-US/docs/Web/API/Clipboard/readText), and [`write()`](/en-US/docs/Web/API/Clipboard/write) methods and the {{domxref('ClipboardItem')}} interface. A paste context menu will appear for the user to confirm when reading clipboard data not provided by the same-origin page. ([Firefox bug 1809106](https://bugzil.la/1809106))
 
 - **`Intl.Segmenter`:** enabled by default only in Firefox Nightly.
 
@@ -98,4 +97,4 @@ These features are newly shipped in Firefox 122 but are disabled by default. To 
 
 ## Older versions
 
-{{Firefox_for_developers(121)}}
+{{Firefox_for_developers}}

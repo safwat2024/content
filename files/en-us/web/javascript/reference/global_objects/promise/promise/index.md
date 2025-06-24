@@ -1,5 +1,6 @@
 ---
 title: Promise() constructor
+short-title: Promise()
 slug: Web/JavaScript/Reference/Global_Objects/Promise/Promise
 page-type: javascript-constructor
 browser-compat: javascript.builtins.Promise.Promise
@@ -9,7 +10,23 @@ browser-compat: javascript.builtins.Promise.Promise
 
 The **`Promise()`** constructor creates {{jsxref("Promise")}} objects. It is primarily used to wrap callback-based APIs that do not already support promises.
 
-{{EmbedInteractiveExample("pages/js/promise-constructor.html", "taller")}}
+{{InteractiveExample("JavaScript Demo: Promise() constructor", "taller")}}
+
+```js interactive-example
+const promise1 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("foo");
+  }, 300);
+});
+
+promise1.then((value) => {
+  console.log(value);
+  // Expected output: "foo"
+});
+
+console.log(promise1);
+// Expected output: [object Promise]
+```
 
 ## Syntax
 
@@ -26,7 +43,7 @@ new Promise(executor)
 
 ### Return value
 
-When called via `new`, the `Promise` constructor returns a promise object. The promise object will become _resolved_ when either of the functions `resolveFunc` or `rejectFunc` are invoked. Note that if you call `resolveFunc` or `rejectFunc` and pass another `Promise` object as an argument, it can be said to be "resolved", but still not "settled". See the [Promise description](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise#description) for more explanation.
+When called via `new`, the `Promise` constructor returns a promise object. The promise object will become _resolved_ when either of the functions `resolveFunc` or `rejectFunc` are invoked. Note that if you call `resolveFunc` and pass another promise object as an argument, the initial promise can be said to be "resolved", but still not "settled". See the [Promise description](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise#description) for more explanation.
 
 ## Description
 
@@ -45,7 +62,8 @@ readFile("./data.txt", (error, result) => {
 
 To take advantage of the readability improvement and language features offered by promises, the `Promise()` constructor allows one to transform the callback-based API to a promise-based one.
 
-> **Note:** If your task is already promise-based, you likely do not need the `Promise()` constructor.
+> [!NOTE]
+> If your task is already promise-based, you likely do not need the `Promise()` constructor.
 
 The `executor` is custom code that ties an outcome in a callback to a promise. You, the programmer, write the `executor`. Its signature is expected to be:
 
@@ -70,7 +88,8 @@ The `executor`'s completion state has limited effect on the promise's state:
 - The `executor` return value is ignored. `return` statements within the `executor` merely impact control flow and alter whether a part of the function is executed, but do not have any impact on the promise's fulfillment value. If `executor` exits and it's impossible for `resolveFunc` or `rejectFunc` to be called in the future (for example, there are no async tasks scheduled), then the promise remains pending forever.
 - If an error is thrown in the `executor`, the promise is rejected, unless `resolveFunc` or `rejectFunc` has already been called.
 
-> **Note:** The existence of pending promises does not prevent the program from exiting. If the event loop is empty, the program exits despite any pending promises (because those are necessarily forever-pending).
+> [!NOTE]
+> The existence of pending promises does not prevent the program from exiting. If the event loop is empty, the program exits despite any pending promises (because those are necessarily forever-pending).
 
 Here's a summary of the typical flow:
 
@@ -82,7 +101,7 @@ Here's a summary of the typical flow:
    - If `rejectFunc` is called first, the promise instantly becomes rejected.
    - Once one of the resolving functions (`resolveFunc` or `rejectFunc`) is called, the promise stays resolved. Only the first call to `resolveFunc` or `rejectFunc` affects the promise's eventual state, and subsequent calls to either function can neither change the fulfillment value/rejection reason nor toggle its eventual state from "fulfilled" to "rejected" or opposite.
    - If `executor` exits by throwing an error, then the promise is rejected. However, the error is ignored if one of the resolving functions has already been called (so that the promise is already resolved).
-   - Resolving the promise does not necessarily cause the promise to become fulfilled or rejected (i.e. settled). The promise may still be pending because it's resolved with another thenable, but its eventual state will match that of the resolved thenable.
+   - Resolving the promise does not necessarily cause the promise to become fulfilled or rejected (i.e., settled). The promise may still be pending because it's resolved with another thenable, but its eventual state will match that of the resolved thenable.
 5. Once the promise settles, it (asynchronously) invokes any further handlers associated through {{jsxref("Promise/then", "then()")}}, {{jsxref("Promise/catch", "catch()")}}, or {{jsxref("Promise/finally", "finally()")}}. The eventual fulfillment value or rejection reason is passed to the invocation of fulfillment and rejection handlers as an input parameter (see [Chained Promises](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise#chained_promises)).
 
 For example, the callback-based `readFile` API above can be transformed into a promise-based one.

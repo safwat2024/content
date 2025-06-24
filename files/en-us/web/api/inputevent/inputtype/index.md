@@ -28,9 +28,7 @@ This example logs the `inputType` for [input events](/en-US/docs/Web/API/Element
 
 ```html
 <p id="log">Input type:</p>
-<div
-  contenteditable="true"
-  style="margin: 20px;padding: 20px;border:2px dashed red;">
+<div contenteditable="true" class="sample-text">
   <p>
     Some sample text. Try inserting line breaks, or deleting text in different
     ways, or pasting different content in.
@@ -43,6 +41,16 @@ This example logs the `inputType` for [input events](/en-US/docs/Web/API/Element
   </ul>
   <p>Another paragraph.</p>
 </div>
+```
+
+### CSS
+
+```css
+.sample-text {
+  margin: 20px;
+  padding: 20px;
+  border: 2px dashed red;
+}
 ```
 
 ### JavaScript
@@ -63,7 +71,8 @@ Try editing the text inside the `<div>` and see what happens.
 
 {{EmbedLiveSample("Examples", '100%', 500)}}
 
-> **Note:** See also [Masayuki Nakano's InputEvent test suite](https://d-toybox.com/studio/lib/input_event_viewer.html) for a more detailed example.
+> [!NOTE]
+> See also [Masayuki Nakano's InputEvent test suite](https://d-toybox.com/studio/lib/input_event_viewer.html) for a more detailed example.
 
 ## Specifications
 

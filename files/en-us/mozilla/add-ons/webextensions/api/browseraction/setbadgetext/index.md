@@ -24,11 +24,8 @@ This API is also available as `chrome.browserAction.setBadgeText()`.
 ### Parameters
 
 - `details`
-
   - : An object with the following properties:
-
     - `text`
-
       - : `string` or `null`. Any number of characters can be passed, but only about four can fit in the space.
 
         Use an empty string - `""` - if you don't want any badge.
@@ -67,7 +64,8 @@ browser.browserAction.onClicked.addListener(increment);
 
 {{WebExtExamples}}
 
-> **Note:** This API is based on Chromium's [`chrome.browserAction`](https://developer.chrome.com/docs/extensions/reference/browserAction/#method-setBadgeText) API. This documentation is derived from [`browser_action.json`](https://chromium.googlesource.com/chromium/src/+/master/chrome/common/extensions/api/browser_action.json) in the Chromium code.
+> [!NOTE]
+> This API is based on Chromium's [`chrome.browserAction`](https://developer.chrome.com/docs/extensions/mv2/reference/browserAction#method-setBadgeText) API. This documentation is derived from [`browser_action.json`](https://chromium.googlesource.com/chromium/src/+/master/chrome/common/extensions/api/browser_action.json) in the Chromium code.
 
 <!--
 // Copyright 2015 The Chromium Authors. All rights reserved.

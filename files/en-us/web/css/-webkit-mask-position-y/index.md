@@ -1,5 +1,5 @@
 ---
-title: "-webkit-mask-position-y"
+title: -webkit-mask-position-y
 slug: Web/CSS/-webkit-mask-position-y
 page-type: css-property
 status:
@@ -58,10 +58,7 @@ The `-webkit-mask-position-y` CSS property sets the initial vertical position of
 
 ## Formal syntax
 
-```plain
--webkit-mask-position-y =
-  [ <length-percentage> | top | center | bottom ]#
-```
+{{CSSSyntaxRaw(`-webkit-mask-position-y = [ <length-percentage> | top | center | bottom ]#`)}}
 
 ## Examples
 
@@ -89,4 +86,4 @@ Not part of any standard.
 
 ## See also
 
-{{cssxref("mask-position", "-webkit-mask-position")}}, {{cssxref("-webkit-mask-position-x")}}, {{cssxref("mask-origin", "-webkit-mask-origin")}}, {{cssxref("-webkit-mask-attachment")}}
+{{cssxref("mask-position", "-webkit-mask-position")}}, {{cssxref("-webkit-mask-position-x")}}, {{cssxref("mask-origin", "-webkit-mask-origin")}}

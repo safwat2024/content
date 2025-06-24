@@ -6,15 +6,16 @@ page-type: guide
 
 {{CSSRef}}
 
-**Media queries** allow you to apply CSS styles depending on a device's media type (such as print vs. screen) or other features or characteristics such as screen resolution or orientation, aspect ratio, browser {{glossary("viewport")}} width or height, user preferences such as preferring reduced motion, data usage, or transparency.
+**Media queries** allow you to apply CSS styles depending on a device's media type (such as print vs. screen) or other features or characteristics such as screen resolution or orientation, {{glossary("aspect ratio")}}, browser {{glossary("viewport")}} width or height, user preferences such as preferring reduced motion, data usage, or transparency.
 
 Media queries are used for the following:
 
-- To conditionally apply styles with the [CSS](/en-US/docs/Web/CSS) {{cssxref("@media")}} and {{cssxref("@import")}} [at-rules](/en-US/docs/Web/CSS/At-rule).
+- To conditionally apply styles with the [CSS](/en-US/docs/Web/CSS) {{cssxref("@media")}} and {{cssxref("@import")}} [at-rules](/en-US/docs/Web/CSS/CSS_syntax/At-rule).
 - To target specific media for the {{HTMLElement("style")}}, {{HTMLElement("link")}}, {{HTMLElement("source")}}, and other [HTML](/en-US/docs/Web/HTML) elements with the `media=` or `sizes="` attributes.
 - To [test and monitor media states](/en-US/docs/Web/CSS/CSS_media_queries/Testing_media_queries) using the {{domxref("Window.matchMedia()")}} and {{domxref("EventTarget.addEventListener()")}} methods.
 
-> **Note:** The examples on this page use CSS's `@media` for illustrative purposes, but the basic syntax remains the same for all types of media queries.
+> [!NOTE]
+> The examples on this page use CSS's `@media` for illustrative purposes, but the basic syntax remains the same for all types of media queries.
 
 ## Syntax
 
@@ -23,10 +24,9 @@ Media queries are case-insensitive.
 
 - [Media types](/en-US/docs/Web/CSS/@media#media_types) define the broad category of device for which the media query applies: `all`, `print`, `screen`.
 
-  The type is optional (assumed to be `all`) except when using the `not` or `only` logical operators.
+  The type is optional (assumed to be `all`) except when using the `only` logical operator.
 
 - [Media features](/en-US/docs/Web/CSS/@media#media_features) describe a specific characteristic of the {{glossary("user agent")}}, output device, or environment:
-
   - {{cssxref("@media/any-hover", "any-hover")}}
   - {{cssxref("@media/any-pointer", "any-pointer")}}
   - {{cssxref("@media/aspect-ratio", "aspect-ratio")}}
@@ -35,6 +35,7 @@ Media queries are case-insensitive.
   - {{cssxref("@media/color-index", "color-index")}}
   - {{cssxref("@media/device-aspect-ratio", "device-aspect-ratio")}} {{deprecated_inline}}
   - {{cssxref("@media/device-height", "device-height")}} {{deprecated_inline}}
+  - {{cssxref("@media/device-posture", "device-posture")}}
   - {{cssxref("@media/device-width", "device-width")}} {{deprecated_inline}}
   - {{cssxref("@media/display-mode", "display-mode")}}
   - {{cssxref("@media/dynamic-range", "dynamic-range")}}
@@ -51,12 +52,12 @@ Media queries are case-insensitive.
   - {{cssxref("@media/prefers-color-scheme", "prefers-color-scheme")}}
   - {{cssxref("@media/prefers-contrast", "prefers-contrast")}}
   - {{cssxref("@media/prefers-reduced-motion", "prefers-reduced-motion")}}
-  - {{cssxref("@media/prefers-reduced-transparency", "prefers-reduced-transparency")}} {{experimental_inline}}
+  - {{cssxref("@media/prefers-reduced-transparency", "prefers-reduced-transparency")}}
   - {{cssxref("@media/resolution", "resolution")}}
   - {{cssxref("@media/scripting", "scripting")}}
   - {{cssxref("@media/update", "update")}}
   - {{cssxref("@media/video-dynamic-range", "video-dynamic-range")}}
-  - {{cssxref("@media/width", "width")}}.
+  - {{cssxref("@media/width", "width")}}
 
   For example, the {{cssxref("@media/hover", "hover")}} feature allows a query to check whether the device supports hovering over elements.
   Media feature expressions test for their presence or value, and are entirely optional.
@@ -68,7 +69,8 @@ Media queries are case-insensitive.
 A media query computes to `true` when the media type (if specified) matches the device on which a document is being displayed _and_ all media feature expressions compute as true.
 Queries involving unknown media types are always false.
 
-> **Note:** A style sheet with a media query attached to its {{HTMLElement("link")}} tag [will still download](https://scottjehl.github.io/CSS-Download-Tests/) even if the query returns `false`, the download will happen but the priority of downloading will be much lower.
+> [!NOTE]
+> A style sheet with a media query attached to its {{HTMLElement("link")}} tag [will still download](https://scottjehl.github.io/CSS-Download-Tests/) even if the query returns `false`, the download will happen but the priority of downloading will be much lower.
 > Nevertheless, its contents will not apply unless and until the result of the query changes to `true`.
 > You can read why this happens in Tomayac's blog [Why Browser Download Stylesheet with Non-Matching Media Queries](https://medium.com/@tomayac/why-browsers-download-stylesheets-with-non-matching-media-queries-eb61b91b85a2).
 
@@ -127,15 +129,19 @@ For example, this CSS will apply styles only if your browser's {{glossary("viewp
 }
 ```
 
-This can also be written as:
+The following media queries are equivalent to the above example:
 
 ```css
 @media (width <= 1250px) {
   /* … */
 }
+
+@media (1250px >= width) {
+  /* … */
+}
 ```
 
-With media query range features, you can either use the inclusive `min-` and `max-` prefixes or the more concise range syntax operators `<=` and `=>`.
+With media query range features, you can either use the inclusive `min-` and `max-` prefixes or the more concise range syntax operators `<=` and `>=`.
 
 The following media queries are equivalent:
 
@@ -147,17 +153,25 @@ The following media queries are equivalent:
 @media (30em <= width <= 50em) {
   /* … */
 }
+
+@media (50em >= width >= 30em) {
+  /* … */
+}
 ```
 
-The range comparisons above are inclusive. To not include the comparison value, use `<` and `>`.
+The range comparisons above are inclusive. To exclude the comparison value, use `<` and/or `>`.
 
 ```css
 @media (30em < width < 50em) {
   /* … */
 }
+
+@media (50em > width > 30em) {
+  /* … */
+}
 ```
 
-If you create a media feature query without specifying a value, the nested styles will be used as long as the feature's value is not 0 or `none`.
+If you create a media feature query without specifying a value, the nested styles will be used as long as the feature's value is not `0` or `none`.
 For example, this CSS will apply to any device with a color screen:
 
 ```css
@@ -173,14 +187,17 @@ For more [Media feature](/en-US/docs/Web/CSS/@media#media_features) examples, pl
 ## Creating complex media queries
 
 Sometimes you may want to create a media query that depends on multiple conditions. This is where the _logical operators_ come in: `not`, `and`, and `only`.
-Furthermore, you can combine multiple media queries into a _comma-separated list_; this allows you to apply the same styles in different situations.
+Furthermore, you can combine multiple media queries into a comma-separated list; this allows you to apply the same styles in different situations, with the contained media queries evaluated as a logical `or` composition: interpreted as if each media query were within parentheses with an `or` between them.
 
 In the previous example, we saw the `and` operator used to group a media _type_ with a media _feature_.
-The `and` operator can also combine multiple media features into a single media query. The `not` operator, meanwhile, negates a media query, basically reversing its normal meaning.
-The `only` operator prevents older browsers from applying the styles.
+The `and` operator can also combine multiple media features within a single media query.
+The `not` operator negates a media query, or a media feature when used with brackets, basically reversing their normal meanings.
+The `or` operator can, under certain conditions, be used to combine multiple media features within a single media query.
+Lastly, the `only` operator was used to prevent older browsers from applying the styles without evaluating the media feature expressions but it has no effect in modern browsers.
 
-> **Note:** In most cases, the `all` media type is used by default when no other type is specified.
-> However, if you use the `not` or `only` operators, you must explicitly specify a media type.
+> [!NOTE]
+> In most cases, the `all` media type is used by default when no other type is specified.
+> However, if you use the `only` operator, you must explicitly specify a media type. You can see `only screen` or `only print` as a whole.
 
 ### Combining multiple types or features
 
@@ -205,7 +222,7 @@ To limit the styles to devices with a screen, you can chain the media features t
 
 You can use a comma-separated list of media queries to apply styles when the user's device matches any one of various media types, features, or states.
 
-The following rule contains two media queries. The block's styles will apply if either the user's device has a height of 680px or more _or_ is if the browser viewport is in portrait mode (the viewport height is greater than the viewport width):
+The following rule contains two media queries. The block's styles will apply if either the user's device has a height of 680px or more _or_ if the browser viewport is in portrait mode (the viewport height is greater than the viewport width):
 
 ```css
 @media (min-height: 680px), screen and (orientation: portrait) {
@@ -228,7 +245,7 @@ The `not` keyword inverts the meaning of a single media query. For example, the 
 }
 ```
 
-The `not` negates only the media query it is applied to. The `not`, without parenthesis, negates all the features within the media query in which it is contained. This means, in a comma-separated list of media queries, each `not` applies to the single query it is contained within, applying to _all_ the features within that single query. In this example, the `not` applies to the first media query, which concludes at the first comma:
+The `not` negates only the media query it is applied to. The `not`, without parenthesis, negates all the features within the media query in which it is contained. This means, in a comma-separated list of media queries, each `not` applies to the single query it is contained within, applying to _all_ the features within that single query. In this example, the `not` applies to the first media query `screen and (color)`, which concludes at the first comma:
 
 ```css
 @media not screen and (color), print and (color) {
@@ -236,53 +253,31 @@ The `not` negates only the media query it is applied to. The `not`, without pare
 }
 ```
 
-The above query is evaluated like this:
+Because the query starts with a media type `screen`, you _cannot_ wrap `screen and (color)` with parentheses. On the other hand, if your media query consists of features only, then you _must_ parenthesize the query:
 
 ```css
-@media (not (screen and (color))), print and (color) {
+@media not ((width > 1000px) and (color)), print and (color) {
   /* … */
 }
 ```
 
-Both examples are valid. Media conditions can be grouped by wrapping them in parentheses (`()`). These groups can then be nested within a condition the same as a single media query.
-
-The `not` is evaluated last in a media query, meaning it applies to the entire media query, not to a single feature within a query, as if an open parenthesis was added immediately after the `not` and closed at the end of the media query.
-
-The following query:
+Parentheses limit the components of the query that get negated. For example, to negate the `(width > 1000px)` query only:
 
 ```css
-@media not all and (monochrome) {
+@media (not (width > 1000px)) and (color), print and (color) {
   /* … */
 }
 ```
 
-is evaluated like this:
+`not` only negates the query to its right. In this example, we negate the `hover` media feature but not the `screen` media type:
 
 ```css
-@media not (all and (monochrome)) {
+@media screen and not (hover) {
   /* … */
 }
 ```
 
-It is not evaluated like this:
-
-```css example-bad
-@media (not all) and (monochrome) {
-  /* … */
-}
-```
-
-To negate a single feature within a media query, use parenthesis. Encompassing a `not` and a media feature in parentheses limits the components of the query that get negated.
-
-In this example, we negate the `hover` media feature but not the `all` media type:
-
-```css
-@media all and (not(hover)) {
-  /* … */
-}
-```
-
-The `not(hover)` matches if the device has no hover capability. In this case, because of the parentheses, the `not` applies to `hover` but not to `all`.
+The `not (hover)` matches if the device has no hover capability. In this case, because of its ordering, the `not` applies to `hover` but not to `screen`.
 
 ### Improving compatibility with older browsers
 
@@ -302,6 +297,21 @@ For example, the following query tests for devices that have a monochrome displa
 
 ```css
 @media (not (color)) or (hover) {
+  /* … */
+}
+```
+
+Note that you cannot use the `or` operator on the same level as the `and` and `not` operators. You can either separate the media features with a comma or use parenthesis to group sub-expressions of media features to clarify the order of evaluation.
+
+For example, the following queries are both valid:
+
+```css
+@media ((color) and (hover)) or (monochrome) {
+  /* … */
+}
+
+/* or */
+@media (color) and (hover), (monochrome) {
   /* … */
 }
 ```

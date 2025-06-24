@@ -22,7 +22,7 @@ browser.management.install(options)
 ### Parameters
 
 - options
-  - : An object that includes the URL of the XPI file of the theme at [addons.mozilla.org](https://addons.mozilla.org) and an optional a hash of the XPI file, using sha256 or stronger.
+  - : An object that includes the URL of the XPI file of the theme at [addons.mozilla.org](https://addons.mozilla.org/) and an optional a hash of the XPI file, using sha256 or stronger.
 
 ### Return value
 
@@ -40,10 +40,10 @@ Cycle through a list of themes:
 "use strict";
 
 const themes = [
-  "https://addons.mozilla.org/firefox/downloads/file/1063216/insightscare-1.0-fx.xpi",
-  "https://addons.mozilla.org/firefox/downloads/file/1063419/orange_roses-1.0-fx.xpi",
-  "https://addons.mozilla.org/firefox/downloads/file/1062647/sticktoyourguns-2.0-fx.xpi",
-  "https://addons.mozilla.org/firefox/downloads/file/0/bad_url.xpi",
+  "https://addons.mozilla.org/en-US/firefox/downloads/file/1063216/insightscare-1.0-fx.xpi",
+  "https://addons.mozilla.org/en-US/firefox/downloads/file/1063419/orange_roses-1.0-fx.xpi",
+  "https://addons.mozilla.org/en-US/firefox/downloads/file/1062647/sticktoyourguns-2.0-fx.xpi",
+  "https://addons.mozilla.org/en-US/firefox/downloads/file/0/bad_url.xpi",
 ];
 
 let current;

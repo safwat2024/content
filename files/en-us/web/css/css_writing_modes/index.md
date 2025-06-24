@@ -14,12 +14,20 @@ The **CSS writing modes** module defines various international writing modes, su
 ### Properties
 
 - {{cssxref("direction")}}
-- {{cssxref("glyph-orientation-horizontal")}}
 - {{cssxref("text-combine-upright")}}
 - {{cssxref("text-orientation")}}
 - {{cssxref("unicode-bidi")}}
 - {{cssxref("writing-mode")}}
 
+## Guides
+
+- [Creating vertical form controls](/en-US/docs/Web/CSS/CSS_writing_modes/Vertical_controls)
+  - : The article explains how to use the CSS {{cssxref("writing-mode")}} and {{cssxref("direction")}} properties to create and configure vertical form controls.
+
 ## Specifications
 
 {{Specifications}}
+
+## See also
+
+- [Handling different text directions](/en-US/docs/Learn_web_development/Core/Styling_basics/Handling_different_text_directions)

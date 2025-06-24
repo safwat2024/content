@@ -15,8 +15,8 @@ Firefox 7 shipped on September 27, 2011. This article provides information about
 - The {{ domxref("HTMLHeadElement") }} `profile` property has been removed, this property has been deprecated since Gecko 2.0.
 - The {{ domxref("HTMLImageElement") }} `x` and `y` properties have been removed.
 - The {{ domxref("HTMLSelectElement") }} `add()` method `before` parameter is now optional.
-- The {{ HTMLElement("body") }} element's [`background`](/en-US/docs/Web/HTML/Element/body#background) attribute is no longer resolved as a URI; this is in compliance with the current HTML specification.
-- The {{ HTMLElement("option") }} element's [`label`](/en-US/docs/Web/HTML/Element/option#label) attribute now reflects the value of the element's text content if the attribute isn't specified.
+- The {{ HTMLElement("body") }} element's [`background`](/en-US/docs/Web/HTML/Reference/Elements/body#background) attribute is no longer resolved as a URI; this is in compliance with the current HTML specification.
+- The {{ HTMLElement("option") }} element's [`label`](/en-US/docs/Web/HTML/Reference/Elements/option#label) attribute now reflects the value of the element's text content if the attribute isn't specified.
 
 #### Canvas
 
@@ -45,7 +45,7 @@ Firefox 7 shipped on September 27, 2011. This article provides information about
 - The top-level {{ MathMLElement("math") }} element now accepts any attributes of the {{ MathMLElement("mstyle") }} element.
 - Support for [Asana Math](https://www.ctan.org/tex-archive/fonts/Asana-Math/) fonts has been added.
 - The `medium` line thickness of fraction bars in {{ MathMLElement("mfrac") }} elements has been corrected to match the default thickness.
-- [Names for negative spaces](</en-US/docs/Web/MathML/Values#constants_(namedspaces)>) are now supported.
+- [Names for negative spaces](</en-US/docs/Web/MathML/Reference/Values#constants_(namedspaces)>) are now supported.
 
 ### DOM
 
@@ -88,7 +88,8 @@ Firefox 7 shipped on September 27, 2011. This article provides information about
 
 These changes affect add-on developers as well as developers working on or with Mozilla code itself. Add-on developers should see [Updating extensions for Firefox 7](/en-US/docs/Mozilla/Firefox/Releases/7/Updating_extensions) for additional information.
 
-> **Note:** Firefox 7 requires that binary components be recompiled, as do all major releases of Firefox.
+> [!NOTE]
+> Firefox 7 requires that binary components be recompiled, as do all major releases of Firefox.
 
 ### JavaScript code modules
 
@@ -186,8 +187,8 @@ The following interfaces were removed as part of the removal of the ActiveX embe
 ### Other Changes
 
 - The structure of the library window (`places.xul`) [has been cleaned up](https://bugzil.la/588027). This [may break extensions](https://bugzil.la/677417) and themes.
-- The look of the print preview window [has been modernized](https://bugzil.la/663028) and theme authors are encouraged to style it using the CSS pseudo-elements {{ cssxref("::-moz-page") }}, {{ cssxref("::-moz-page-sequence") }} and {{ cssxref("::-moz-scrolled-page-sequence") }}.
+- The look of the print preview window [has been modernized](https://bugzil.la/663028) and theme authors are encouraged to style it using the CSS pseudo-elements `::-moz-page`, `::-moz-page-sequence` and `::-moz-scrolled-page-sequence`.
 
 ## See also
 
-{{Firefox_for_developers('6')}}
+{{Firefox_for_developers}}

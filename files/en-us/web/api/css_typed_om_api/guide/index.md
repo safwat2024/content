@@ -59,7 +59,7 @@ for (const [prop, val] of defaultComputedStyles) {
 }
 ```
 
-The `computedStyleMap()` method returns a {{domxref('StylePropertyMapReadOnly')}} object containing the [`size`](/en-US/docs/Web/API/StylePropertyMapReadOnly/size) property, which indicates how many properties are in the map. We iterate through the style map, creating a [`<dt>`](/en-US/docs/Web/HTML/Element/dt) and [`<dd>`](/en-US/docs/Web/HTML/Element/dd) for each property and value respectively.
+The `computedStyleMap()` method returns a {{domxref('StylePropertyMapReadOnly')}} object containing the [`size`](/en-US/docs/Web/API/StylePropertyMapReadOnly/size) property, which indicates how many properties are in the map. We iterate through the style map, creating a [`<dt>`](/en-US/docs/Web/HTML/Reference/Elements/dt) and [`<dd>`](/en-US/docs/Web/HTML/Reference/Elements/dd) for each property and value respectively.
 
 #### Result
 
@@ -67,7 +67,7 @@ In [browsers that support `computedStyleMap()`](/en-US/docs/Web/API/Element/comp
 
 {{EmbedLiveSample("Getting_all_the_properties_and_values", 120, 300)}}
 
-Did you realize how many default CSS properties a link had? Update the JavaScript on line 2 to select the {{htmlelement("p")}} rather than the {{htmlelement("a")}}. You'll notice a difference in the [`margin-top`](/en-US/docs/Web/CSS/margin-top) and [`margin-bottom`](/en-US/docs/Web/CSS/margin-bottom) default computed values.
+Did you realize how many default CSS properties a link had? Update the first `document.querySelector` call to select the {{htmlelement("p")}} rather than the {{htmlelement("a")}}. You'll notice a difference in the [`margin-top`](/en-US/docs/Web/CSS/margin-top) and [`margin-bottom`](/en-US/docs/Web/CSS/margin-bottom) default computed values.
 
 ### .get() method / custom properties
 
@@ -124,7 +124,7 @@ for (const value of ofInterest) {
 
 We included {{cssxref('border-left-color')}} to demonstrate that, had we included all the properties, every value that defaults to [`currentcolor`](/en-US/docs/Web/CSS/color_value) (including {{cssxref('caret-color')}}, {{cssxref('outline-color')}}, {{cssxref('text-decoration-color')}}, {{cssxref('column-rule-color')}}, etc.) would return `rgb(255 0 0)`. The link has inherited `font-weight: bold;` from the paragraph's styles, listing it as `font-weight: 700`. Custom properties, like our `--color: red`, are properties. As such, they are accessible via `get()`.
 
-You'll note that custom properties retain the value as written in the stylesheet, whereas computed styles will be listed as the computed value — {{cssxref('color')}} was listed as an [`rgb()`](/en-US/docs/Web/CSS/color_value) value and the {{cssxref('font-weight')}} returned was `700` even though we use a {{cssxref('&lt;color&gt;', 'named color')}} and the `bold` keyword.
+You'll note that custom properties retain the value as written in the stylesheet, whereas computed styles will be listed as the computed value — {{cssxref('color')}} was listed as an [`rgb()`](/en-US/docs/Web/CSS/color_value) value and the {{cssxref('font-weight')}} returned was `700` even though we use a [named color](/en-US/docs/Web/CSS/named-color) and the `bold` keyword.
 
 ### CSSUnitValue and CSSKeywordValue
 
@@ -138,9 +138,9 @@ Let's write a plain paragraph, apply no styles, and inspect a few of its CSS pro
 
 ```html
 <p>
-   This is a paragraph with some content. Open up this example in Codepen or
-   JSFiddle, and change some features. Try adding some CSS, such as a width
-   for this paragraph, or adding a CSS property to the ofInterest array.
+  This is a paragraph with some content. Open up this example in CodePen or
+  JSFiddle, and change some features. Try adding some CSS, such as a width for
+  this paragraph, or adding a CSS property to the ofInterest array.
 </p>
 <table id="regurgitation">
   <thead>
@@ -149,6 +149,7 @@ Let's write a plain paragraph, apply no styles, and inspect a few of its CSS pro
       <th>Value</th>
       <th>Unit</th>
     </tr>
+  </thead>
 </table>
 ```
 
@@ -263,7 +264,7 @@ button {
   display: inline-block;
   padding: var(--unit) calc(var(--unit) * 2);
   width: calc(30% + 20px);
-  background: no-repeat 5% center url(magicwand.png) var(--mainColor);
+  background: no-repeat 5% center url(magic-wand.png) var(--mainColor);
   border: 4px solid var(--mainColor);
   border-radius: 2px;
   font-size: calc(var(--unit) * 2);
@@ -308,7 +309,7 @@ console.log(transform.is2D); // true
 let bgImage = allComputedStyles.get("background-image");
 
 console.log(bgImage); // CSSImageValue
-console.log(bgImage.toString()); // url("magicwand.png")
+console.log(bgImage.toString()); // url("magic-wand.png")
 
 // CSSUnparsedValue
 let unit = allComputedStyles.get("--unit");
@@ -331,7 +332,7 @@ The following examples reference `allComputedStyles`:
 
 ### CSSUnparsedValue
 
-The {{domxref('CSSUnparsedValue')}} represents [custom properties](/en-US/docs/Web/CSS/Using_CSS_custom_properties):
+The {{domxref('CSSUnparsedValue')}} represents [custom properties](/en-US/docs/Web/CSS/CSS_cascading_variables/Using_CSS_custom_properties):
 
 ```js
 // CSSUnparsedValue
@@ -352,7 +353,7 @@ console.log(parsedUnit.value); // 1.2
 
 ### CSSMathSum
 
-Although the [`<button>`](/en-US/docs/Web/HTML/Element/button) element is an inline element by default, we've added [`display: inline-block;`](/en-US/docs/Web/CSS/CSS_display) to enable sizing. In our CSS we have `width: calc(30% + 20px);`, which is a [`calc()`](/en-US/docs/Web/CSS/calc) function to define the width.
+Although the [`<button>`](/en-US/docs/Web/HTML/Reference/Elements/button) element is an inline element by default, we've added [`display: inline-block;`](/en-US/docs/Web/CSS/CSS_display) to enable sizing. In our CSS we have `width: calc(30% + 20px);`, which is a [`calc()`](/en-US/docs/Web/CSS/calc) function to define the width.
 
 When we `get()` the `width`, we get a [`CSSMathSum`](/en-US/docs/Web/API/CSSMathSum) returned. {{domxref('CSSMathSum.values')}} is a {{domxref('CSSNumericArray')}} with 2 `CSSUnitValues`.
 
@@ -396,10 +397,10 @@ Our button has one background image: a magic wand.
 const bgImage = allComputedStyles.get("background-image");
 
 console.log(bgImage); // CSSImageValue
-console.log(bgImage.toString()); // url("magicwand.png")
+console.log(bgImage.toString()); // url("magic-wand.png")
 ```
 
-When we `get()` the `'background-image'`, a {{domxref('CSSImageValue')}} is returned. While we used the CSS {{cssxref('background')}} shorthand property, the inherited {{jsxref("Object/toString", "Object.prototype.toString()")}} method, shows we returned only the image, `'url("magicwand.png")'`.
+When we `get()` the `'background-image'`, a {{domxref('CSSImageValue')}} is returned. While we used the CSS {{cssxref('background')}} shorthand property, the inherited {{jsxref("Object/toString", "Object.prototype.toString()")}} method, shows we returned only the image, `'url("magic-wand.png")'`.
 
 Notice that the value returned is the absolute path to the image — this is returned even if the original `url()` value was relative. Had the background image been a gradient or multiple background images, `.get('background-image')` would have returned a `CSSStyleValue`. The `CSSImageValue` is returned only if there is a single image, and only if that single image declaration is a URL.
 

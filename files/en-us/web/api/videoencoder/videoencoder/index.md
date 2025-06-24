@@ -6,7 +6,7 @@ page-type: web-api-constructor
 browser-compat: api.VideoEncoder.VideoEncoder
 ---
 
-{{APIRef("WebCodecs API")}}{{SecureContext_Header}}
+{{APIRef("WebCodecs API")}}{{SecureContext_Header}}{{AvailableInWorkers("window_and_dedicated")}}
 
 The **`VideoEncoder()`** constructor creates a new {{domxref("VideoEncoder")}} object with the provided `options.output` callback assigned as the output callback, the provided `options.error` callback as the error callback, and sets the {{domxref("VideoEncoder.state")}} to `"unconfigured"`.
 
@@ -25,7 +25,7 @@ new VideoEncoder(options)
         - `decoderConfig` {{Optional_Inline}}
           - : An object containing:
             - `codec`
-              - : A string containing a [valid codec string](https://www.w3.org/TR/webcodecs-codec-registry/#video-codec-registry).
+              - : A string containing a [valid codec string](https://w3c.github.io/webcodecs/codec_registry.html#video-codec-registry).
             - `description` {{Optional_Inline}}
               - : An {{jsxref("ArrayBuffer")}}, a {{jsxref("TypedArray")}}, or a {{jsxref("DataView")}} containing a sequence of codec-specific bytes, commonly known as "extradata".
             - `codedWidth` {{Optional_Inline}}
@@ -33,7 +33,7 @@ new VideoEncoder(options)
             - `codedHeight` {{Optional_Inline}}
               - : An integer representing the height of the {{domxref("VideoFrame")}} in pixels, potentially including non-visible padding, and prior to considering potential ratio adjustments.
             - `displayAspectWidth` {{Optional_Inline}}
-              - : An integer representing the horizontal dimension of the {{domxref("VideoFrame")}}'s aspect ratio when displayed.
+              - : An integer representing the horizontal dimension of the {{domxref("VideoFrame")}}'s {{glossary("aspect ratio")}} when displayed.
             - `displayAspectHeight` {{Optional_Inline}}
               - : An integer representing the vertical dimension of the {{domxref("VideoFrame")}}'s aspect ratio when displayed.
             - `colorSpace` {{Optional_Inline}}

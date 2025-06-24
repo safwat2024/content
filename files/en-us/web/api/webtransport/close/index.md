@@ -6,11 +6,9 @@ page-type: web-api-instance-method
 browser-compat: api.WebTransport.close
 ---
 
-{{APIRef("WebTransport API")}}{{SecureContext_Header}}
+{{APIRef("WebTransport API")}}{{SecureContext_Header}} {{AvailableInWorkers}}
 
 The **`close()`** method of the {{domxref("WebTransport")}} interface closes an ongoing WebTransport session.
-
-{{AvailableInWorkers}}
 
 ## Syntax
 
@@ -43,10 +41,10 @@ const url = "https://example.com:4999/wt";
 // Initialize transport connection
 const transport = new WebTransport(url);
 
-// ...
+// …
 
 transport.close({
-  closeCode: 017,
+  closeCode: 17,
   reason: "CloseButtonPressed",
 });
 ```

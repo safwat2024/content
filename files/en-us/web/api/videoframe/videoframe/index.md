@@ -6,7 +6,7 @@ page-type: web-api-constructor
 browser-compat: api.VideoFrame.VideoFrame
 ---
 
-{{APIRef("Web Codecs API")}}
+{{APIRef("Web Codecs API")}}{{AvailableInWorkers("window_and_dedicated")}}
 
 The **`VideoFrame()`** constructor creates a new {{domxref("VideoFrame")}} object representing a frame of a video.
 
@@ -121,24 +121,24 @@ The following examples are from the article [Video processing with WebCodecs](ht
 ```js
 const cnv = document.createElement("canvas");
 // draw something on the canvas
-// ...
-let frame_from_canvas = new VideoFrame(cnv, { timestamp: 0 });
+// …
+const frame_from_canvas = new VideoFrame(cnv, { timestamp: 0 });
 ```
 
 In the following example a `VideoFrame` is created from a {{jsxref("TypedArray")}}.
 
 ```js
 const pixelSize = 4;
-let init = {
+const init = {
   timestamp: 0,
   codedWidth: 320,
   codedHeight: 200,
   format: "RGBA",
 };
-let data = new Uint8Array(init.codedWidth * init.codedHeight * pixelSize);
+const data = new Uint8Array(init.codedWidth * init.codedHeight * pixelSize);
 for (let x = 0; x < init.codedWidth; x++) {
   for (let y = 0; y < init.codedHeight; y++) {
-    let offset = (y * init.codedWidth + x) * pixelSize;
+    const offset = (y * init.codedWidth + x) * pixelSize;
     data[offset] = 0x7f; // Red
     data[offset + 1] = 0xff; // Green
     data[offset + 2] = 0xd4; // Blue
@@ -146,7 +146,7 @@ for (let x = 0; x < init.codedWidth; x++) {
   }
 }
 init.transfer = [data.buffer];
-let frame = new VideoFrame(data, init);
+const frame = new VideoFrame(data, init);
 ```
 
 ## Specifications

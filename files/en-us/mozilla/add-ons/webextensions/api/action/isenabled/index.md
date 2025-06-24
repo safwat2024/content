@@ -9,7 +9,8 @@ browser-compat: webextensions.api.action.isEnabled
 
 Returns `true` if the browser action is enabled.
 
-> **Note:** This API is available in Manifest V3 or higher.
+> [!NOTE]
+> This API is available in Manifest V3 or higher.
 
 This is an asynchronous function that returns a [`Promise`](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
 
@@ -24,9 +25,7 @@ let gettingIsEnabled = browser.action.isEnabled(
 ### Parameters
 
 - `details`
-
   - : `object`. An object optionally containing the `tabId` or `windowId` to check.
-
     - `tabId` {{optional_inline}}
       - : `integer`. ID of a tab to check.
     - `windowId` {{optional_inline}}

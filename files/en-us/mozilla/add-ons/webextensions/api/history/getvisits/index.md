@@ -22,15 +22,13 @@ let getting = browser.history.getVisits(
 ### Parameters
 
 - `details`
-
   - : An object with the following properties:
-
     - `url`
       - : `string`. The URL for which to retrieve visit information.
 
 ### Return value
 
-A [`Promise`](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) will be fulfilled with an array of `{{WebExtAPIRef('history.VisitItem')}}` objects each representing a visit to the given URL. Visits are sorted in reverse chronological order.
+A [`Promise`](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) will be fulfilled with an array of {{WebExtAPIRef('history.VisitItem')}} objects each representing a visit to the given URL. Visits are sorted in reverse chronological order.
 
 ## Browser compatibility
 
@@ -69,7 +67,8 @@ searching.then(listVisits);
 
 {{WebExtExamples}}
 
-> **Note:** This API is based on Chromium's [`chrome.history`](https://developer.chrome.com/docs/extensions/reference/history/#method-getVisits) API. This documentation is derived from [`history.json`](https://chromium.googlesource.com/chromium/src/+/master/chrome/common/extensions/api/history.json) in the Chromium code.
+> [!NOTE]
+> This API is based on Chromium's [`chrome.history`](https://developer.chrome.com/docs/extensions/reference/api/history#method-getVisits) API. This documentation is derived from [`history.json`](https://chromium.googlesource.com/chromium/src/+/master/chrome/common/extensions/api/history.json) in the Chromium code.
 
 <!--
 // Copyright 2015 The Chromium Authors. All rights reserved.

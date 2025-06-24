@@ -29,9 +29,9 @@ The SVG API is a set of interfaces that have been categorized into the following
 - {{DOMxRef("SVGCircleElement")}}
 - {{DOMxRef("SVGClipPathElement")}}
 - {{DOMxRef("SVGComponentTransferFunctionElement")}}
-- {{DOMxRef("SVGCursorElement")}}
 - {{DOMxRef("SVGDefsElement")}}
 - {{DOMxRef("SVGDescElement")}}
+- {{DOMxRef("SVGDiscardElement")}}
 - {{DOMxRef("SVGElement")}}
 - {{DOMxRef("SVGEllipseElement")}}
 - {{DOMxRef("SVGFEBlendElement")}}
@@ -65,8 +65,6 @@ The SVG API is a set of interfaces that have been categorized into the following
 - {{DOMxRef("SVGGeometryElement")}}
 - {{DOMxRef("SVGGradientElement")}}
 - {{DOMxRef("SVGGraphicsElement")}}
-- {{DOMxRef("SVGHatchElement")}} {{Experimental_Inline}}
-- {{DOMxRef("SVGHatchpathElement")}} {{Experimental_Inline}}
 - {{DOMxRef("SVGImageElement")}}
 - {{DOMxRef("SVGLinearGradientElement")}}
 - {{DOMxRef("SVGLineElement")}}
@@ -103,14 +101,10 @@ Here are the DOM APIs for data types used in the definitions of SVG properties a
 #### Static type
 
 - {{DOMxRef("SVGAngle")}}
-- {{DOMxRef("SVGElementInstance")}}
-- {{DOMxRef("SVGElementInstanceList")}}
 - {{DOMxRef("SVGLength")}}
 - {{DOMxRef("SVGLengthList")}}
-- {{DOMxRef("SVGNameList")}}
 - {{DOMxRef("SVGNumber")}}
 - {{DOMxRef("SVGNumberList")}}
-- {{DOMxRef("SVGPaint")}}
 - {{DOMxRef("SVGPreserveAspectRatio")}}
 - {{DOMxRef("SVGStringList")}}
 - {{DOMxRef("SVGTransform")}}
@@ -133,14 +127,11 @@ Here are the DOM APIs for data types used in the definitions of SVG properties a
 
 ### SMIL-related interfaces
 
-- {{DOMxRef("ElementTimeControl")}}
 - {{DOMxRef("TimeEvent")}}
 
 ### Other SVG interfaces
 
-- {{DOMxRef("GetSVGDocument")}}
 - {{DOMxRef("ShadowAnimation")}}
-- {{DOMxRef("SVGDocument")}}
 - {{DOMxRef("SVGUnitTypes")}}
 - {{DOMxRef("SVGUseElementShadowRoot")}}
 

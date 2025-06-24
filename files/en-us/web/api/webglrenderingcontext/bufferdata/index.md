@@ -6,7 +6,7 @@ page-type: web-api-instance-method
 browser-compat: api.WebGLRenderingContext.bufferData
 ---
 
-{{APIRef("WebGL")}}
+{{APIRef("WebGL")}}{{AvailableInWorkers}}
 
 The **`WebGLRenderingContext.bufferData()`** method of the [WebGL API](/en-US/docs/Web/API/WebGL_API) initializes and creates the
 buffer object's data store.
@@ -14,23 +14,14 @@ buffer object's data store.
 ## Syntax
 
 ```js-nolint
-// WebGL1
-bufferData(target, usage)
 bufferData(target, size, usage)
 bufferData(target, srcData, usage)
-
-// WebGL2
-bufferData(target, usage, srcOffset)
-bufferData(target, srcData, usage, srcOffset)
-bufferData(target, srcData, usage, srcOffset, length)
 ```
 
 ### Parameters
 
 - `target`
-
   - : A {{domxref("WebGL_API/Types", "GLenum")}} specifying the binding point (target). Possible values:
-
     - `gl.ARRAY_BUFFER`
       - : Buffer containing vertex attributes, such as
         vertex coordinates, texture coordinate data, or vertex color data.
@@ -38,7 +29,6 @@ bufferData(target, srcData, usage, srcOffset, length)
       - : Buffer used for element indices.
 
     When using a {{domxref("WebGL2RenderingContext", "WebGL 2 context", "", 1)}}, the following values are available additionally:
-
     - `gl.COPY_READ_BUFFER`
       - : Buffer for copying from one buffer object to another.
     - `gl.COPY_WRITE_BUFFER`
@@ -56,14 +46,13 @@ bufferData(target, srcData, usage, srcOffset, length)
   - : A {{domxref("WebGL_API/Types", "GLsizeiptr")}} setting the size in bytes of the buffer object's data
     store.
 - `srcData` {{optional_inline}}
-  - : An {{jsxref("ArrayBuffer")}}, {{jsxref("SharedArrayBuffer")}}, a {{jsxref("TypedArray")}} or a {{jsxref("DataView")}}
+  - : A {{jsxref("TypedArray")}} or a {{jsxref("DataView")}} that views an {{jsxref("ArrayBuffer")}} or
+    {{jsxref("SharedArrayBuffer")}}
     that will be copied into the data store.
     If `null`, a data store is still created, but the content is uninitialized and undefined.
 - `usage`
-
   - : A {{domxref("WebGL_API/Types", "GLenum")}} specifying the intended usage pattern of the data store
     for optimization purposes. Possible values:
-
     - `gl.STATIC_DRAW`
       - : The contents are intended to be specified
         once by the application, and used many times as the source for WebGL
@@ -78,7 +67,6 @@ bufferData(target, srcData, usage, srcOffset, length)
         WebGL drawing and image specification commands.
 
     When using a {{domxref("WebGL2RenderingContext", "WebGL 2 context", "", 1)}}, the following values are available additionally:
-
     - `gl.STATIC_READ`
       - : The contents are intended to be
         specified once by reading data from WebGL, and queried many times
@@ -105,12 +93,6 @@ bufferData(target, srcData, usage, srcOffset, length)
         specified once by reading data from WebGL, and used at most a few
         times as the source for WebGL drawing and image specification
         commands.
-
-- `srcOffset`
-  - : A {{domxref("WebGL_API/Types", "GLuint")}} specifying the element index offset where to start reading
-    the buffer.
-- `length` {{optional_inline}}
-  - : A {{domxref("WebGL_API/Types", "GLuint")}} defaulting to 0.
 
 ### Return value
 
@@ -165,6 +147,7 @@ const sizeInBytes = dataArray.length * dataArray.BYTES_PER_ELEMENT;
 
 ## See also
 
+- {{domxref("WebGL2RenderingContext.bufferData()")}}
 - {{domxref("WebGLRenderingContext.createBuffer()")}}
 - {{domxref("WebGLRenderingContext.bufferSubData()")}}
 - Other buffers: {{domxref("WebGLFramebuffer")}}, {{domxref("WebGLRenderbuffer")}}

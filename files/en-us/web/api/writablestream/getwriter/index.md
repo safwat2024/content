@@ -6,7 +6,7 @@ page-type: web-api-instance-method
 browser-compat: api.WritableStream.getWriter
 ---
 
-{{APIRef("Streams")}}
+{{APIRef("Streams")}}{{AvailableInWorkers}}
 
 The **`getWriter()`** method of the {{domxref("WritableStream")}} interface returns a new instance of {{domxref("WritableStreamDefaultWriter")}} and locks the stream to that instance.
 While the stream is locked, no other writer can be acquired until this one is released.
@@ -44,7 +44,7 @@ function sendMessage(message, writableStream) {
   // defaultWriter is of type WritableStreamDefaultWriter
   const defaultWriter = writableStream.getWriter();
   const encoder = new TextEncoder();
-  const encoded = encoder.encode(message, { stream: true });
+  const encoded = encoder.encode(message);
   encoded.forEach((chunk) => {
     defaultWriter.ready
       .then(() => defaultWriter.write(chunk))

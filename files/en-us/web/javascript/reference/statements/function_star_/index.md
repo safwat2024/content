@@ -11,7 +11,22 @@ The **`function*`** declaration creates a {{Glossary("binding")}} of a new gener
 
 You can also define generator functions using the [`function*` expression](/en-US/docs/Web/JavaScript/Reference/Operators/function*).
 
-{{EmbedInteractiveExample("pages/js/statement-functionasterisk.html")}}
+{{InteractiveExample("JavaScript Demo: function* declaration")}}
+
+```js interactive-example
+function* generator(i) {
+  yield i;
+  yield i + 10;
+}
+
+const gen = generator(10);
+
+console.log(gen.next().value);
+// Expected output: 10
+
+console.log(gen.next().value);
+// Expected output: 20
+```
 
 ## Syntax
 
@@ -27,7 +42,8 @@ function* name(param0, param1, /* …, */ paramN) {
 }
 ```
 
-> **Note:** Generator functions do not have arrow function counterparts.
+> [!NOTE]
+> Generator functions do not have arrow function counterparts.
 
 > **Note:** `function` and `*` are separate tokens, so they can be separated by [whitespace or line terminators](/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#white_space).
 
@@ -42,7 +58,7 @@ function* name(param0, param1, /* …, */ paramN) {
 
 ## Description
 
-A `function*` declaration creates a {{jsxref("GeneratorFunction")}} object. Each time when a generator function is called, it returns a new {{jsxref("Generator")}} object, which conforms to the [iterator protocol](/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#the_iterator_protocol). When the iterator's `next()`
+A `function*` declaration creates a {{jsxref("GeneratorFunction")}} object. Each time a generator function is called, it returns a new {{jsxref("Generator")}} object, which conforms to the [iterator protocol](/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#the_iterator_protocol). When the iterator's `next()`
 method is called, the generator function's body is executed until the first
 {{jsxref("Operators/yield", "yield")}} expression, which specifies the value to be
 returned from the iterator or, with {{jsxref("Operators/yield*", "yield*")}}, delegates
@@ -61,7 +77,7 @@ However, an even simpler solution to these problems can be achieved
 with {{jsxref("Statements/async_function", "async functions", "", 1)}}.
 
 A `return` statement in a generator, when executed, will make the generator
-finish (i.e. the `done` property of the object returned by it will be set to
+finish (i.e., the `done` property of the object returned by it will be set to
 `true`). If a value is returned, it will be set as the `value`
 property of the object returned by the generator.
 Much like a `return` statement, an error thrown inside the generator will
@@ -74,7 +90,7 @@ of that generator's code, they will just return an object of this form:
 
 ## Examples
 
-### Simple example
+### Basic example
 
 ```js
 function* idMaker() {
@@ -233,14 +249,14 @@ console.log(bar.next()); // {value: 10, done: false}
 
 ```js
 function* powers(n) {
-  //endless loop to generate
+  // Endless loop to generate
   for (let current = n; ; current *= n) {
     yield current;
   }
 }
 
 for (const power of powers(2)) {
-  // controlling generator
+  // Controlling generator
   if (power > 32) {
     break;
   }

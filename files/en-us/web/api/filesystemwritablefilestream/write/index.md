@@ -6,7 +6,7 @@ page-type: web-api-instance-method
 browser-compat: api.FileSystemWritableFileStream.write
 ---
 
-{{securecontext_header}}{{APIRef("File System API")}}
+{{securecontext_header}}{{APIRef("File System API")}}{{AvailableInWorkers}}
 
 The **`write()`** method of the {{domxref("FileSystemWritableFileStream")}} interface writes content into the file the method is called on, at the current file cursor offset.
 
@@ -22,12 +22,9 @@ write(data)
 ### Parameters
 
 - `data`
-
   - : Can be one of the following:
-
     - The file data to write, in the form of an {{jsxref("ArrayBuffer")}}, {{jsxref("TypedArray")}}, {{jsxref("DataView")}}, {{domxref('Blob')}}, or string.
     - An object containing the following properties:
-
       - `type`
         - : A string that is one of `"write"`, `"seek"`, or `"truncate"`.
       - `data`

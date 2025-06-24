@@ -8,7 +8,7 @@ status:
 browser-compat: api.PeriodicSyncManager.register
 ---
 
-{{APIRef("Periodic Background Sync")}}{{SeeCompatTable}}
+{{APIRef("Periodic Background Sync")}}{{SeeCompatTable}}{{AvailableInWorkers}}
 
 The **`register()`** method of the
 {{domxref("PeriodicSyncManager")}} interface registers a periodic sync request with the
@@ -26,9 +26,7 @@ register(tag, options)
 - `tag`
   - : A unique {{jsxref('String')}} identifier.
 - `options` {{optional_inline}}
-
   - : An {{jsxref('Object')}} containing the following optional data:
-
     - `minInterval`
       - : The minimum interval time, in milliseconds, at which
         the periodic sync should occur.

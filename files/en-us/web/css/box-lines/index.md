@@ -10,7 +10,8 @@ browser-compat: css.properties.box-lines
 
 {{CSSRef}}{{Non-standard_header}}{{Deprecated_Header}}
 
-> **Warning:** This is a property of the original CSS Flexible Box Layout Module draft. It has been replaced in the specification. See [flexbox](/en-US/docs/Web/CSS/CSS_flexible_box_layout/Basic_concepts_of_flexbox) for information about the current standard.
+> [!WARNING]
+> This is a property of the original CSS flexible box layout Module draft. It has been replaced in the specification. See [flexbox](/en-US/docs/Web/CSS/CSS_flexible_box_layout/Basic_concepts_of_flexbox) for information about the current standard.
 
 The **`box-lines`** [CSS](/en-US/docs/Web/CSS) property determines whether the box may have a single or multiple lines (rows for horizontally oriented boxes, columns for vertically oriented boxes).
 
@@ -52,14 +53,11 @@ The `box-lines` property is specified as one of the keyword values listed below.
 
 ## Formal syntax
 
-```plain
-box-lines =
-  single | multiple
-```
+{{CSSSyntaxRaw(`box-lines = single | multiple`)}}
 
 ## Examples
 
-### Simple usage example
+### Basic usage example
 
 In the original version of the spec, `box-lines` allowed you to specify that you wanted your flex container's children to wrap onto multiple lines. This was only supported in WebKit-based browsers, with a prefix.
 

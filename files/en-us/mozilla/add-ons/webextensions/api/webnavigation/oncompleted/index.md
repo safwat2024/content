@@ -7,7 +7,7 @@ browser-compat: webextensions.api.webNavigation.onCompleted
 
 {{AddonSidebar}}
 
-Fired when a document, including the resources it refers to, is completely loaded and initialized. This is equivalent to the DOM [`load`](/en-US/docs/Web/API/Window/load_event) event.
+Fired when a document, including the resources it refers to, is completely loaded and initialized. This is equivalent to the window [`load`](/en-US/docs/Web/API/Window/load_event) event.
 
 ## Syntax
 
@@ -34,11 +34,9 @@ Events have three functions:
 ### Parameters
 
 - `listener`
-
   - : The function called when this event occurs. The function is passed this argument:
-
     - `details`
-      - : `object`. Details about the navigation event. See the [details](#details_2) section for more information.
+      - : `object`. Details about the navigation event. See the [details](#details) section for more information.
 
 - `filter` {{optional_inline}}
   - : `object`. An object containing a single property `url`, which is an `Array` of {{WebExtAPIRef("events.UrlFilter")}} objects. If you include this parameter, then the event fires only for transitions to URLs which match at least one `UrlFilter` in the array. If you omit this parameter, the event fires for all transitions.
@@ -80,7 +78,8 @@ browser.webNavigation.onCompleted.addListener(logOnCompleted, filter);
 
 {{WebExtExamples}}
 
-> **Note:** This API is based on Chromium's [`chrome.webNavigation`](https://developer.chrome.com/docs/extensions/reference/webNavigation/#event-onBeforeNavigate) API. This documentation is derived from [`web_navigation.json`](https://chromium.googlesource.com/chromium/src/+/master/chrome/common/extensions/api/web_navigation.json) in the Chromium code.
+> [!NOTE]
+> This API is based on Chromium's [`chrome.webNavigation`](https://developer.chrome.com/docs/extensions/reference/api/webNavigation#event-onBeforeNavigate) API. This documentation is derived from [`web_navigation.json`](https://chromium.googlesource.com/chromium/src/+/master/chrome/common/extensions/api/web_navigation.json) in the Chromium code.
 
 <!--
 // Copyright 2015 The Chromium Authors. All rights reserved.

@@ -14,7 +14,8 @@ This implements the {{domxref("Battery Status API", "", "", "nocode")}}; see tha
 
 Since Chrome 103, the `Navigator.getBattery()` method of {{domxref("Battery Status API", "", "", "nocode")}} only expose to secure context.
 
-> **Note:** Access to this feature may be controlled by the {{HTTPHeader("Permissions-Policy")}} directive {{HTTPHeader("Permissions-Policy/battery", "battery")}}.
+> [!NOTE]
+> Access to this feature may be controlled by the {{HTTPHeader("Permissions-Policy")}} directive {{HTTPHeader("Permissions-Policy/battery", "battery")}}.
 
 ## Syntax
 
@@ -33,8 +34,7 @@ A {{JSxRef("Promise")}} that fulfills with a {{DOMxRef("BatteryManager")}} objec
 ### Exceptions
 
 - `NotAllowedError` {{domxref("DOMException")}}
-
-  - : Use of this feature was blocked by a [Permissions Policy](/en-US/docs/Web/HTTP/Permissions_Policy).
+  - : Use of this feature was blocked by a [Permissions Policy](/en-US/docs/Web/HTTP/Guides/Permissions_Policy).
 
 - `SecurityError` {{domxref("DOMException")}}
   - : The User Agent does not expose battery information to insecure contexts and this method was called from an insecure context.

@@ -10,7 +10,7 @@ browser-compat: api.Blob.Blob
 
 The **`Blob()`** constructor returns a
 new {{domxref("Blob")}} object. The content of the blob consists of the concatenation
-of the values given in the parameter `array`.
+of the values given in the parameter `blobParts`.
 
 ## Syntax
 
@@ -22,7 +22,6 @@ new Blob(blobParts, options)
 ### Parameters
 
 - `blobParts` {{optional_inline}}
-
   - : An [iterable](/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#the_iterable_protocol)
     object such as an {{jsxref("Array")}}, having {{jsxref("ArrayBuffer")}}s,
     {{jsxref("TypedArray")}}s, {{jsxref("DataView")}}s, {{domxref("Blob")}}s, strings,
@@ -47,8 +46,8 @@ A new {{domxref("Blob")}} object containing the specified data.
 ## Examples
 
 ```js
-const array = ['<q id="a"><span id="b">hey!</span></q>']; // an array consisting of a single string
-const blob = new Blob(array, { type: "text/html" }); // the blob
+const blobParts = ['<q id="a"><span id="b">hey!</span></q>']; // an array consisting of a single string
+const blob = new Blob(blobParts, { type: "text/html" }); // the blob
 ```
 
 ## Specifications

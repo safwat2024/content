@@ -1,5 +1,6 @@
 ---
 title: Uint8ClampedArray() constructor
+short-title: Uint8ClampedArray()
 slug: Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray/Uint8ClampedArray
 page-type: javascript-constructor
 browser-compat: javascript.builtins.Uint8ClampedArray.Uint8ClampedArray
@@ -7,7 +8,7 @@ browser-compat: javascript.builtins.Uint8ClampedArray.Uint8ClampedArray
 
 {{JSRef}}
 
-The **`Uint8ClampedArray()`** constructor creates {{jsxref("Uint8ClampedArray")}} objects. The contents are initialized to `0`.
+The **`Uint8ClampedArray()`** constructor creates {{jsxref("Uint8ClampedArray")}} objects. The contents are initialized to `0` unless initialization data is explicitly provided.
 
 ## Syntax
 

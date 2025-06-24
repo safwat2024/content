@@ -1,5 +1,6 @@
 ---
 title: Int8Array() constructor
+short-title: Int8Array()
 slug: Web/JavaScript/Reference/Global_Objects/Int8Array/Int8Array
 page-type: javascript-constructor
 browser-compat: javascript.builtins.Int8Array.Int8Array
@@ -7,7 +8,7 @@ browser-compat: javascript.builtins.Int8Array.Int8Array
 
 {{JSRef}}
 
-The **`Int8Array()`** constructor creates {{jsxref("Int8Array")}} objects. The contents are initialized to `0`.
+The **`Int8Array()`** constructor creates {{jsxref("Int8Array")}} objects. The contents are initialized to `0` unless initialization data is explicitly provided.
 
 ## Syntax
 

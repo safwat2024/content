@@ -16,10 +16,10 @@ This event is not cancelable and does not bubble.
 
 Use the event name in methods like {{domxref("EventTarget.addEventListener", "addEventListener()")}}, or set an event handler property.
 
-```js
-addEventListener("enterpictureinpicture", (event) => {});
+```js-nolint
+addEventListener("enterpictureinpicture", (event) => { })
 
-onenterpictureinpicture = (event) => {};
+onenterpictureinpicture = (event) => { }
 ```
 
 ## Event type
@@ -81,4 +81,4 @@ button.onclick = () => {
 ## See also
 
 - {{domxref("HTMLVideoElement")}}
-- {{domxref("Picture-in-Picture_API", "Picture-in-Picture API")}}
+- [Picture-in-Picture API](/en-US/docs/Web/API/Picture-in-Picture_API)

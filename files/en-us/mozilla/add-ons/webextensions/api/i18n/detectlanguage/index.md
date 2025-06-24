@@ -33,9 +33,7 @@ A [`Promise`](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) that 
 - `isReliable`
   - : `boolean`. Whether the language was detected reliably.
 - `languages`
-
   - : `array` of objects, each of which has two properties:
-
     - `language`
       - : {{WebExtAPIRef('i18n.LanguageCode')}}. The detected language.
     - `percentage`
@@ -63,7 +61,8 @@ detecting.then(onLanguageDetected);
 
 {{WebExtExamples}}
 
-> **Note:** This API is based on Chromium's [`chrome.i18n`](https://developer.chrome.com/docs/extensions/reference/i18n/#method-detectLanguage) API. This documentation is derived from [`i18n.json`](https://chromium.googlesource.com/chromium/src/+/refs/heads/main/extensions/common/api/i18n.json) in the Chromium code.
+> [!NOTE]
+> This API is based on Chromium's [`chrome.i18n`](https://developer.chrome.com/docs/extensions/reference/api/i18n#method-detectLanguage) API. This documentation is derived from [`i18n.json`](https://chromium.googlesource.com/chromium/src/+/refs/heads/main/extensions/common/api/i18n.json) in the Chromium code.
 
 <!--
 // Copyright 2015 The Chromium Authors. All rights reserved.

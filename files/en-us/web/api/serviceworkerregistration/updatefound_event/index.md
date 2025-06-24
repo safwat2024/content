@@ -6,21 +6,19 @@ page-type: web-api-event
 browser-compat: api.ServiceWorkerRegistration.updatefound_event
 ---
 
-{{APIRef("Service Workers API")}}{{SecureContext_Header}}
+{{APIRef("Service Workers API")}}{{SecureContext_Header}} {{AvailableInWorkers}}
 
 The **`updatefound`** event of the
 {{domxref("ServiceWorkerRegistration")}} interface is fired any time the {{domxref("ServiceWorkerRegistration.installing")}} property acquires a new service worker.
-
-{{AvailableInWorkers}}
 
 ## Syntax
 
 Use the event name in methods like {{domxref("EventTarget.addEventListener", "addEventListener()")}}, or set an event handler property.
 
-```js
-addEventListener("updatefound", (event) => {});
+```js-nolint
+addEventListener("updatefound", (event) => { })
 
-onupdatefound = (event) => {};
+onupdatefound = (event) => { }
 ```
 
 ## Event type

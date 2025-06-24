@@ -60,7 +60,7 @@ For each key-value pair of index and color, the color with the index in the spec
 
 ### Changing colors of emojis
 
-This example shows how to override colors in the [Noto Color Emoji](https://fonts.google.com/noto/specimen/Noto+Color+Emoji/) color font to match your site's brand.
+This example shows how to override colors in the [Noto Color Emoji](https://fonts.google.com/noto/specimen/Noto+Color+Emoji) color font to match your site's brand.
 
 #### HTML
 
@@ -158,7 +158,7 @@ h2 {
 
 #### Result
 
-This example shows the that in `base-palette` `3`, the color at index 0 is overridden with `rebeccapurple`.
+This example shows that in `base-palette` `3`, the color at index 0 is overridden with `rebeccapurple`.
 
 ![Example showing base-palette and base-palette with 1 color overridden](override-base-palette-color.jpg)
 

@@ -2,30 +2,49 @@
 title: ARIA page template
 slug: MDN/Writing_guidelines/Page_structures/Page_types/ARIA_Page_Template
 page-type: mdn-writing-guide
+sidebar: mdnsidebar
 ---
-
-{{MDNSidebar}}
 
 ## Page front matter
 
+Page metadata is described in front matter like the following example:
+
+```md
+---
+title: aria-labelledby
+slug: Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby
+page-type: aria-attribute
+spec-urls: https://w3c.github.io/aria/#aria-labelledby
+sidebar: accessibilitysidebar
+---
+```
+
 ### Title and slug
 
-An ARIA role page should have a `title` and `slug` of `ARIA: Name Of The Role`. For example, the [button role](/en-US/docs/Web/Accessibility/ARIA/Roles/button_role) has a `title` and `slug` of `ARIA/NameOfTheRole_role` and the [aria-labelledby](/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-labelledby) attribute has a `title` of `aria-labelledby`.
+An ARIA role page should have a `title` and `slug` of `ARIA: Name Of The Role`. For example, the [button role](/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/button_role) has a `title` and `slug` of `ARIA/NameOfTheRole_role` and the [aria-labelledby](/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby) attribute has a `title` of `aria-labelledby`.
+
+### Sidebar
+
+The `accessibilitysidebar` can be used in all pages under `/Web/Accessibility`:
+
+```yaml
+sidebar: accessibilitysidebar
+```
+
+See [Page structures: Sidebars](/en-US/docs/MDN/Writing_guidelines/Page_structures/Sidebars) for details.
 
 ### Top macros
 
-A number of macro calls appear at the top of the content section. You should update or delete them according to the advice below:
-
-- \\{{ariaref}}—generates a suitable ARIA sidebar, depending on what tags are included on the page.
+A number of macro calls appear at the top of the content section. You should update or delete them according to the advice below.
 
 ### Statuses
 
 Do not add or edit status keys manually.
-To include the (appropriate) feature status key — [**experimental**](/en-US/docs/MDN/Writing_guidelines/Experimental_deprecated_obsolete#experimental), [**deprecated**](/en-US/docs/MDN/Writing_guidelines/Experimental_deprecated_obsolete#deprecated), or **non-standard** — see the section ["How to add or update feature statuses"](/en-US/docs/MDN/Writing_guidelines/Page_structures/Feature_status#how_to_add_or_update_feature_statuses).
+To include the (appropriate) feature status key — [**experimental**](/en-US/docs/MDN/Writing_guidelines/Experimental_deprecated_obsolete#experimental), [**deprecated**](/en-US/docs/MDN/Writing_guidelines/Experimental_deprecated_obsolete#deprecated), or **non-standard** — see the section ["How feature statuses are added or updated"](/en-US/docs/MDN/Writing_guidelines/Page_structures/Feature_status#how_feature_statuses_are_added_or_updated).
 
 ### Specifications
 
-In the value of the `spec_urls` front matter metadata key, update the URLs to point to the fragment IDs for the correct sections from the following specifications:
+In the value of the `spec-urls` front matter metadata key, update the URLs to point to the fragment IDs for the correct sections from the following specifications:
 
 - [ARIA](https://w3c.github.io/aria/)
 - [ARIA Authoring Practices](https://www.w3.org/WAI/ARIA/apg/)
@@ -65,7 +84,8 @@ Include a complete description of the attribute or role.
 - Changing attribute values
   - : explanation of each
 
-> **Note:** Include a note about semantic alternatives to using this role or attribute. The first rule of ARIA use is that you can use a native feature with the semantics and behavior you require already built in, instead of re-purposing an element and **adding** an ARIA role, state, or property to make it accessible, then do so. Then post full details in best practices section below.
+> [!NOTE]
+> Include a note about semantic alternatives to using this role or attribute. The first rule of ARIA use is that you can use a native feature with the semantics and behavior you require already built in, instead of re-purposing an element and **adding** an ARIA role, state, or property to make it accessible, then do so. Then post full details in best practices section below.
 
 ## Examples
 
@@ -77,7 +97,8 @@ Each example must have an H3 heading (`###`) naming the example. The heading sho
 
 See our guide on how to add [code examples](/en-US/docs/MDN/Writing_guidelines/Page_structures/Code_examples) for more information.
 
-> **Note:** Sometimes you will want to link to examples given on another page.
+> [!NOTE]
+> Sometimes you will want to link to examples given on another page.
 >
 > **Scenario 1:** If you have some examples on this page and some more examples on another page:
 >
@@ -102,7 +123,7 @@ See our guide on how to add [code examples](/en-US/docs/MDN/Writing_guidelines/P
 > ```md
 > ## Examples
 >
-> For examples of this API, see [the page on fetch()](https://example.org).
+> For examples of this API, see [the page on fetch()](https://example.org/).
 > ```
 
 ## Accessibility concerns

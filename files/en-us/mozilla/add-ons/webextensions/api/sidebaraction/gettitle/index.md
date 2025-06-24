@@ -24,9 +24,7 @@ let gettingTitle = browser.sidebarAction.getTitle(
 ### Parameters
 
 - `details`
-
   - : `object`. An object with the following properties:
-
     - `tabId` {{optional_inline}}
       - : `integer`. Get the title for the sidebar specific to the given tab.
     - `windowId` {{optional_inline}}
@@ -66,7 +64,8 @@ browser.browserAction.onClicked.addListener(() => {
 
 {{WebExtExamples}}
 
-> **Note:** This API is based on Opera's [`chrome.sidebarAction`](https://dev.opera.com/extensions/sidebar-action-api/) API.
+> [!NOTE]
+> This API is based on Opera's [`chrome.sidebarAction`](https://help.opera.com/en/extensions/sidebar-action-api/) API.
 
 <!--
 // Copyright 2015 The Chromium Authors. All rights reserved.

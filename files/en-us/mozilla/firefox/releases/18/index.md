@@ -12,9 +12,9 @@ Firefox 18 was released on January 8, 2013. This article lists key changes that 
 
 ### HTML
 
-- The [`reversed`](/en-US/docs/Web/HTML/Element/ol#reversed) attribute of the {{HTMLElement("ol")}} element is now supported ([Firefox bug 601912](https://bugzil.la/601912)).
-- The [`crossorigin`](/en-US/docs/Web/HTML/Element/link#crossorigin) attribute of the {{HTMLElement("link")}} element is now supported ([Firefox bug 786564](https://bugzil.la/786564)).
-- The [`allowfullscreen`](/en-US/docs/Web/HTML/Element/iframe#allowfullscreen) attribute of the {{HTMLElement("iframe")}} has been implemented and it's prefixed predecessor [`mozallowfullscreen`](/en-US/docs/Web/HTML/Element/iframe#mozallowfullscreen) is now deprecated.
+- The [`reversed`](/en-US/docs/Web/HTML/Reference/Elements/ol#reversed) attribute of the {{HTMLElement("ol")}} element is now supported ([Firefox bug 601912](https://bugzil.la/601912)).
+- The [`crossorigin`](/en-US/docs/Web/HTML/Reference/Elements/link#crossorigin) attribute of the {{HTMLElement("link")}} element is now supported ([Firefox bug 786564](https://bugzil.la/786564)).
+- The [`allowfullscreen`](/en-US/docs/Web/HTML/Reference/Elements/iframe#allowfullscreen) attribute of the {{HTMLElement("iframe")}} has been implemented and it's prefixed predecessor [`mozallowfullscreen`](/en-US/docs/Web/HTML/Reference/Elements/iframe#mozallowfullscreen) is now deprecated.
 
 ### CSS
 
@@ -27,7 +27,7 @@ Firefox 18 was released on January 8, 2013. This article lists key changes that 
 
 - `navigator.mozPay` has been landed. ([Firefox bug 767818](https://bugzil.la/767818))
 - `window.devicePixelRatio` has been landed. ([Firefox bug 564815](https://bugzil.la/564815))
-- The MacOS X backend for `window.navigator.battery` has been implemented. ([Firefox bug 696045](https://bugzil.la/696045))
+- The macOS X backend for `window.navigator.battery` has been implemented. ([Firefox bug 696045](https://bugzil.la/696045))
 - `MozBlobBuilder` is removed. Developers need to use {{domxref("Blob")}} constructor for creating a `Blob` object. ([Firefox bug 744907](https://bugzil.la/744907))
 - The {{domxref("document.visibilitychange_event", "visibilitychange")}} event and the [Page Visibility API](/en-US/docs/Web/API/Page_Visibility_API) has been unprefixed ([Firefox bug 812086](https://bugzil.la/812086)).
 - {{domxref("TextDecoder")}} and {{domxref("TextEncoder")}} have been added. Note that the implementation and spec of these evolved and have been changed in Firefox 19 ([Firefox bug 764234](https://bugzil.la/764234)).
@@ -52,8 +52,8 @@ Firefox 18 was released on January 8, 2013. This article lists key changes that 
 
 ### Network
 
-- Quality factors ("q-values") are now clamped to 2 digits (e.g. in HTTP {{HTTPHeader("Accept-Language")}} headers) ([Firefox bug 672448](https://bugzil.la/672448)).
-- The `ALLOW-FROM` syntax of the [`X-FRAME-OPTIONS`](/en-US/docs/Web/HTTP/Headers/X-Frame-Options) HTTP Response header is now supported ([Firefox bug 690168](https://bugzil.la/690168)).
+- Quality factors ("q-values") are now clamped to 2 digits (e.g., in HTTP {{HTTPHeader("Accept-Language")}} headers) ([Firefox bug 672448](https://bugzil.la/672448)).
+- The `ALLOW-FROM` syntax of the [`X-FRAME-OPTIONS`](/en-US/docs/Web/HTTP/Reference/Headers/X-Frame-Options) HTTP Response header is now supported ([Firefox bug 690168](https://bugzil.la/690168)).
 
 ### Developer tools
 
@@ -62,14 +62,14 @@ Firefox 18 was released on January 8, 2013. This article lists key changes that 
 ### Interface changes
 
 - `nsIStreamListener`
-  - : The 4th parameter (aOffset) of `onDataAvailable()` method changes to unsigned long long. ([Firefox bug 784912](https://bugzil.la/784912))
+  - : The 4th parameter (`aOffset`) of `onDataAvailable()` method changes to `unsigned long long`. ([Firefox bug 784912](https://bugzil.la/784912))
 - `nsIUploadChannel`
   - : `setUploadStream()` supports over 2GB content-length ([Firefox bug 790617](https://bugzil.la/790617))
 - `nsIEditor`
   - : `addEditorObserver()` has been removed, use `setEditorObserver()` instead, `removeEditorObserver()` no longer takes a `nsIEditorObserver` parameter ([Firefox bug 785091](https://bugzil.la/785091))
 - `nsIHttpProtocolHandler`
   - : `http-on-modify-request` observers are no longer guaranteed to be called synchronously during `nsIChannel.asyncOpen()`.
-    For observers that need to be called during `asyncOpen()`, the new `http-on-opening-request` observer topic has been added. `See` ([Firefox bug 800799](https://bugzil.la/800799))
+    For observers that need to be called during `asyncOpen()`, the new `http-on-opening-request` observer topic has been added. See ([Firefox bug 800799](https://bugzil.la/800799))
 - `nsIProtocolProxyService`
   - : The `resolve` method has been removed. Now, only the `asyncResolve` method can be used. See ([Firefox bug 769764](https://bugzil.la/769764))
 
@@ -89,4 +89,4 @@ The following interfaces have been removed.
 
 ### Older versions
 
-{{Firefox_for_developers('17')}}
+{{Firefox_for_developers}}

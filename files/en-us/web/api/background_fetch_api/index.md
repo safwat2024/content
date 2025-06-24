@@ -11,7 +11,7 @@ browser-compat:
 spec-urls: https://wicg.github.io/background-fetch/
 ---
 
-{{DefaultAPISidebar("Background Fetch API")}} {{SeeCompatTable}}
+{{DefaultAPISidebar("Background Fetch API")}}{{SeeCompatTable}}{{AvailableInWorkers}}
 
 The **Background Fetch API** provides a method for managing downloads that may take a significant amount of time such as movies, audio files, and software.
 
@@ -86,7 +86,7 @@ navigator.serviceWorker.ready.then(async (swReg) => {
 });
 ```
 
-You can find a demo application which implements Background Fetch [here](https://glitch.com/edit/#!/bgfetch-http203?path=public%2Fclient.js%3A191%3A45).
+You can find a demo application which implements Background Fetch [on Glitch](https://glitch.com/edit/#!/bgfetch-http203?path=public%2Fclient.js%3A191%3A45).
 
 ## Specifications
 

@@ -1,5 +1,6 @@
 ---
 title: Uint16Array() constructor
+short-title: Uint16Array()
 slug: Web/JavaScript/Reference/Global_Objects/Uint16Array/Uint16Array
 page-type: javascript-constructor
 browser-compat: javascript.builtins.Uint16Array.Uint16Array
@@ -7,7 +8,7 @@ browser-compat: javascript.builtins.Uint16Array.Uint16Array
 
 {{JSRef}}
 
-The **`Uint16Array()`** constructor creates {{jsxref("Uint16Array")}} objects. The contents are initialized to `0`.
+The **`Uint16Array()`** constructor creates {{jsxref("Uint16Array")}} objects. The contents are initialized to `0` unless initialization data is explicitly provided.
 
 ## Syntax
 

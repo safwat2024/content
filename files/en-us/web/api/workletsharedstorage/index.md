@@ -37,16 +37,16 @@ _`WorkletSharedStorage` inherits properties from its parent interface, {{domxref
   - : Returns a new async iterator for the key-value pairs of a `WorkletSharedStorage` object instance's enumerable properties.
 - {{domxref("WorkletSharedStorage.keys", "keys()")}} {{Experimental_Inline}}
   - : Returns a new async iterator containing the keys for each item in a `WorkletSharedStorage` object instance.
-- `WorkletSharedStorage[@@asyncIterator]()` {{Experimental_Inline}}
+- `WorkletSharedStorage[Symbol.asyncIterator]()` {{Experimental_Inline}}
   - : Returns the {{domxref("WorkletSharedStorage.entries", "entries()")}} function by default.
 
 ## Examples
 
 ### Passing contextual data via `setSharedStorageContext()`
 
-You can use the [Private Aggregation API](https://developer.chrome.com/docs/privacy-sandbox/private-aggregation/) to create reports that combine event-level data inside fenced frames with contextual data from the embedding document. `setSharedStorageContext()` can be used to pass contextual data from the embedder to shared storage worklets initiated by the [Protected Audience API](https://developer.chrome.com/docs/privacy-sandbox/fledge/).
+You can use the [Private Aggregation API](https://privacysandbox.google.com/private-advertising/private-aggregation) to create reports that combine event-level data inside fenced frames with contextual data from the embedding document. `setSharedStorageContext()` can be used to pass contextual data from the embedder to shared storage worklets initiated by the [Protected Audience API](https://privacysandbox.google.com/private-advertising/protected-audience).
 
-In this example, we store data from both the embedding page and the fenced frame using [shared storage](https://developer.chrome.com/docs/privacy-sandbox/shared-storage/).
+In this example, we store data from both the embedding page and the fenced frame using [shared storage](https://privacysandbox.google.com/private-advertising/shared-storage).
 
 On the embedding page, we set a mock event ID as the shared storage context using `setSharedStorageContext()`:
 
@@ -80,8 +80,12 @@ In the `reporting-worklet.js` worklet, we read the embedding document's event ID
 
 ```js
 class ReportingOperation {
-  convertEventIdToBucket(eventId) { ... }
-  convertEventPayloadToValue(info) { ... }
+  convertEventIdToBucket(eventId) {
+    // …
+  }
+  convertEventPayloadToValue(info) {
+    // …
+  }
 
   async run(data) {
     // Data from the embedder
@@ -92,12 +96,12 @@ class ReportingOperation {
 
     privateAggregation.sendHistogramReport({
       bucket: convertEventIdToBucket(eventId),
-      value: convertEventPayloadToValue(eventPayload)
+      value: convertEventPayloadToValue(eventPayload),
     });
   }
 }
 
-register('send-report', ReportingOperation);
+register("send-report", ReportingOperation);
 ```
 
 ## Specifications

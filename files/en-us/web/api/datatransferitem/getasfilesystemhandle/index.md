@@ -8,12 +8,9 @@ status:
 browser-compat: api.DataTransferItem.getAsFileSystemHandle
 ---
 
-{{securecontext_header}}{{APIRef("HTML Drag and Drop API")}}{{SeeCompatTable}}
+{{securecontext_header}}{{APIRef("File System API")}}{{SeeCompatTable}}
 
-The **`getAsFileSystemHandle()`** method of the
-{{domxref("DataTransferItem")}} interface returns a {{domxref('FileSystemFileHandle')}}
-if the dragged item is a file, or a {{domxref('FileSystemDirectoryHandle')}} if the
-dragged item is a directory.
+The **`getAsFileSystemHandle()`** method of the {{domxref("DataTransferItem")}} interface returns a {{jsxref('Promise')}} that fulfills with a {{domxref('FileSystemFileHandle')}} if the dragged item is a file, or fulfills with a {{domxref('FileSystemDirectoryHandle')}} if the dragged item is a directory.
 
 ## Syntax
 
@@ -39,8 +36,8 @@ None.
 
 ## Examples
 
-This example uses the `getAsFileSystemHandle` method to return
-{{domxref('FileSystemHandle','file handles')}} for dropped items.
+This example uses the `getAsFileSystemHandle()` method to return
+{{domxref('FileSystemHandle', 'file handles', '', 'nocode')}} for dropped items.
 
 ```js
 elem.addEventListener("dragover", (e) => {

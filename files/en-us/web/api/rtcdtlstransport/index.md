@@ -37,7 +37,6 @@ _Also inherits methods from {{DOMxRef("EventTarget")}}._
 ## Events
 
 - {{DOMxRef("RTCDtlsTransport.error_event", "error")}}
-
   - : Sent when a transport-level error occurs on the {{domxref("RTCPeerConnection")}}.
 
 - {{DOMxRef("RTCDtlsTransport.statechange_event", "statechange")}}
@@ -51,7 +50,7 @@ _Also inherits methods from {{DOMxRef("EventTarget")}}._
 
 Whether bundling is used depends on what the other endpoint is able to negotiate. All browsers support bundling, so when both endpoints are browsers, you can rest assured that bundling will be used.
 
-Some non-browser legacy endpoints, however, may not support bundle. To be able to negotiate with such endpoints (or to exclude them entirely), the `bundlePolicy` property may be provided when creating the connection. The `bundlePolicy` [lets you control](/en-US/docs/Web/API/RTCPeerConnection#rtcbundlepolicy_enum) how to negotiate with these legacy endpoints. The default policy is `"balanced"`, which provides a balance between performance and compatibility.
+Some non-browser legacy endpoints, however, may not support bundle. To be able to negotiate with such endpoints (or to exclude them entirely), the `bundlePolicy` property may be provided when creating the connection. The `bundlePolicy` lets you control how to negotiate with these legacy endpoints. The default policy is `"balanced"`, which provides a balance between performance and compatibility.
 
 For example, to create the connection using the highest level of bundling:
 
@@ -63,7 +62,7 @@ const rtcConfig = {
 const pc = new RTCPeerConnection(rtcConfig);
 ```
 
-[Bundling](https://webrtcstandards.info/sdp-bundle/) lets you use one `RTCDtlsTransport` to carry the data for multiple higher-level transports, such as multiple {{domxref("RTCRtpTransceiver")}}s.
+[Bundling](https://datatracker.ietf.org/doc/rfc8843/) lets you use one `RTCDtlsTransport` to carry the data for multiple higher-level transports, such as multiple {{domxref("RTCRtpTransceiver")}}s.
 
 #### When not using BUNDLE
 

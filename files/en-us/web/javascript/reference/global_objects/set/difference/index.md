@@ -1,5 +1,6 @@
 ---
 title: Set.prototype.difference()
+short-title: difference()
 slug: Web/JavaScript/Reference/Global_Objects/Set/difference
 page-type: javascript-instance-method
 browser-compat: javascript.builtins.Set.difference
@@ -28,7 +29,12 @@ A new {{jsxref("Set")}} object containing elements in this set but not in the `o
 
 In mathematical notation, _difference_ is defined as:
 
-<math display="block"><semantics><mrow><mi>A</mi><mo>∖</mo><mi>B</mi><mo>=</mo><mo stretchy="false">{</mo><mi>x</mi><mo>∊</mo><mi>A</mi><mo>∣</mo><mi>x</mi><mo>∉</mo><mi>B</mi><mo stretchy="false">}</mo></mrow><annotation encoding="TeX">A\setminus B = \{x\in A\mid x\notin B\}</annotation></semantics></math>
+<!-- Note: the {} need to be double-escaped, once for Yari -->
+<!-- prettier-ignore-start -->
+<math display="block">
+  <semantics><mrow><mi>A</mi><mo>∖</mo><mi>B</mi><mo>=</mo><mo stretchy="false">{</mo><mi>x</mi><mo>∊</mo><mi>A</mi><mo>∣</mo><mi>x</mi><mo>∉</mo><mi>B</mi><mo stretchy="false">}</mo></mrow><annotation encoding="TeX">A\setminus B = \\{x\in A\mid x\notin B\\}</annotation></semantics>
+</math>
+<!-- prettier-ignore-end -->
 
 And using Venn diagram:
 
@@ -64,6 +70,7 @@ console.log(odds.difference(squares)); // Set(3) { 3, 5, 7 }
 ## See also
 
 - [Polyfill of `Set.prototype.difference` in `core-js`](https://github.com/zloirock/core-js#new-set-methods)
+- [es-shims polyfill of `Set.prototype.difference`](https://www.npmjs.com/package/set.prototype.difference)
 - {{jsxref("Set.prototype.intersection()")}}
 - {{jsxref("Set.prototype.isDisjointFrom()")}}
 - {{jsxref("Set.prototype.isSubsetOf()")}}

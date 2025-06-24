@@ -8,7 +8,8 @@ page-type: firefox-release-notes
 
 This article provides information about the changes in Firefox 86 that will affect developers. Firefox 86 was released on February 23, 2021.
 
-> **Note:** See also [A Fabulous February Firefox — 86!](https://hacks.mozilla.org/2021/02/a-fabulous-february-firefox-86/) on Mozilla Hacks.
+> [!NOTE]
+> See also [A Fabulous February Firefox — 86!](https://hacks.mozilla.org/2021/02/a-fabulous-february-firefox-86/) on Mozilla Hacks.
 
 ## Changes for web developers
 
@@ -24,7 +25,7 @@ _No changes._
 
 ### SVG
 
-- SVG filters can now use the {{SVGElement("feComposite")}} element with the [`lighter` operator](/en-US/docs/Web/SVG/Attribute/operator#fecomposite) ([Firefox bug 1518099](https://bugzil.la/1518099)). This operator sums the pixels of two source graphics.
+- SVG filters can now use the {{SVGElement("feComposite")}} element with the [`lighter` operator](/en-US/docs/Web/SVG/Reference/Attribute/operator#fecomposite) ([Firefox bug 1518099](https://bugzil.la/1518099)). This operator sums the pixels of two source graphics.
 
 ### CSS
 
@@ -49,7 +50,7 @@ _No changes._
 
 #### DOM
 
-- [`Window.name`](/en-US/docs/Web/API/Window/name) is now reset to an empty string if a tab loads a page from a different domain, and restored if the original page is reloaded (e.g. by selecting the "back" button). This prevents an untrusted page from accessing any information that the previous page might have stored in the property (potentially the new page might also modify such data, which might then be read by the original page if it was reloaded). For more information see [Firefox bug 1685089](https://bugzil.la/1685089).
+- [`Window.name`](/en-US/docs/Web/API/Window/name) is now reset to an empty string if a tab loads a page from a different domain, and restored if the original page is reloaded (e.g., by selecting the "back" button). This prevents an untrusted page from accessing any information that the previous page might have stored in the property (potentially the new page might also modify such data, which might then be read by the original page if it was reloaded). For more information see [Firefox bug 1685089](https://bugzil.la/1685089).
 - [`EventTarget.addEventListener()`](/en-US/docs/Web/API/EventTarget/addEventListener) now supports the `signal` option. This option allows an [`AbortSignal`](/en-US/docs/Web/API/AbortSignal) to be passed to the method. The `AbortSignal` can later be used to remove the listener by calling `abort()`. For more information see [Firefox bug 1679204](https://bugzil.la/1679204).
 
 ### WebDriver conformance (Marionette)
@@ -77,4 +78,4 @@ _No changes._
 
 ## Older versions
 
-{{Firefox_for_developers(85)}}
+{{Firefox_for_developers}}

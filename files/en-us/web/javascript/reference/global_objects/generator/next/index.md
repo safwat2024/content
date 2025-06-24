@@ -1,5 +1,6 @@
 ---
 title: Generator.prototype.next()
+short-title: next()
 slug: Web/JavaScript/Reference/Global_Objects/Generator/next
 page-type: javascript-instance-method
 browser-compat: javascript.builtins.Generator.next
@@ -22,7 +23,6 @@ next(value)
 ### Parameters
 
 - `value` {{optional_inline}}
-
   - : The value to send to the generator.
 
     The value will be assigned as a result of a `yield` expression. For
@@ -41,11 +41,16 @@ An {{jsxref("Object")}} with two properties:
 - `value`
   - : Any JavaScript value yielded or returned by the generator.
 
+### Exceptions
+
+- {{jsxref("TypeError")}}
+  - : Thrown if the generator is already running.
+
 ## Examples
 
 ### Using next()
 
-The following example shows a simple generator and the object that the
+The following example shows a generator and the object that the
 `next` method returns:
 
 ```js
@@ -86,7 +91,8 @@ page.next(); // { value: undefined, done: true }
 
 In this example, `next` is called with a value.
 
-> **Note:** The first call does not log anything, because the generator was not yielding anything initially.
+> [!NOTE]
+> The first call does not log anything, because the generator was not yielding anything initially.
 
 ```js
 function* gen() {

@@ -13,7 +13,7 @@ browser-compat: api.PasswordCredential.PasswordCredential
 The **`PasswordCredential()`**
 constructor creates a new {{domxref("PasswordCredential")}} object. In
 supporting browsers, an instance of this class may be passed the `credential`
-from the `init` object for global {{domxref('fetch()')}}.
+from the `init` object for global {{domxref("Window/fetch", "fetch()")}}.
 
 ## Syntax
 
@@ -27,9 +27,7 @@ new PasswordCredential(form)
 Either of the following:
 
 - `data`
-
   - : An object with the following properties:
-
     - `iconURL` {{optional_inline}}
       - : A string representing the URL of an icon or avatar to be associated with the credential.
     - `id`

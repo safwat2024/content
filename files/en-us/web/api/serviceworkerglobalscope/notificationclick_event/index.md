@@ -6,7 +6,7 @@ page-type: web-api-event
 browser-compat: api.ServiceWorkerGlobalScope.notificationclick_event
 ---
 
-{{APIRef("Web Notifications")}}
+{{APIRef("Web Notifications")}}{{SecureContext_Header}}{{AvailableInWorkers("service")}}
 
 The **`notificationclick`** event of the {{domxref("ServiceWorkerGlobalScope")}} interface is fired to indicate that a system notification spawned by {{domxref("ServiceWorkerRegistration.showNotification()")}} has been clicked.
 
@@ -21,10 +21,10 @@ This event is not cancelable and does not bubble.
 
 Use the event name in methods like {{domxref("EventTarget.addEventListener", "addEventListener()")}}, or set an event handler property.
 
-```js
-addEventListener("notificationclick", (event) => {});
+```js-nolint
+addEventListener("notificationclick", (event) => { })
 
-onnotificationclick = (event) => {};
+onnotificationclick = (event) => { }
 ```
 
 ## Event type

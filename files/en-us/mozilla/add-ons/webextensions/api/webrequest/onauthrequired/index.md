@@ -14,26 +14,23 @@ The listener can respond in one of four ways:
 - Take no action
   - : The listener can do nothing, just observing the request. If this happens, it does not affect the handling of the request, and the browser asks the user to log in, if appropriate.
 - Cancel the request
-
   - : The listener can cancel the request. If it does this, authentication fails, and the user is not asked to log in. Extensions can cancel requests as follows:
-
     - in addListener, pass `"blocking"` in the `extraInfoSpec` parameter
     - in the listener, return an object with a `cancel` property set to `true`
 
 - Provide credentials synchronously
-
   - : If credentials are available synchronously, the extension can supply them synchronously. If the extension does this, the browser attempts to log in with the credentials. The listener can provide credentials synchronously as follows:
-
     - in addListener, pass `"blocking"` in the `extraInfoSpec` parameter
     - in the listener, return an object with an `authCredentials` property set to the credentials to supply
 
 - Provide credentials asynchronously
-
   - : The extension might need to fetch credentials asynchronously. For example, the extension might need to fetch credentials from storage or ask the user. In this case, the listener can supply credentials asynchronously as follows:
+    - in addListener, pass `"asyncBlocking"` in Chrome and Firefox or `"blocking"` in Firefox in the `extraInfoSpec` parameter
+    - If `"blocking"` is provided, the extension can return a `webRequest.BlockingResponse` object or a Promise that resolves to a `webRequest.BlockingResponse` object
+    - If `"asyncBlocking"` is provided, the event listener function receives a `asyncCallback` function as its second parameter. `asyncCallback` can be called asynchronously and takes a `webRequest.BlockingResponse` object as its only parameter
 
-    - in addListener, pass `"blocking"` in the `extraInfoSpec` parameter
-    - in the listener, return a `Promise` that resolves with an object containing an `authCredentials` property, set to the credentials to supply
-      > **Note:** Chrome does not support a Promise as a return value ([Chromium issue 1510405](https://crbug.com/1510405)). For alternatives, see [the return value of the `listener`](#listener).
+      > [!NOTE]
+      > Chrome does not support a Promise as a return value ([Chromium issue 1510405](https://crbug.com/1510405)). For alternatives, see [the return value of the `listener`](#listener).
 
 See [Examples](#examples).
 
@@ -43,9 +40,7 @@ If your extension provides bad credentials, then the listener is called again. F
 
 In Firefox and Chrome Manifest V2 extensions, you must add the [`"webRequest"` and `"webRequestBlocking"` API permissions](/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/permissions#api_permissions) to your `manifest.json`.
 
-For Chrome Manifest V3 extensions, the `"webRequestBlocking"` permission is no longer available (except for policy-installed extensions). Instead, the `"webRequest"` and `"webRequestAuthProvider"` permissions enable you to supply credentials asynchronously.
-
-> **Note:** Firefox does not support `"webRequestAuthProvider"`, but support is planned. See [bug 1820569](https://bugzilla.mozilla.org/show_bug.cgi?id=1820569).
+For Manifest V3 extensions, Chrome no longer supports the `"webRequestBlocking"` permission (except for policy-installed extensions). Instead, the `"webRequest"` and `"webRequestAuthProvider"` permissions enable you to supply credentials asynchronously. Firefox continues to support `"webRequestBlocking"` in Manifest V3 and provides `"webRequestAuthProvider"` to offer cross-browser compatibility.
 
 ## Proxy authorization
 
@@ -79,37 +74,33 @@ Events have three functions:
 ### Parameters
 
 - `listener`
-
   - : The function called when this event occurs. The function is passed these arguments:
-
     - `details`
-      - : `object`. Details about the request. See the [details](#details_2) section for more information.
+      - : `object`. Details about the request. See the [details](#details) section for more information.
+    - `asyncCallback` {{optional_inline}}
+      - : A function to call, at most once, to asynchronously modify the request object.
+        This parameter is only present if the event listener is registered with `"asyncBlocking"` in the `extraInfoSpec` array. `asyncCallback` is undefined if `extraInfoSpec` is not provided or contains `"blocking"`.
 
-    Returns: {{WebExtAPIRef('webRequest.BlockingResponse')}} or a {{jsxref("Promise")}}.
-
-    - To handle the request synchronously, include `"blocking"` in the `extraInfoSpec` parameter and return a `BlockingResponse` object with its `cancel` or `authCredentials` properties set.
-      This behavior is the same for Firefox and Chrome. However, synchronous handling is only appropriate for the simplest of extensions.
-    - To handle the request asynchronously:
-      - in Firefox, the `extraInfoSpec` array must include `"blocking"`, and the event handler function can return a Promise that resolves to a `BlockingResponse` object, with its `cancel` or `authCredentials` properties set. This is basically the same as handling the event synchronously.
-      - in Chrome, the `extraInfoSpec` array must include `"asyncBlocking"` (without `"blocking"`). The event handler function is passed a function as a second parameter (called `asyncCallback`) that should be invoked with the `BlockingResponse` result, with its `cancel` or `authCredentials` properties set.
+    Returns: {{WebExtAPIRef('webRequest.BlockingResponse')}} or a {{jsxref("Promise")}} depending on the settings in `extraInfoSpec`.
 
 - `filter`
-  - : {{WebExtAPIRef('webRequest.RequestFilter')}}. A filter that restricts the events that are sent to this listener.
+  - : {{WebExtAPIRef('webRequest.RequestFilter')}}. A filter that restricts the events sent to this listener.
 - `extraInfoSpec` {{optional_inline}}
+  - : `array` of `string`. Extra options for the event. You can pass any of these values:
+    - `"blocking"`: make the request block so you can cancel the request or supply authentication credentials. Return a `BlockingResponse` object with its `cancel` or `authCredentials` properties set.
+      - In Chrome, the event listener must respond synchronously.
+      - In Firefox, the event listener can respond synchronously or return a promise that resolves to a `BlockingResponse` object to respond asynchronously.
 
-  - : `array` of `string`. Extra options for the event. You can pass any of the following values:
-
-    - `"blocking"`: make the request block so you can cancel the request or supply authentication credentials. To handle the request asynchronously in Chrome, use `"asyncBlocking"` instead.
-    - `"responseHeaders"`: include `responseHeaders` in the `details` object passed to the listener
+    - `"asyncBlocking"`: handle the request asynchronously. The return value of the event listener is ignored. To resolve the event, pass the `asyncCallback` parameter a `BlockingResponse` object.
+      - Supported from Chrome 120 and Firefox 128.
+      - Not supported in Safari.
 
 ## Additional objects
 
 ### details
 
 - `challenger`
-
   - : `object`. The server requesting authentication. This is an object with the following properties:
-
     - `host`
       - : `string`. The server's [hostname](https://en.wikipedia.org/wiki/Hostname#Internet_hostnames).
     - `port`
@@ -129,17 +120,13 @@ Events have three functions:
 - `parentFrameId`
   - : `integer`. ID of the frame that contains the frame that sent the request. Set to `-1` if no parent frame exists.
 - `proxyInfo`
-
   - : `object`. This property is present only if the request is being proxied. It contains the following properties:
-
     - `host`
       - : `string`. The hostname of the proxy server.
     - `port`
       - : `integer`. The port number of the proxy server.
     - `type`
-
       - : `string`. The type of proxy server. One of:
-
         - `"http"`: HTTP proxy (or SSL CONNECT for HTTPS)
         - `"https"`: HTTP proxying over TLS connection to proxy
         - `"socks"`: SOCKS v5 proxy
@@ -152,7 +139,7 @@ Events have three functions:
     - `proxyDNS`
       - : `boolean`. True if the proxy performs domain name resolution based on the hostname supplied, meaning that the client should not do its own DNS lookup.
     - `failoverTimeout`
-      - : `integer`. Failover timeout in seconds. If the connection fails to connect the proxy server after this number of seconds, the next proxy server in the array returned from [FindProxyForURL()](</en-US/docs/Mozilla/Add-ons/WebExtensions/API/proxy#findproxyforurl()_return_value>) is used.
+      - : `integer`. Failover timeout in seconds. If the connection fails to connect the proxy server after this number of seconds, the next proxy server in the array returned from [FindProxyForURL()](/en-US/docs/Web/HTTP/Guides/Proxy_servers_and_tunneling/Proxy_Auto-Configuration_PAC_file) is used.
 
 - `realm` {{optional_inline}}
   - : `string`. The authentication [realm](https://datatracker.ietf.org/doc/html/rfc1945#section-11) provided by the server, if there is one.
@@ -161,7 +148,7 @@ Events have three functions:
 - `responseHeaders` {{optional_inline}}
   - : {{WebExtAPIRef('webRequest.HttpHeaders')}}. The HTTP response headers received with this response.
 - `scheme`
-  - : `string`. The authentication scheme: `"basic"` or `"digest`".
+  - : `string`. The authentication scheme: `"basic"` or `"digest"`.
 - `statusCode`
   - : `integer`. Standard HTTP status code returned by the server.
 - `statusLine`
@@ -177,22 +164,24 @@ Events have three functions:
 - `url`
   - : `string`. Target of the request.
 - `urlClassification`
-
-  - : `object`. The type of tracking associated with the request if the request is classified by [Firefox Tracking Protection](https://support.mozilla.org/en-US/kb/enhanced-tracking-protection-firefox-desktop). This is an object with the following properties:
-
+  - : `object`. The type of tracking associated with the request, if the request is classified by [Firefox Tracking Protection](https://support.mozilla.org/en-US/kb/enhanced-tracking-protection-firefox-desktop). This is an object with these properties:
     - `firstParty`
-      - : `array` of `strings`. Classification flags for the request's first party.
+      - : `array` of `string`. Classification flags for the request's first party.
     - `thirdParty`
-      - : `array` of `strings`. Classification flags for the request or its window hierarchy's third parties.
+      - : `array` of `string`. Classification flags for the request or its window hierarchy's third parties.
 
     The classification flags include:
-
-    - `fingerprinting` and `fingerprinting_content`: indicates the request is involved in fingerprinting. `fingerprinting_content` indicates the request is loaded from an origin found to fingerprint but is not considered to participate in tracking, such as a payment provider.
+    - `fingerprinting` and `fingerprinting_content`: indicates the request is involved in fingerprinting ("an origin found to fingerprint").
+      - `fingerprinting` indicates the domain is in the fingerprinting and tracking category. Examples of this type of domain include advertisers who want to associate a profile with the visiting user.
+      - `fingerprinting_content` indicates the domain is in the fingerprinting category but not the tracking category. Examples of this type of domain include payment providers who use fingerprinting techniques to identify the visiting user for anti-fraud purposes.
     - `cryptomining` and `cryptomining_content`: similar to the fingerprinting category but for cryptomining resources.
     - `tracking`, `tracking_ad`, `tracking_analytics`, `tracking_social`, and `tracking_content`: indicates the request is involved in tracking. `tracking` is any generic tracking request. The `ad`, `analytics`, `social`, and `content` suffixes identify the type of tracker.
+    - `emailtracking` and `emailtracking_content`: indicates the request is involved in tracking emails.
     - `any_basic_tracking`: a meta flag that combines tracking and fingerprinting flags, excluding `tracking_content` and `fingerprinting_content`.
-    - `any_strict_tracking`: a meta flag that combines tracking and fingerprinting flags, including `tracking_content` and `fingerprinting_content`.
-    - `any_social_tracking`: a meta flag that combines any social tracking flags.
+    - `any_strict_tracking`: a meta flag that combines all tracking and fingerprinting flags.
+    - `any_social_tracking`: a meta flag that combines all social tracking flags.
+
+    You can find more information on tracker types on the [disconnect.me](https://disconnect.me/trackerprotection#categories_of_trackers) website. The `content` suffix indicates trackers that track and serve content. Blocking them protects users but can lead to sites breaking or elements not being displayed.
 
 ## Examples
 
@@ -293,13 +282,12 @@ function provideCredentialsAsync(requestDetails) {
   if (pendingRequests.includes(requestDetails.requestId)) {
     console.log(`bad credentials for: ${requestDetails.requestId}`);
     return { cancel: true };
-  } else {
-    pendingRequests.push(requestDetails.requestId);
-    console.log(`providing credentials for: ${requestDetails.requestId}`);
-    // we can return a promise that will be resolved
-    // with the stored credentials
-    return browser.storage.local.get(null);
   }
+  pendingRequests.push(requestDetails.requestId);
+  console.log(`providing credentials for: ${requestDetails.requestId}`);
+  // we can return a promise that will be resolved
+  // with the stored credentials
+  return browser.storage.local.get(null);
 }
 
 browser.webRequest.onAuthRequired.addListener(
@@ -319,7 +307,8 @@ browser.webRequest.onErrorOccurred.addListener(completed, { urls: [target] });
 
 {{Compat}}
 
-> **Note:** This API is based on Chromium's [`chrome.webRequest`](https://developer.chrome.com/docs/extensions/reference/webRequest/#event-onAuthRequired) API. This documentation is derived from [`web_request.json`](https://chromium.googlesource.com/chromium/src/+/master/extensions/common/api/web_request.json) in the Chromium code.
+> [!NOTE]
+> This API is based on Chromium's [`chrome.webRequest`](https://developer.chrome.com/docs/extensions/reference/api/webRequest#event-onAuthRequired) API. This documentation is derived from [`web_request.json`](https://chromium.googlesource.com/chromium/src/+/master/extensions/common/api/web_request.json) in the Chromium code.
 
 <!--
 // Copyright 2015 The Chromium Authors. All rights reserved.

@@ -6,20 +6,18 @@ page-type: web-api-event
 browser-compat: api.Notification.show_event
 ---
 
-{{APIRef("Web Notifications")}}{{securecontext_header}}
+{{APIRef("Web Notifications")}}{{securecontext_header}} {{AvailableInWorkers}}
 
 The **`show`** event of the {{domxref("Notification")}} interface fires when a {{domxref("Notification")}} is displayed.
-
-{{AvailableInWorkers}}
 
 ## Syntax
 
 Use the event name in methods like {{domxref("EventTarget.addEventListener", "addEventListener()")}}, or set an event handler property.
 
-```js
-addEventListener("show", (event) => {});
+```js-nolint
+addEventListener("show", (event) => { })
 
-onshow = (event) => {};
+onshow = (event) => { }
 ```
 
 ## Event type

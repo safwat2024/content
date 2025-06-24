@@ -30,7 +30,6 @@ No properties are defined in this module
 ### At-rules and descriptors
 
 - {{cssxref("@counter-style")}}
-
   - {{cssxref("@counter-style/system","system")}}
   - {{cssxref("@counter-style/symbols", "symbols")}}
   - {{cssxref("@counter-style/additive-symbols", "additive-symbols")}}
@@ -42,9 +41,8 @@ No properties are defined in this module
   - {{cssxref("@counter-style/speak-as", "speak-as")}}
   - {{cssxref("@counter-style/fallback", "fallback")}}
 
-### Interfaces and APIs
+### Interfaces
 
-- [CSS counter styles](/en-US/docs/Web/API/CSS_Counter_Styles) API
 - {{domxref("CSSCounterStyleRule")}} interface
 
 ## Guides
@@ -70,7 +68,7 @@ No properties are defined in this module
 - {{cssxref("::before")}} pseudo-element
 - {{cssxref("::marker")}} pseudo-element
 
-[CSS generated content](/en-US/docs/Web/CSS/CSS_generated_content)
+[CSS generated content](/en-US/docs/Web/CSS/CSS_generated_content) module:
 
 - {{cssxref("content")}} property
 
@@ -80,7 +78,6 @@ No properties are defined in this module
 
 ## See also
 
-- [CSS counter styles](/en-US/docs/Web/API/CSS_Counter_Styles) API
 - [CSS lists and counters](/en-US/docs/Web/CSS/CSS_lists) module
 - [CSS pseudo-elements](/en-US/docs/Web/CSS/CSS_pseudo-elements) module
 - [CSS generated content](/en-US/docs/Web/CSS/CSS_generated_content) module

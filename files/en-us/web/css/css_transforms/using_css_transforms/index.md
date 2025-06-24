@@ -1,5 +1,6 @@
 ---
 title: Using CSS transforms
+short-title: Using transforms
 slug: Web/CSS/CSS_transforms/Using_CSS_transforms
 page-type: guide
 ---
@@ -10,7 +11,8 @@ By modifying the coordinate space, **CSS transforms** change the shape and posit
 
 CSS transforms are implemented using a set of CSS properties that let you apply affine linear transformations to HTML elements. These transformations include rotation, skewing, scaling, and translation both in the plane and in the 3D space.
 
-> **Warning:** Only transformable elements can be `transform`ed; that is, all elements whose layout is governed by the CSS [box model](/en-US/docs/Web/CSS/CSS_box_model) except for: [non-replaced inline boxes](/en-US/docs/Web/CSS/Visual_formatting_model#inline-level_elements_and_inline_boxes), [table-column boxes](/en-US/docs/Web/HTML/Element/col), and [table-column-group boxes](/en-US/docs/Web/HTML/Element/colgroup).
+> [!WARNING]
+> Only transformable elements can be `transform`ed; that is, all elements whose layout is governed by the CSS [box model](/en-US/docs/Web/CSS/CSS_box_model) except for: [non-replaced inline boxes](/en-US/docs/Web/CSS/CSS_display/Visual_formatting_model#inline-level_and_block-level_boxes), [table-column boxes](/en-US/docs/Web/HTML/Reference/Elements/col), and [table-column-group boxes](/en-US/docs/Web/HTML/Reference/Elements/colgroup).
 
 ## CSS transforms properties
 
@@ -81,7 +83,7 @@ The HTML below creates four copies of the same box, with the perspective set at 
     <tr>
       <td>
         <div class="container">
-          <div class="cube pers250">
+          <div class="cube perspective-250">
             <div class="face front">1</div>
             <div class="face back">2</div>
             <div class="face right">3</div>
@@ -93,7 +95,7 @@ The HTML below creates four copies of the same box, with the perspective set at 
       </td>
       <td>
         <div class="container">
-          <div class="cube pers350">
+          <div class="cube perspective-350">
             <div class="face front">1</div>
             <div class="face back">2</div>
             <div class="face right">3</div>
@@ -111,7 +113,7 @@ The HTML below creates four copies of the same box, with the perspective set at 
     <tr>
       <td>
         <div class="container">
-          <div class="cube pers500">
+          <div class="cube perspective-500">
             <div class="face front">1</div>
             <div class="face back">2</div>
             <div class="face right">3</div>
@@ -123,7 +125,7 @@ The HTML below creates four copies of the same box, with the perspective set at 
       </td>
       <td>
         <div class="container">
-          <div class="cube pers650">
+          <div class="cube perspective-650">
             <div class="face front">1</div>
             <div class="face back">2</div>
             <div class="face right">3</div>
@@ -144,19 +146,19 @@ The CSS establishes classes that can be used to set the perspective to different
 
 ```css
 /* Shorthand classes for different perspective values */
-.pers250 {
+.perspective-250 {
   perspective: 250px;
 }
 
-.pers350 {
+.perspective-350 {
   perspective: 350px;
 }
 
-.pers500 {
+.perspective-500 {
   perspective: 500px;
 }
 
-.pers650 {
+.perspective-650 {
   perspective: 650px;
 }
 
@@ -249,7 +251,7 @@ This example shows cubes with popular `perspective-origin` values.
   <figure>
     <figcaption><code>perspective-origin: top left;</code></figcaption>
     <div class="container">
-      <div class="cube potl">
+      <div class="cube po-tl">
         <div class="face front">1</div>
         <div class="face back">2</div>
         <div class="face right">3</div>
@@ -263,7 +265,7 @@ This example shows cubes with popular `perspective-origin` values.
   <figure>
     <figcaption><code>perspective-origin: top;</code></figcaption>
     <div class="container">
-      <div class="cube potm">
+      <div class="cube po-tm">
         <div class="face front">1</div>
         <div class="face back">2</div>
         <div class="face right">3</div>
@@ -277,7 +279,7 @@ This example shows cubes with popular `perspective-origin` values.
   <figure>
     <figcaption><code>perspective-origin: top right;</code></figcaption>
     <div class="container">
-      <div class="cube potr">
+      <div class="cube po-tr">
         <div class="face front">1</div>
         <div class="face back">2</div>
         <div class="face right">3</div>
@@ -291,7 +293,7 @@ This example shows cubes with popular `perspective-origin` values.
   <figure>
     <figcaption><code>perspective-origin: left;</code></figcaption>
     <div class="container">
-      <div class="cube poml">
+      <div class="cube po-ml">
         <div class="face front">1</div>
         <div class="face back">2</div>
         <div class="face right">3</div>
@@ -305,7 +307,7 @@ This example shows cubes with popular `perspective-origin` values.
   <figure>
     <figcaption><code>perspective-origin: 50% 50%;</code></figcaption>
     <div class="container">
-      <div class="cube pomm">
+      <div class="cube po-mm">
         <div class="face front">1</div>
         <div class="face back">2</div>
         <div class="face right">3</div>
@@ -319,7 +321,7 @@ This example shows cubes with popular `perspective-origin` values.
   <figure>
     <figcaption><code>perspective-origin: right;</code></figcaption>
     <div class="container">
-      <div class="cube pomr">
+      <div class="cube po-mr">
         <div class="face front">1</div>
         <div class="face back">2</div>
         <div class="face right">3</div>
@@ -333,7 +335,7 @@ This example shows cubes with popular `perspective-origin` values.
   <figure>
     <figcaption><code>perspective-origin: bottom left;</code></figcaption>
     <div class="container">
-      <div class="cube pobl">
+      <div class="cube po-bl">
         <div class="face front">1</div>
         <div class="face back">2</div>
         <div class="face right">3</div>
@@ -347,7 +349,7 @@ This example shows cubes with popular `perspective-origin` values.
   <figure>
     <figcaption><code>perspective-origin: bottom;</code></figcaption>
     <div class="container">
-      <div class="cube pobm">
+      <div class="cube po-bm">
         <div class="face front">1</div>
         <div class="face back">2</div>
         <div class="face right">3</div>
@@ -361,7 +363,7 @@ This example shows cubes with popular `perspective-origin` values.
   <figure>
     <figcaption><code>perspective-origin: bottom right;</code></figcaption>
     <div class="container">
-      <div class="cube pobr">
+      <div class="cube po-br">
         <div class="face front">1</div>
         <div class="face back">2</div>
         <div class="face right">3</div>
@@ -375,7 +377,7 @@ This example shows cubes with popular `perspective-origin` values.
   <figure>
     <figcaption><code>perspective-origin: -200% -200%;</code></figcaption>
     <div class="container">
-      <div class="cube po200200neg">
+      <div class="cube po-200200neg">
         <div class="face front">1</div>
         <div class="face back">2</div>
         <div class="face right">3</div>
@@ -389,7 +391,7 @@ This example shows cubes with popular `perspective-origin` values.
   <figure>
     <figcaption><code>perspective-origin: 200% 200%;</code></figcaption>
     <div class="container">
-      <div class="cube po200200pos">
+      <div class="cube po-200200pos">
         <div class="face front">1</div>
         <div class="face back">2</div>
         <div class="face right">3</div>
@@ -403,7 +405,7 @@ This example shows cubes with popular `perspective-origin` values.
   <figure>
     <figcaption><code>perspective-origin: 200% -200%;</code></figcaption>
     <div class="container">
-      <div class="cube po200200">
+      <div class="cube po-200200">
         <div class="face front">1</div>
         <div class="face back">2</div>
         <div class="face right">3</div>
@@ -420,40 +422,40 @@ This example shows cubes with popular `perspective-origin` values.
 
 ```css
 /* perspective-origin values (unique per example) */
-.potl {
+.po-tl {
   perspective-origin: top left;
 }
-.potm {
+.po-tm {
   perspective-origin: top;
 }
-.potr {
+.po-tr {
   perspective-origin: top right;
 }
-.poml {
+.po-ml {
   perspective-origin: left;
 }
-.pomm {
+.po-mm {
   perspective-origin: 50% 50%;
 }
-.pomr {
+.po-mr {
   perspective-origin: right;
 }
-.pobl {
+.po-bl {
   perspective-origin: bottom left;
 }
-.pobm {
+.po-bm {
   perspective-origin: bottom;
 }
-.pobr {
+.po-br {
   perspective-origin: bottom right;
 }
-.po200200neg {
+.po-200200neg {
   perspective-origin: -200% -200%;
 }
-.po200200pos {
+.po-200200pos {
   perspective-origin: 200% 200%;
 }
-.po200200 {
+.po-200200 {
   perspective-origin: 200% -200%;
 }
 

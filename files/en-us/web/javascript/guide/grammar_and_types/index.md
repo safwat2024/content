@@ -24,7 +24,8 @@ In JavaScript, instructions are called {{Glossary("Statement", "statements")}} a
 
 A semicolon is not necessary after a statement if it is written on its own line. But if more than one statement on a line is desired, then they _must_ be separated by semicolons.
 
-> **Note:** ECMAScript also has rules for automatic insertion of semicolons ([ASI](/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#automatic_semicolon_insertion)) to end statements. (For more information, see the detailed reference about JavaScript's [lexical grammar](/en-US/docs/Web/JavaScript/Reference/Lexical_grammar).)
+> [!NOTE]
+> ECMAScript also has rules for automatic insertion of semicolons ([ASI](/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#automatic_semicolon_insertion)) to end statements. (For more information, see the detailed reference about JavaScript's [lexical grammar](/en-US/docs/Web/JavaScript/Reference/Lexical_grammar).)
 
 It is considered best practice, however, to always write a semicolon after a statement, even when it is not strictly needed. This practice reduces the chances of bugs getting into the code.
 
@@ -56,7 +57,8 @@ In this case, you need to break up the `*/` pattern. For example, by inserting a
 
 Comments behave like whitespace, and are discarded during script execution.
 
-> **Note:** You might also see a third type of comment syntax at the start of some JavaScript files, which looks something like this: `#!/usr/bin/env node`.
+> [!NOTE]
+> You might also see a third type of comment syntax at the start of some JavaScript files, which looks something like this: `#!/usr/bin/env node`.
 >
 > This is called **hashbang comment** syntax, and is a special comment used to specify the path to a particular JavaScript engine that should execute the script. See [Hashbang comments](/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#hashbang_comments) for more details.
 
@@ -88,7 +90,7 @@ You can declare a variable in two ways:
 - With the keyword {{jsxref("Statements/var", "var")}}. For example, `var x = 42`. This syntax can be used to declare both **local** and **global** variables, depending on the _execution context_.
 - With the keyword {{jsxref("Statements/const", "const")}} or {{jsxref("Statements/let", "let")}}. For example, `let y = 13`. This syntax can be used to declare a block-scope local variable. (See [Variable scope](#variable_scope) below.)
 
-You can declare variables to unpack values using the [destructuring assignment](/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment) syntax. For example, `const { bar } = foo`. This will create a variable named `bar` and assign to it the value corresponding to the key of the same name from our object `foo`.
+You can declare variables to unpack values using the [destructuring](/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring) syntax. For example, `const { bar } = foo`. This will create a variable named `bar` and assign to it the value corresponding to the key of the same name from our object `foo`.
 
 Variables should always be declared before they are used. JavaScript used to allow assigning to undeclared variables, which creates an **[undeclared global](/en-US/docs/Web/JavaScript/Reference/Statements/var#description)** variable. This is an error in [strict mode](/en-US/docs/Web/JavaScript/Reference/Strict_mode#assigning_to_undeclared_variables) and should be avoided altogether.
 
@@ -145,7 +147,7 @@ console.log(x); // x is 5
 
 ### Variable hoisting
 
-`var`-declared variables are [hoisted](/en-US/docs/Glossary/Hoisting), meaning you can refer to the variable anywhere in its scope, even if its declaration isn't reached yet. You can see `var` declarations as being "lifted" to the top of its function or global scope. However, if you access a variable before it's declared, the value is always `undefined`, because only its _declaration_ is hoisted, but not its _initialization_.
+`var`-declared variables are [hoisted](/en-US/docs/Glossary/Hoisting), meaning you can refer to the variable anywhere in its scope, even if its declaration isn't reached yet. You can see `var` declarations as being "lifted" to the top of its function or global scope. However, if you access a variable before it's declared, the value is always `undefined`, because only its _declaration_ and _default initialization (with `undefined`)_ is hoisted, but not its _value assignment_.
 
 ```js
 console.log(x === undefined); // true
@@ -239,7 +241,6 @@ console.log(MY_ARRAY); // ['HTML', 'CSS', 'JAVASCRIPT'];
 The latest ECMAScript standard defines eight data types:
 
 - Seven data types that are {{Glossary("Primitive", "primitives")}}:
-
   1. {{Glossary("Boolean")}}. `true` and `false`.
   2. {{Glossary("null")}}. A special keyword denoting a null value. (Because JavaScript is case-sensitive, `null` is not the same as `Null`, `NULL`, or any other variant.)
   3. {{Glossary("undefined")}}. A top-level property whose value is not defined.
@@ -293,19 +294,21 @@ In the case that a value representing a number is in memory as a string, there a
 
 - {{jsxref("parseInt()")}}
 - {{jsxref("parseFloat()")}}
+- {{jsxref("Number()")}}
 
 `parseInt` only returns whole numbers, so its use is diminished for decimals.
 
-> **Note:** Additionally, a best practice for `parseInt` is to always include the _radix_ parameter. The radix parameter is used to specify which numerical system is to be used.
+> [!NOTE]
+> Additionally, a best practice for `parseInt` is to always include the _radix_ parameter. The radix parameter is used to specify which numerical system is to be used.
 
 ```js
 parseInt("101", 2); // 5
 ```
 
-An alternative method of retrieving a number from a string is with the `+` (unary plus) operator:
+An alternative method of retrieving a number from a string is with the `+` (unary plus) operator. This implicitly performs [number conversion](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number#number_coercion), which is the same process as the {{jsxref("Number()")}} function.
 
 ```js-nolint
-"1.1" + "1.1" // '1.11.1'
+"1.1" + "1.1"; // '1.11.1'
 (+"1.1") + (+"1.1"); // 2.2
 // Note: the parentheses are added for clarity, not required.
 ```
@@ -333,7 +336,8 @@ const coffees = ["French Roast", "Colombian", "Kona"];
 
 An array literal creates a new array object every time the literal is evaluated. For example, an array defined with a literal in the global scope is created once when the script loads. However, if the array literal is inside a function, a new array is instantiated every time that function is called.
 
-> **Note:** Array literals create `Array` objects. See {{jsxref("Array")}} and [Indexed collections](/en-US/docs/Web/JavaScript/Guide/Indexed_collections) for details on `Array` objects.
+> [!NOTE]
+> Array literals create `Array` objects. See {{jsxref("Array")}} and [Indexed collections](/en-US/docs/Web/JavaScript/Guide/Indexed_collections) for details on `Array` objects.
 
 #### Extra commas in array literals
 
@@ -354,7 +358,7 @@ Note that the second item is "empty", which is not exactly the same as the actua
 
 If you include a trailing comma at the end of the list of elements, the comma is ignored.
 
-In the following example, the `length` of the array is three. There is no `myList[3]`. All other commas in the list indicate a new element.
+In the following example, the `length` of the array is three. There is no `myList[3]` and `myList[1]` is empty. All other commas in the list indicate a new element.
 
 ```js
 const myList = ["home", , "school"];
@@ -394,7 +398,8 @@ const myList = ["home", /* empty */, "school", /* empty */, ];
 
 The Boolean type has two literal values: `true` and `false`.
 
-> **Note:** Do not confuse the primitive Boolean values `true` and `false` with the true and false values of the {{jsxref("Boolean")}} object.
+> [!NOTE]
+> Do not confuse the primitive Boolean values `true` and `false` with the true and false values of the {{jsxref("Boolean")}} object.
 >
 > The Boolean object is a wrapper around the primitive Boolean data type. See {{jsxref("Boolean")}} for more information.
 
@@ -455,7 +460,8 @@ For example:
 
 An object literal is a list of zero or more pairs of property names and associated values of an object, enclosed in curly braces (`{}`).
 
-> **Warning:** Do not use an object literal at the beginning of a statement! This will lead to an error (or not behave as you expect), because the `{` will be interpreted as the beginning of a block.
+> [!WARNING]
+> Do not use an object literal at the beginning of a statement! This will lead to an error (or not behave as you expect), because the `{` will be interpreted as the beginning of a block.
 
 The following is an example of an object literal. The first element of the `car` object defines a property, `myCar`, and assigns to it a new string, `"Saturn"`; the second element, the `getCar` property, is immediately assigned the result of invoking the function `(carTypes("Honda"))`; the third element, the `special` property, uses an existing variable (`sales`).
 
@@ -488,11 +494,11 @@ Property names that are not valid identifiers cannot be accessed as a dot (`.`) 
 
 ```js-nolint example-bad
 const unusualPropertyNames = {
-  '': 'An empty string',
-  '!': 'Bang!'
-}
-console.log(unusualPropertyNames.'');   // SyntaxError: Unexpected string
-console.log(unusualPropertyNames.!);    // SyntaxError: Unexpected token !
+  "": "An empty string",
+  "!": "Bang!",
+};
+console.log(unusualPropertyNames.""); // SyntaxError: Unexpected string
+console.log(unusualPropertyNames.!); // SyntaxError: Unexpected token !
 ```
 
 Instead, they must be accessed with the bracket notation (`[]`).
@@ -517,7 +523,7 @@ const obj = {
   // Methods
   toString() {
     // Super calls
-    return "d " + super.toString();
+    return `d ${super.toString()}`;
   },
   // Computed (dynamic) property names
   ["prop_" + (() => 42)()]: 42,
@@ -559,18 +565,19 @@ console.log("Joyo's cat".length); // In this case, 10.
 
 Template literals provide syntactic sugar for constructing strings. (This is similar to string interpolation features in Perl, Python, and more.)
 
-```js-nolint
+```js
 // Basic literal string creation
-`In JavaScript '\n' is a line-feed.`
+`In JavaScript '\n' is a line-feed.`;
 
 // Multiline strings
 `In JavaScript, template strings can run
  over multiple lines, but double and single
- quoted strings cannot.`
+ quoted strings cannot.`;
 
 // String interpolation
-const name = 'Lev', time = 'today';
-`Hello ${name}, how are you ${time}?`
+const name = "Lev",
+  time = "today";
+`Hello ${name}, how are you ${time}?`;
 ```
 
 [Tagged templates](/en-US/docs/Web/JavaScript/Reference/Template_literals#tagged_templates) are a compact syntax for specifying a template literal along with a call to a "tag" function for parsing it. A tagged template is just a more succinct and semantic way to invoke a function that processes a string and a set of relevant values. The name of the template tag function precedes the template literal — as in the following example, where the template tag function is named `print`. The `print` function will interpolate the arguments and serialize any objects or arrays that may come up, avoiding the pesky `[object Object]`.
@@ -660,7 +667,7 @@ The following table lists the special characters that you can use in JavaScript 
 | `\XXX`      | The character with the Latin-1 encoding specified by up to three octal digits `XXX` between `0` and `377`. For example, `\251` is the octal sequence for the copyright symbol.                                                                       |
 | `\xXX`      | The character with the Latin-1 encoding specified by the two hexadecimal digits `XX` between `00` and `FF`. For example, `\xA9` is the hexadecimal sequence for the copyright symbol.                                                                |
 | `\uXXXX`    | The Unicode character specified by the four hexadecimal digits `XXXX`. For example, `\u00A9` is the Unicode sequence for the copyright symbol. See [Unicode escape sequences](/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#string_literals). |
-| `\u{XXXXX}` | Unicode code point escapes. For example, `\u{2F804}` is the same as the simple Unicode escapes `\uD87E\uDC04`.                                                                                                                                       |
+| `\u{XXXXX}` | Unicode code point escapes. For example, `\u{2F804}` is the same as the Unicode escapes `\uD87E\uDC04`.                                                                                                                                              |
 
 #### Escaping characters
 

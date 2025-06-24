@@ -6,9 +6,9 @@ page-type: web-api-instance-property
 browser-compat: api.HTMLLinkElement.hreflang
 ---
 
-{{ApiRef("HTML DOM")}}
+{{APIRef("HTML DOM")}}
 
-The **`hreflang`** property of the {{domxref("HTMLLinkElement")}} is used to indicate the language and the geographical targeting of a page. This hint can be used by browsers to select the more appropriate page or to improve {{Glossary("SEO")}}.
+The **`hreflang`** property of the {{domxref("HTMLLinkElement")}} interface is used to indicate the language and the geographical targeting of a page. This hint can be used by browsers to select the more appropriate page or to improve {{Glossary("SEO")}}.
 
 It reflects the `hreflang` attribute of the {{HTMLElement("link")}} element and is the empty string (`""`) if there is no `hreflang` attribute.
 
@@ -31,7 +31,7 @@ A string that contains a language tag, or the empty string (`""`) if there is no
 ```css
 .tag {
   margin-left: 20px;
-  font: bold;
+  font-weight: bold;
   font-size: 24px;
 }
 ```

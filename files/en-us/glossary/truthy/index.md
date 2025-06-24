@@ -13,19 +13,19 @@ In {{Glossary("JavaScript")}}, a **truthy** value is a value that is considered 
 Examples of _truthy_ values in JavaScript (which will be coerced to `true` in boolean contexts, and thus execute the `if` block):
 
 ```js
-if (true)
-if ({})
-if ([])
-if (42)
-if ("0")
-if ("false")
-if (new Date())
-if (-42)
-if (12n)
-if (3.14)
-if (-3.14)
-if (Infinity)
-if (-Infinity)
+if (true);
+if ({});
+if ([]);
+if (42);
+if ("0");
+if ("false");
+if (new Date());
+if (-42);
+if (12n);
+if (3.14);
+if (-3.14);
+if (Infinity);
+if (-Infinity);
 ```
 
 ### The logical AND operator, &&
@@ -33,16 +33,17 @@ if (-Infinity)
 If the first operand is truthy, the [logical AND operator](/en-US/docs/Web/JavaScript/Reference/Operators/Logical_AND) returns the second operand:
 
 ```js
-true && "dog"
+true && "dog";
 // returns "dog"
 
-[] && "dog"
+[] && "dog";
 // returns "dog"
 ```
 
 ## See also
 
-- {{Glossary("Falsy")}}
-- {{Glossary("Type_Coercion", "Type coercion")}}
-- {{Glossary("Boolean")}}
+- Related glossary terms:
+  - {{Glossary("Falsy")}}
+  - {{Glossary("Type_Coercion", "Type coercion")}}
+  - {{Glossary("Boolean")}}
 - [Boolean coercion](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean#boolean_coercion)

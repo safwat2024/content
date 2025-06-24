@@ -20,21 +20,17 @@ browser.browserAction.setBadgeTextColor(
 ### Parameters
 
 - `details`
-
   - : An object with the following properties:
-
     - `color`
-
       - : The color, specified as one of:
-
         - a string: any CSS [\<color>](/en-US/docs/Web/CSS/color_value) value, for example `"red"`, `"#FF0000"`, or `"rgb(255 0 0)"`. If the string is not a valid color, the returned promise will be rejected and the text color won't be altered.
-        - a `{{WebExtAPIRef('browserAction.ColorArray')}}` object.
+        - a {{WebExtAPIRef('browserAction.ColorArray')}} object.
         - `null`. If a `tabId` is specified, it removes the tab-specific badge text color so that the tab inherits the global badge text color. Otherwise it reverts the global badge text color to the default value.
 
     - `tabId` {{optional_inline}}
       - : `integer`. Sets the badge text color only for the given tab. The color is reset when the user navigates this tab to a new page.
     - `windowId` {{optional_inline}}
-      - : `integer`. Sets the badge text color only for the given tab.
+      - : `integer`. Sets the badge text color only for the given window.
 
 <!---->
 
@@ -74,7 +70,8 @@ browser.browserAction.onClicked.addListener((tab) => {
 
 {{WebExtExamples}}
 
-> **Note:** This API is based on Chromium's [`chrome.browserAction`](https://developer.chrome.com/docs/extensions/reference/browserAction/#method-setBadgeBackgroundColor) API. This documentation is derived from [`browser_action.json`](https://chromium.googlesource.com/chromium/src/+/master/chrome/common/extensions/api/browser_action.json) in the Chromium code.
+> [!NOTE]
+> This API is based on Chromium's [`chrome.browserAction`](https://developer.chrome.com/docs/extensions/mv2/reference/browserAction#method-setBadgeBackgroundColor) API. This documentation is derived from [`browser_action.json`](https://chromium.googlesource.com/chromium/src/+/master/chrome/common/extensions/api/browser_action.json) in the Chromium code.
 
 <!--
 // Copyright 2015 The Chromium Authors. All rights reserved.

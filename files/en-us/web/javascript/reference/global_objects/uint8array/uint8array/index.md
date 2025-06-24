@@ -1,5 +1,6 @@
 ---
 title: Uint8Array() constructor
+short-title: Uint8Array()
 slug: Web/JavaScript/Reference/Global_Objects/Uint8Array/Uint8Array
 page-type: javascript-constructor
 browser-compat: javascript.builtins.Uint8Array.Uint8Array
@@ -7,7 +8,7 @@ browser-compat: javascript.builtins.Uint8Array.Uint8Array
 
 {{JSRef}}
 
-The **`Uint8Array()`** constructor creates {{jsxref("Uint8Array")}} objects. The contents are initialized to `0`.
+The **`Uint8Array()`** constructor creates {{jsxref("Uint8Array")}} objects. The contents are initialized to `0` unless initialization data is explicitly provided.
 
 ## Syntax
 

@@ -6,7 +6,7 @@ page-type: web-api-instance-method
 browser-compat: api.FileSystemDirectoryHandle.getFileHandle
 ---
 
-{{securecontext_header}}{{APIRef("File System API")}}
+{{securecontext_header}}{{APIRef("File System API")}}{{AvailableInWorkers}}
 
 The **`getFileHandle()`** method of the
 {{domxref("FileSystemDirectoryHandle")}} interface returns a
@@ -26,9 +26,7 @@ getFileHandle(name, options)
   - : A string representing the {{domxref('FileSystemHandle.name')}} of
     the file you wish to retrieve.
 - `options` {{optional_inline}}
-
   - : An object with the following properties:
-
     - `create` {{optional_inline}}
       - : A {{jsxref('Boolean')}}. Default `false`. When
         set to `true` if the file is not found, one with the specified name

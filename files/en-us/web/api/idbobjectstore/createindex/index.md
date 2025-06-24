@@ -6,7 +6,7 @@ page-type: web-api-instance-method
 browser-compat: api.IDBObjectStore.createIndex
 ---
 
-{{ APIRef("IndexedDB") }}
+{{ APIRef("IndexedDB") }} {{AvailableInWorkers}}
 
 The **`createIndex()`** method of the
 {{domxref("IDBObjectStore")}} interface creates and returns a new
@@ -19,8 +19,6 @@ and complex objects.
 
 Note that this method must be called only from a `VersionChange` transaction
 mode callback.
-
-{{AvailableInWorkers}}
 
 ## Syntax
 
@@ -36,7 +34,6 @@ createIndex(indexName, keyPath, options)
 - `keyPath`
   - : The key path for the index to use. Note that it is possible to create an index with an empty `keyPath`, and also to pass in a sequence (array) as a `keyPath`.
 - `options` {{optional_inline}}
-
   - : An object which can include the following
     properties:
     - `unique`
@@ -46,10 +43,9 @@ createIndex(indexName, keyPath, options)
         If `false`, it will add one single entry containing the array. Defaults to `false`.
     - `locale` {{non-standard_inline}} {{deprecated_inline}}
       - : Allows you to specify a locale for the index.
-        Any sorting operations performed on the data via key ranges will then obey sorting rules of that locale
-        (see [locale-aware sorting](/en-US/docs/Web/API/IndexedDB_API/Using_IndexedDB#locale-aware_sorting)).
+        Any sorting operations performed on the data via key ranges will then obey sorting rules of that locale.
         You can specify its value in one of three ways:
-        - `string`: A string containing a specific locale code, e.g. `en-US`, or `pl`.
+        - `string`: A string containing a specific locale code, e.g., `en-US`, or `pl`.
         - `auto`: The platform default locale will be used (may be changed by user agent settings).
         - `null` or `undefined`: If no locale is specified, normal JavaScript sorting will be used — not locale-aware.
 
@@ -67,13 +63,13 @@ This method may raise a {{domxref("DOMException")}} of one of the following type
   - : Thrown if the provided key path is a sequence, and `multiEntry` is set to `true` in the `objectParameters` object.
 - `InvalidStateError` {{domxref("DOMException")}}
   - : Thrown if:
-    - The method was not called from a `versionchange` transaction mode callback, i.e. from inside a {{domxref("IDBOpenDBRequest.upgradeneeded_event", "onupgradeneeded")}} handler.
+    - The method was not called from a `versionchange` transaction mode callback, i.e., from inside a {{domxref("IDBOpenDBRequest.upgradeneeded_event", "onupgradeneeded")}} handler.
     - The object store has been deleted.
 - `SyntaxError` {{domxref("DOMException")}}
-  - : Thrown if the provided `keyPath` is not a <a href="https://www.w3.org/TR/IndexedDB/#dfn-valid-key-path">valid key path</a>.
+  - : Thrown if the provided `keyPath` is not a [valid key path](https://w3c.github.io/IndexedDB/#valid-key-path).
 - `TransactionInactiveError` {{domxref("DOMException")}}
   - : Thrown if the transaction this {{domxref("IDBObjectStore")}}
-    belongs to is not active (e.g. has been deleted or removed.) In Firefox
+    belongs to is not active (e.g., has been deleted or removed.) In Firefox
     previous to version 41, an `InvalidStateError` was raised in
     this case as well, which was misleading; this has now been fixed (see
     [Firefox bug 1176165](https://bugzil.la/1176165).)
@@ -94,11 +90,13 @@ const DBOpenRequest = window.indexedDB.open("toDoList", 4);
 
 // Two event handlers for opening the database.
 DBOpenRequest.onerror = (event) => {
-  note.innerHTML += "<li>Error loading database.</li>";
+  note.appendChild(document.createElement("li")).textContent =
+    "Error loading database.";
 };
 
 DBOpenRequest.onsuccess = (event) => {
-  note.innerHTML += "<li>Database initialized.</li>";
+  note.appendChild(document.createElement("li")).textContent =
+    "Database initialized.";
 
   // store the result of opening the database in the db variable.
   // This is used a lot below.
@@ -117,7 +115,8 @@ DBOpenRequest.onupgradeneeded = (event) => {
   const db = event.target.result;
 
   db.onerror = (event) => {
-    note.innerHTML += "<li>Error loading database.</li>";
+    note.appendChild(document.createElement("li")).textContent =
+      "Error loading database.";
   };
 
   // Create an objectStore for this database

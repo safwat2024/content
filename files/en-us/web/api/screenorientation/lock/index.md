@@ -8,7 +8,7 @@ browser-compat: api.ScreenOrientation.lock
 
 {{APIRef("Screen Orientation")}}
 
-The **`lock()`** property of the {{domxref("ScreenOrientation")}} interface locks the orientation of the containing document to the specified orientation.
+The **`lock()`** method of the {{domxref("ScreenOrientation")}} interface locks the orientation of the containing document to the specified orientation.
 
 Typically orientation locking is only enabled on mobile devices, and when the browser context is full screen.
 If locking is supported, then it must work for all the parameter values listed below.
@@ -22,9 +22,7 @@ lock(orientation)
 ### Parameters
 
 - `orientation`
-
   - : An orientation lock type. One of the following:
-
     - `"any"`
       - : Any of `portrait-primary`, `portrait-secondary`, `landscape-primary` or `landscape-secondary`.
     - `"natural"`
@@ -61,19 +59,15 @@ A {{jsxref("Promise")}} that resolves after locking succeeds.
 The promise may be rejected with the following exceptions:
 
 - `InvalidStateError` {{domxref("DOMException")}}
-
   - : Thrown if the document is not fully active.
 
 - `SecurityError` {{domxref("DOMException")}}
-
   - : Thrown if the document's visibility state is hidden or if the document is forbidden to use the feature (for example, by omitting the keyword `allow-orientation-lock` of the `sandbox` attribute of the `iframe` element).
 
 - `NotSupportedError` {{domxref("DOMException")}}
-
   - : Thrown if the user agent does not support locking the screen orientation of the specific orientation.
 
 - `AbortError` {{domxref("DOMException")}}
-
   - : Thrown if there is any other `lock()` method invoking.
 
 ## Examples

@@ -12,16 +12,16 @@ browser-compat: api.Navigation.navigateerror_event
 
 The **`navigateerror`** event of the {{domxref("Navigation")}} interface is fired when a navigation fails.
 
-For example, if the network is down, any {{domxref("fetch()")}} method invoked to handle a navigation will fail, and the error will be routed to `navigateerror`.
+For example, if the network is down, any {{domxref("Window/fetch", "fetch()")}} method invoked to handle a navigation will fail, and the error will be routed to `navigateerror`.
 
 ## Syntax
 
 Use the event name in methods like {{domxref("EventTarget.addEventListener", "addEventListener()")}}, or set an event handler property.
 
-```js
-addEventListener("navigateerror", (event) => {});
+```js-nolint
+addEventListener("navigateerror", (event) => { })
 
-onnavigateerror = (event) => {};
+onnavigateerror = (event) => { }
 ```
 
 ## Event type

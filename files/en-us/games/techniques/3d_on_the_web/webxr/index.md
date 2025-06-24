@@ -8,18 +8,14 @@ page-type: guide
 
 The concepts of virtual reality (VR) and augmented reality (AR) aren't new, but the technology is more accessible than ever. We can also use a JavaScript API to make use of it in web applications. This article introduces WebXR from the perspective of its use in games.
 
-> **Note:** You may see references to the non-standard WebVR API. WebVR was never ratified as a standard, was implemented and enabled by default in very few browsers, and supported only a few devices. The **WebVR** API is replaced by the [**WebXR** Device API](/en-US/docs/Web/API/WebXR_Device_API).
+> [!NOTE]
+> You may see references to the non-standard WebVR API. WebVR was never ratified as a standard, was implemented and enabled by default in very few browsers, and supported only a few devices. The **WebVR** API is replaced by the [**WebXR** Device API](/en-US/docs/Web/API/WebXR_Device_API).
 
 ## VR devices
 
 With the popularity of existing VR headsets such as Meta Quest, Valve Index, and PlayStation VR, the future looks bright — we already have sufficient technology to create meaningful VR gaming experiences.
 
 ![Three different VR devices: the Meta Quest 3, the Valve Index, and the Sony PSVR2.](hmds.jpg)
-
-### Development of WebVR
-
-The [WebVR spec](https://mozvr.github.io/webvr-spec/webvr.html) is being replaced by the [WebXR Device API](/en-US/docs/Web/API/WebXR_Device_API). WebVR may still be available in some browsers while WebXR is finalized.
-For more info, see the [WebVR.info](https://webvr.info/) website.
 
 ## The WebXR API
 

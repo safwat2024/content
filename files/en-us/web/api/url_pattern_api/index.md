@@ -2,20 +2,16 @@
 title: URL Pattern API
 slug: Web/API/URL_Pattern_API
 page-type: web-api-overview
-status:
-  - experimental
 browser-compat: api.URLPattern
 spec-urls: https://urlpattern.spec.whatwg.org/
 ---
 
-{{DefaultAPISidebar("URL Pattern API")}}{{SeeCompatTable}}
+{{DefaultAPISidebar("URL Pattern API")}} {{AvailableInWorkers}}
 
 The **URL Pattern API** defines a syntax that is used to create URL pattern
 matchers. These patterns can be matched against URLs or individual URL
 components. The URL Pattern API is used by the {{domxref("URLPattern")}}
 interface.
-
-{{AvailableInWorkers}}
 
 ## Concepts and usage
 
@@ -29,7 +25,8 @@ can contain:
 - Non-capturing groups (`/books{/old}?`) which make parts of a pattern optional
   or be matched multiple times.
 - {{jsxref("RegExp")}} groups (`/books/(\\d+)`) which make arbitrarily complex
-  regex matches with a few [limitations](#regex_matchers_limitations).
+  regex matches with a few [limitations](#regex_matchers_limitations). _Note that the
+  parentheses are not part of the regex but instead define their contents as a regex._
 
 You can find details about the syntax in the [pattern syntax](#pattern_syntax)
 section below.
@@ -38,7 +35,7 @@ section below.
 
 The URL Pattern API only has a single related interface:
 
-- {{domxref("URLPattern")}} {{Experimental_Inline}}
+- {{domxref("URLPattern")}}
   - : Represents a pattern that can match URLs or parts of URLs. The pattern can contain capturing groups that extract parts of the matched URL.
 
 ## Pattern syntax
@@ -46,7 +43,7 @@ The URL Pattern API only has a single related interface:
 The syntax for patterns is based on the
 [path-to-regexp](https://github.com/pillarjs/path-to-regexp) JavaScript library.
 This syntax is similar to the one used in
-[Ruby on Rails](https://rubyonrails.org), or JavaScript frameworks like
+[Ruby on Rails](https://rubyonrails.org/), or JavaScript frameworks like
 [Express](https://expressjs.com/) or [Next.js](https://nextjs.org/).
 
 ### Fixed text and capture groups
@@ -81,9 +78,9 @@ match the shortest possible string.
 ### Regex matchers
 
 Instead of using the default match rules for a group, you can use a regex for
-each group. This regex defines the matching rules for the group. Below is an
-example of a regex matcher on a named group that constrains the group to only
-match if it contains one or more digits:
+each group by including a regex in parentheses. This regex defines the matching
+rules for the group. Below is an example of a regex matcher on a named group
+that constrains the group to only match if it contains one or more digits:
 
 ```js
 const pattern = new URLPattern("/books/:id(\\d+)", "https://example.com");

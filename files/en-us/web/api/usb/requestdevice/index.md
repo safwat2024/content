@@ -8,7 +8,7 @@ status:
 browser-compat: api.USB.requestDevice
 ---
 
-{{APIRef("WebUSB API")}}{{SeeCompatTable}}{{securecontext_header}}
+{{APIRef("WebUSB API")}}{{SeeCompatTable}}{{SecureContext_Header}}{{AvailableInWorkers}}
 
 The **`requestDevice()`** method of the {{domxref("USB")}}
 interface returns a {{jsxref("Promise")}} that resolves with an instance of
@@ -24,10 +24,8 @@ requestDevice(filters)
 ### Parameters
 
 - `filters`
-
   - : An array of filter objects for possible devices you would like to pair. Each filter
     object can have the following properties:
-
     - `vendorId`
     - `productId`
     - `classCode`

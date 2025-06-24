@@ -40,7 +40,8 @@ When `getScreenDetails()` is invoked, the user will be asked for permission to m
 
 {{domxref("ScreenDetailed")}} objects inherit the properties of the {{domxref("Screen")}} interface, and contain useful information for placing windows on specific screens.
 
-> **Note:** You can gate functionality based on whether the user has more than one screen available using the {{domxref("Screen.isExtended", "Window.screen.isExtended")}} property. This returns `true` if the device has multiple screens, and `false` if not.
+> [!NOTE]
+> You can gate functionality based on whether the user has more than one screen available using the {{domxref("Screen.isExtended", "Window.screen.isExtended")}} property. This returns `true` if the device has multiple screens, and `false` if not.
 
 ### Opening windows
 
@@ -48,9 +49,9 @@ You'll still need to use {{domxref("Window.open()")}} to open and manage windows
 
 ```js
 // Array to hold references to the currently open windows
-let windowRefs = [];
+const windowRefs = [];
 
-// ...
+// …
 
 function openWindow(left, top, width, height, url) {
   const windowFeatures = `left=${left},top=${top},width=${width},height=${height}`;
@@ -93,7 +94,7 @@ openWindow(
   sites[1].url,
 );
 
-// ...
+// …
 ```
 
 ### Closing all windows
@@ -122,9 +123,11 @@ function checkWindowClose() {
 }
 ```
 
-> **Note:** In our experiments, the {{domxref("setInterval()")}} polling method shown above seemed to work best for detecting window closure in the case of multiple windows. Using events such as {{domxref("Window.beforeunload_event", "beforeunload")}}, {{domxref("Window.pagehide_event", "pagehide")}}, or {{domxref("Document.visibilitychange_event", "visibilitychange")}} proved unreliable because, when opening multiple windows at the same time, the rapid shift in focus/visibility seemed to fire the handler function prematurely.
+> [!NOTE]
+> In our experiments, the {{domxref("Window.setInterval", "setInterval()")}} polling method shown above seemed to work best for detecting window closure in the case of multiple windows. Using events such as {{domxref("Window/beforeunload_event", "beforeunload")}}, {{domxref("Window/pagehide_event", "pagehide")}}, or {{domxref("Document/visibilitychange_event", "visibilitychange")}} proved unreliable because, when opening multiple windows at the same time, the rapid shift in focus/visibility seemed to fire the handler function prematurely.
 
-> **Note:** One concern with the above example is that it uses constant values to represent the size of the Chrome window UI portions in the calculations — `WINDOW_CHROME_X` and `WINDOW_CHROME_Y` — to get the window size calculations correct. To create precisely-sized windows on other future implementations of the API, you'd need to keep a small library of browser chrome sizes, and employ browser detection to discover which browser is rendering your app and choose the correct size for calculations. Or you can rely on less precise window sizes.
+> [!NOTE]
+> One concern with the above example is that it uses constant values to represent the size of the Chrome window UI portions in the calculations — `WINDOW_CHROME_X` and `WINDOW_CHROME_Y` — to get the window size calculations correct. To create precisely-sized windows on other future implementations of the API, you'd need to keep a small library of browser chrome sizes, and employ browser detection to discover which browser is rendering your app and choose the correct size for calculations. Or you can rely on less precise window sizes.
 
 ### Handling browser popup blockers
 
@@ -137,7 +140,7 @@ In modern browsers, a separate user gesture event is required for each `Window.o
 In our demo application, we have gone for the third option. Our `openWindow()` function contains the following section:
 
 ```js
-// ...
+// …
 
 if (windowRef === null) {
   // If the browser is blocking new windows, close any windows that were
@@ -149,7 +152,7 @@ if (windowRef === null) {
   windowRefs.push(windowRef);
 }
 
-// ...
+// …
 ```
 
 If the browser blocks a new window, the resulting `windowRef` will be `null`. In this case we run our `closeAllWindows()` function to close any windows that _did_ manage to open before the blocking started, and show a [popover element](/en-US/docs/Web/API/Popover_API) that explains how to disable the popup blocker.

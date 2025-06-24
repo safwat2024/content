@@ -8,7 +8,7 @@ status:
 browser-compat: api.ServiceWorkerGlobalScope.periodicsync_event
 ---
 
-{{APIRef("Periodic Background Sync")}}{{SeeCompatTable}}
+{{APIRef("Periodic Background Sync")}}{{SeeCompatTable}}{{SecureContext_Header}}{{AvailableInWorkers("service")}}
 
 The **`periodicsync`** event of the {{domxref("ServiceWorkerGlobalScope")}} interface is fired at timed intervals, specified when registering a {{domxref('PeriodicSyncManager')}}.
 
@@ -18,10 +18,10 @@ This event is not cancelable and does not bubble.
 
 Use the event name in methods like {{domxref("EventTarget.addEventListener", "addEventListener()")}}, or set an event handler property.
 
-```js
-addEventListener("periodicsync", (event) => {});
+```js-nolint
+addEventListener("periodicsync", (event) => { })
 
-onperiodicsync = (event) => {};
+onperiodicsync = (event) => { }
 ```
 
 ## Event type
@@ -53,7 +53,7 @@ You can also set up the event handler using the `onperiodicsync` property:
 
 ```js
 self.onperiodicsync = (event) => {
-  // ...
+  // …
 };
 ```
 

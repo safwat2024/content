@@ -6,7 +6,7 @@ page-type: web-api-instance-property
 browser-compat: api.TextDecoder.encoding
 ---
 
-{{APIRef("Encoding API")}}
+{{APIRef("Encoding API")}}{{AvailableInWorkers}}
 
 The **`TextDecoder.encoding`** read-only property returns a string containing the name of the decoding algorithm used by the specific decoder object.
 
@@ -25,7 +25,7 @@ A lower-cased ASCII string, which can be one of the following values:
   ['iso-8859-5'](https://en.wikipedia.org/wiki/ISO/IEC_8859-5),
   ['iso-8859-6'](https://en.wikipedia.org/wiki/ISO/IEC_8859-6),
   ['iso-8859-7'](https://en.wikipedia.org/wiki/ISO/IEC_8859-7),
-  ['iso-8859-8'](https://en.wikipedia.org/wiki/ISO/IEC_8859-8)'`,
+  ['iso-8859-8'](https://en.wikipedia.org/wiki/ISO/IEC_8859-8),
   ['iso-8859-8i'](https://en.wikipedia.org/wiki/ISO-8859-8-I),
   ['iso-8859-10'](https://en.wikipedia.org/wiki/ISO/IEC_8859-10),
   ['iso-8859-13'](https://en.wikipedia.org/wiki/ISO/IEC_8859-13),

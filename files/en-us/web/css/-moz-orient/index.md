@@ -1,5 +1,5 @@
 ---
-title: "-moz-orient"
+title: -moz-orient
 slug: Web/CSS/-moz-orient
 page-type: css-property
 status:
@@ -17,9 +17,9 @@ The `-moz-orient` property is specified as one of the keyword values chosen from
 
 ### Values
 
-- `inline` {{non-standard_inline}}
+- `inline`
   - : The element is rendered in the same direction as the axis of the text: horizontally for horizontal writing modes, vertically for vertical writing modes.
-- `block` {{non-standard_inline}}
+- `block`
   - : The element is rendered orthogonally to the axis of the text: vertically for horizontal writing modes, horizontal for vertical writing modes.
 - `horizontal`
   - : The element is rendered horizontally.
@@ -32,10 +32,7 @@ The `-moz-orient` property is specified as one of the keyword values chosen from
 
 ## Formal syntax
 
-```plain
--moz-orient =
-  inline | block | horizontal | vertical
-```
+{{CSSSyntaxRaw(`-moz-orient = inline | block | horizontal | vertical`)}}
 
 ## Examples
 

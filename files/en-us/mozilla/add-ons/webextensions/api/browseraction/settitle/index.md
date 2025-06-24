@@ -20,17 +20,13 @@ browser.browserAction.setTitle(
 ### Parameters
 
 - `details`
-
   - : `object`. The new title and optionally the ID of the tab or window to target.
-
     - `title`
-
       - : `string` or `null`. The string the browser action should display when moused over.
 
         If `title` is an empty string, the used title will be the extension name, but {{WebExtAPIRef("browserAction.getTitle")}} will still provide the empty string.
 
         If `title` is `null`:
-
         - If `tabId` is specified, and the tab has a tab-specific title set, then the tab will inherit the title from the window to which it belongs.
         - if `windowId` is specified, and the window has a window-specific title set, then the window will inherit the global title.
         - Otherwise, the global title will be reset to the manifest title.
@@ -70,7 +66,8 @@ browser.browserAction.onClicked.addListener(() => {
 
 {{WebExtExamples}}
 
-> **Note:** This API is based on Chromium's [`chrome.browserAction`](https://developer.chrome.com/docs/extensions/reference/browserAction/#method-setTitle) API. This documentation is derived from [`browser_action.json`](https://chromium.googlesource.com/chromium/src/+/master/chrome/common/extensions/api/browser_action.json) in the Chromium code.
+> [!NOTE]
+> This API is based on Chromium's [`chrome.browserAction`](https://developer.chrome.com/docs/extensions/mv2/reference/browserAction#method-setTitle) API. This documentation is derived from [`browser_action.json`](https://chromium.googlesource.com/chromium/src/+/master/chrome/common/extensions/api/browser_action.json) in the Chromium code.
 
 <!--
 // Copyright 2015 The Chromium Authors. All rights reserved.

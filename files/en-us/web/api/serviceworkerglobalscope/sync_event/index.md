@@ -6,7 +6,7 @@ page-type: web-api-event
 browser-compat: api.ServiceWorkerGlobalScope.sync_event
 ---
 
-{{APIRef("Background Sync")}}
+{{APIRef("Background Sync")}}{{SecureContext_Header}}{{AvailableInWorkers("service")}}
 
 The **`sync`** event of the {{domxref("ServiceWorkerGlobalScope")}} interface is fired when the page (or worker) that registered the event with the {{domxref('SyncManager')}} is running and as soon as network connectivity is available.
 
@@ -16,10 +16,10 @@ This event is not cancelable and does not bubble.
 
 Use the event name in methods like {{domxref("EventTarget.addEventListener", "addEventListener()")}}, or set an event handler property.
 
-```js
-addEventListener("sync", (event) => {});
+```js-nolint
+addEventListener("sync", (event) => { })
 
-onsync = (event) => {};
+onsync = (event) => { }
 ```
 
 ## Event type
@@ -53,7 +53,7 @@ You can also set up the event handler using the `onsync` property:
 
 ```js
 self.onsync = (event) => {
-  // ...
+  // …
 };
 ```
 

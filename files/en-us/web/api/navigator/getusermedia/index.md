@@ -16,7 +16,8 @@ If permission is granted, a `MediaStream` whose video and/or audio tracks come f
 If permission is denied, no compatible input devices exist, or any other error condition occurs, the error callback is executed with an object describing what went wrong.
 If the user instead doesn't make a choice at all, neither callback is executed.
 
-> **Note:** This is a legacy method.
+> [!NOTE]
+> This is a legacy method.
 > Please use the newer {{domxref("MediaDevices.getUserMedia", "navigator.mediaDevices.getUserMedia()")}} instead.
 > While technically not deprecated, this old callback version is marked as such, since the specification strongly encourages using the newer promise returning version.
 
@@ -34,7 +35,6 @@ getUserMedia(constraints, successCallback, errorCallback)
     section under the modern {{domxref("MediaDevices.getUserMedia()")}} method, as well
     as the article [Capabilities, constraints, and settings](/en-US/docs/Web/API/Media_Capture_and_Streams_API/Constraints).
 - `successCallback`
-
   - : A function which is invoked when the request for media access is approved. The
     function is called with one parameter: the {{domxref("MediaStream")}} object that
     contains the media stream. Your callback can then assign the stream to the desired
@@ -94,9 +94,11 @@ if (navigator.getUserMedia) {
 }
 ```
 
-## Browser compatibility
+## Specifications
 
-> **Warning:** New code should use {{domxref("MediaDevices.getUserMedia")}} instead.
+{{Specifications}}
+
+## Browser compatibility
 
 {{Compat}}
 

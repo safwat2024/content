@@ -29,9 +29,7 @@ let gettingIcon = browser.downloads.getFileIcon(
 - `downloadId`
   - : An `integer` representing the ID of the download.
 - `options` {{optional_inline}}
-
   - : An options `object` representing preferences for the icon to be retrieved. It can take the following properties:
-
     - `size` {{optional_inline}}
       - : An `integer` representing the size of the icon. The returned icon's size will be the provided size squared (in pixels). If omitted, the default size for the icon is 32x32 pixels.
 
@@ -74,7 +72,8 @@ searching.then(getIcon, onError);
 
 {{WebExtExamples}}
 
-> **Note:** This API is based on Chromium's [`chrome.downloads`](https://developer.chrome.com/docs/extensions/reference/downloads/#method-getFileIcon) API.
+> [!NOTE]
+> This API is based on Chromium's [`chrome.downloads`](https://developer.chrome.com/docs/extensions/reference/api/downloads#method-getFileIcon) API.
 
 <!--
 // Copyright 2015 The Chromium Authors. All rights reserved.

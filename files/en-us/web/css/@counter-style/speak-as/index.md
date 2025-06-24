@@ -26,9 +26,7 @@ speak-as: <counter-style-name>;
 ### Values
 
 - `auto`
-
   - : If the value of `speak-as` is specified as `auto`, then the effective value of `speak-as` will be determined based on the value of the {{cssxref("@counter-style/system", "system")}} descriptor:
-
     - If the value of `system` is `alphabetic`, the effective value of `speak-as` will be `spell-out`.
     - If `system` is `cyclic`, the effective value of `speak-as` will be `bullets`.
     - If `system` is `extends`, the value of `speak-as` will be the same as if `speak-as: auto` is specified on the extended style.
@@ -45,7 +43,7 @@ speak-as: <counter-style-name>;
 - `<counter-style-name>`
   - : The name of another counter style, specified as a {{cssxref("&lt;custom-ident&gt;")}}. If included, the counter will be spoken out in the form specified in that counter style, kind of like specifying the {{cssxref("@counter-style/fallback", "fallback")}} descriptor. If the specified style does not exist, `speak-as` defaults to `auto`.
 
-## Accessibility concerns
+## Accessibility
 
 Assistive technology support is very limited for the `speak-as` property. Do not rely on it to convey information critical to understanding the page's purpose.
 
@@ -75,7 +73,7 @@ To experience the result of the `speak-as` descriptor, use assistive technology 
   <li>I ate two bananas</li>
   <li>I devoured three oranges</li>
   <li>I am not hungry for dinner</li>
-  <li>But I'll have five scopps of ice cream for desert</li>
+  <li>But I'll have five scoops of ice cream for dessert</li>
 </ul>
 ```
 

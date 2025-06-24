@@ -24,7 +24,8 @@ corresponding {{domxref("AudioWorkletNode")}}. In other words, every time a new 
 audio is ready for your processor to manipulate, your `process()` function is
 invoked to do so.
 
-> **Note:** Currently, audio data blocks are always 128 frames
+> [!NOTE]
+> Currently, audio data blocks are always 128 frames
 > long—that is, they contain 128 32-bit floating-point samples for each of the inputs'
 > channels. However, plans are already in place to revise the specification to allow the
 > size of the audio blocks to be changed depending on circumstances (for example, if the
@@ -44,7 +45,6 @@ process(inputs, outputs, parameters)
 ### Parameters
 
 - `inputs`
-
   - : An array of _inputs_ connected to the node, each item of which is, in turn,
     an array of _channels_. Each _channel_ is a {{jsxref("Float32Array")}}
     containing 128 samples. For example, `inputs[n][m][i]` will access
@@ -68,7 +68,6 @@ process(inputs, outputs, parameters)
     `process()` method. Each of the output channels is filled with zeros by
     default — the processor will output silence unless the output arrays are modified.
 - `parameters`
-
   - : An object containing string keys and {{jsxref("Float32Array")}} values. For each
     custom {{domxref("AudioParam")}} defined using the
     {{domxref("AudioWorkletProcessor.parameterDescriptors", "parameterDescriptors")}}
@@ -130,7 +129,8 @@ The 3 most common types of audio node are:
    _tail-time_ equal to its {{domxref("DelayNode.delayTime", "delayTime")}}
    property.
 
-> **Note:** An absence of the `return` statement means that the method returns `undefined`, and as this is a falsy value, it is like returning `false`.
+> [!NOTE]
+> An absence of the `return` statement means that the method returns `undefined`, and as this is a falsy value, it is like returning `false`.
 > Omitting an explicit `return` statement may cause hard-to-detect problems for your nodes.
 
 ### Exceptions

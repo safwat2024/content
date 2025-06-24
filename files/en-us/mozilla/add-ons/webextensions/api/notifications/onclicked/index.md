@@ -31,9 +31,7 @@ Events have three functions:
 ### Parameters
 
 - `listener`
-
   - : The function called when this event occurs. The function is passed this argument:
-
     - `notificationId`
       - : `string`. ID of the notification that the user clicked.
 
@@ -43,7 +41,7 @@ Events have three functions:
 
 ## Examples
 
-In this simple example we add a listener to the {{WebExtAPIRef("notifications.onClicked")}} event to listen for system notifications being clicked. When this occurs, we log an appropriate message to the console.
+In this simple example we add a listener to the `notifications.onClicked` event to listen for system notifications being clicked. When this occurs, we log an appropriate message to the console.
 
 ```js
 browser.notifications.onClicked.addListener((notificationId) => {
@@ -53,4 +51,5 @@ browser.notifications.onClicked.addListener((notificationId) => {
 
 {{WebExtExamples}}
 
-> **Note:** This API is based on Chromium's [`chrome.notifications`](https://developer.chrome.com/docs/extensions/reference/notifications/) API.
+> [!NOTE]
+> This API is based on Chromium's [`chrome.notifications`](https://developer.chrome.com/docs/extensions/reference/api/notifications) API.

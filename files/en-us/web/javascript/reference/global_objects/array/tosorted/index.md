@@ -1,5 +1,6 @@
 ---
 title: Array.prototype.toSorted()
+short-title: toSorted()
 slug: Web/JavaScript/Reference/Global_Objects/Array/toSorted
 page-type: javascript-instance-method
 browser-compat: javascript.builtins.Array.toSorted
@@ -19,13 +20,7 @@ toSorted(compareFn)
 ### Parameters
 
 - `compareFn` {{optional_inline}}
-
-  - : Specifies a function that defines the sort order. If omitted, the array elements are converted to strings, then sorted according to each character's Unicode code point value.
-
-    - `a`
-      - : The first element for comparison.
-    - `b`
-      - : The second element for comparison.
+  - : A function that determines the order of the elements. If omitted, the array elements are converted to strings, then sorted according to each character's Unicode code point value. See {{jsxref("Array/sort", "sort()")}} for more information.
 
 ### Return value
 
@@ -93,6 +88,7 @@ console.log(Array.prototype.toSorted.call(arrayLike));
 ## See also
 
 - [Polyfill of `Array.prototype.toSorted` in `core-js`](https://github.com/zloirock/core-js#change-array-by-copy)
+- [es-shims polyfill of `Array.prototype.toSorted`](https://www.npmjs.com/package/array.prototype.tosorted)
 - [Indexed collections](/en-US/docs/Web/JavaScript/Guide/Indexed_collections) guide
 - {{jsxref("Array.prototype.sort()")}}
 - {{jsxref("Array.prototype.toReversed()")}}

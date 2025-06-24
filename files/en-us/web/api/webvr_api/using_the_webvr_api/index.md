@@ -4,9 +4,10 @@ slug: Web/API/WebVR_API/Using_the_WebVR_API
 page-type: guide
 ---
 
-{{APIRef("WebVR API")}}{{deprecated_header}}
+{{DefaultAPISidebar("WebVR API")}}{{deprecated_header}}
 
-> **Note:** WebVR API is replaced by [WebXR API](/en-US/docs/Web/API/WebXR_Device_API). WebVR was never ratified as a standard, was implemented and enabled by default in very few browsers and supported a small number of devices.
+> [!NOTE]
+> WebVR API is replaced by [WebXR API](/en-US/docs/Web/API/WebXR_Device_API). WebVR was never ratified as a standard, was implemented and enabled by default in very few browsers and supported a small number of devices.
 
 The WebVR API is a fantastic addition to the web developer's toolkit, allowing WebGL scenes to be presented in virtual reality displays such as the Oculus Rift and HTC Vive. But how do you get started with developing VR apps for the Web? This article will guide you through the basics.
 
@@ -15,11 +16,10 @@ The WebVR API is a fantastic addition to the web developer's toolkit, allowing W
 To get started, you need:
 
 - Supporting VR hardware.
-
-  - The cheapest option is to use a mobile device, supporting browser, and device mount (e.g. Google Cardboard). This won't be quite as good an experience as dedicated hardware, but you won't need to purchase a powerful computer or dedicated VR display.
+  - The cheapest option is to use a mobile device, supporting browser, and device mount (e.g., Google Cardboard). This won't be quite as good an experience as dedicated hardware, but you won't need to purchase a powerful computer or dedicated VR display.
   - Dedicated hardware can be costly, but it does provide a better experience. The most WebVR-compatible hardware at the moment is the HTC VIVE, and The Oculus Rift. The front page of [webvr.info](https://webvr.info/) has some further useful information about available hardware, and what browser support them.
 
-- A computer powerful enough to handle rendering/displaying of VR scenes using your dedicated VR Hardware, if required. To give you an idea of what you need, look at the relevant guide for the VR you are purchasing (e.g. [VIVE READY Computers](https://www.vive.com/us/ready/)).
+- A computer powerful enough to handle rendering/displaying of VR scenes using your dedicated VR Hardware, if required. To give you an idea of what you need, look at the relevant guide for the VR you are purchasing (e.g., [VIVE READY Computers](https://www.vive.com/us/vive-ready/)).
 - A supporting browser installed — the latest [Firefox Nightly](https://www.mozilla.org/en-US/firefox/channel/desktop/) or [Chrome](https://www.google.com/chrome/index.html) are your best options right now, on desktop or mobile.
 
 Once you have everything assembled, you can test to see whether your setup works with WebVR by going to our [simple A-Frame demo](https://mdn.github.io/webvr-tests/webvr/aframe-demo/), and seeing whether the scene renders and whether you can enter VR display mode by pressing the button at the bottom right.
@@ -32,20 +32,23 @@ To illustrate how the WebVR API works, we'll study our raw-webgl-example, which 
 
 ![A gray rotating 3D cube](capture1.png)
 
-> **Note:** You can find the [source code of our demo](https://github.com/mdn/webvr-tests/tree/main/webvr/raw-webgl-example) on GitHub, and [view it live](https://mdn.github.io/webvr-tests/webvr/raw-webgl-example/) also.
+> [!NOTE]
+> You can find the [source code of our demo](https://github.com/mdn/webvr-tests/tree/main/webvr/raw-webgl-example) on GitHub, and [view it live](https://mdn.github.io/webvr-tests/webvr/raw-webgl-example/) also.
 
-> **Note:** If WebVR isn't working in your browser, you might need to make sure it is running through your graphics card. For example for NVIDIA cards, if you've got the NVIDIA control panel set up successfully, there will be a context menu option available — right click on Firefox, then choose _Run with graphics processor > High-performance NVIDIA processor_.
+> [!NOTE]
+> If WebVR isn't working in your browser, you might need to make sure it is running through your graphics card. For example for NVIDIA cards, if you've got the NVIDIA control panel set up successfully, there will be a context menu option available — right click on Firefox, then choose _Run with graphics processor > High-performance NVIDIA processor_.
 
 Our demo features the holy grail of WebGL demos — a rotating 3D cube. We've implemented this using raw [WebGL API](/en-US/docs/Web/API/WebGL_API) code. We won't be teaching any basic JavaScript or WebGL, just the WebVR parts.
 
 Our demo also features:
 
 - A button to start (and stop) our scene from being presented in the VR display.
-- A button to show (and hide) VR pose data, i.e. the position and orientation of the headset, updated in real time.
+- A button to show (and hide) VR pose data, i.e., the position and orientation of the headset, updated in real time.
 
 When you look through the source code of [our demo's main JavaScript file](https://github.com/mdn/webvr-tests/blob/main/webvr/raw-webgl-example/webgl-demo.js), you can easily find the WebVR-specific parts by searching for the string "WebVR" in preceding comments.
 
-> **Note:** To find out more about basic JavaScript and WebGL, consult our [JavaScript learning material](/en-US/docs/Learn/JavaScript), and our [WebGL Tutorial](/en-US/docs/Web/API/WebGL_API/Tutorial).
+> [!NOTE]
+> To find out more about basic JavaScript and WebGL, consult our [JavaScript learning material](/en-US/docs/Learn_web_development/Core/Scripting), and our [WebGL Tutorial](/en-US/docs/Web/API/WebGL_API/Tutorial).
 
 ## How does it work?
 
@@ -110,9 +113,9 @@ To begin with, `start()` retrieves a WebGL context to use to render 3D graphics 
 
 ```js
 function start() {
-  canvas = document.getElementById("glcanvas");
+  canvas = document.getElementById("gl-canvas");
 
-  initWebGL(canvas);      // Initialize the GL context
+  initWebGL(canvas); // Initialize the GL context
 
   // WebGL setup code here
 ```
@@ -132,7 +135,7 @@ Now onto our first WebVR-specific code. First of all, we check to see if {{domxr
 ```js
   // WebVR: Check to see if WebVR is supported
   if (navigator.getVRDisplays) {
-    console.log('WebVR 1.1 supported');
+    console.log("WebVR 1.1 supported");
 ```
 
 Inside our `if () { }` block, we run the {{domxref("Navigator.getVRDisplays()")}} function. This returns a promise, which is fulfilled with an array containing all the VR display devices connected to the computer. If none are connected, the array will be empty.
@@ -148,10 +151,11 @@ Inside the promise `then()` block, we check whether the array length is more tha
       // If a display is available, use it to present the scene
       if (displays.length > 0) {
         vrDisplay = displays[0];
-        console.log('Display found');
+        console.log("Display found");
 ```
 
-> **Note:** It is unlikely that you'll have multiple VR displays connected to your computer, and this is just a simple demo, so this will do for now.
+> [!NOTE]
+> It is unlikely that you'll have multiple VR displays connected to your computer, and this is just a simple demo, so this will do for now.
 
 ### Starting and stopping the VR presentation
 
@@ -167,10 +171,10 @@ Since the maximum number of layers you can display is currently 1, and the only 
 
 ```js
         // Starting the presentation when the button is clicked: It can only be called in response to a user gesture
-        btn.addEventListener('click', () => {
-          if (btn.textContent === 'Start VR display') {
+        btn.addEventListener("click", () => {
+          if (btn.textContent === "Start VR display") {
             vrDisplay.requestPresent([{ source: canvas }]).then(() => {
-              console.log('Presenting to WebVR display');
+              console.log("Presenting to WebVR display");
 ```
 
 With our presentation request successful, we now want to start setting up to render content to present to the VRDisplay. First of all we set the canvas to the same size as the VR display area. We do this by getting the {{domxref("VREyeParameters")}} for both eyes using {{domxref("VRDisplay.getEyeParameters()")}}.
@@ -187,7 +191,7 @@ canvas.width = Math.max(leftEye.renderWidth, rightEye.renderWidth) * 2;
 canvas.height = Math.max(leftEye.renderHeight, rightEye.renderHeight);
 ```
 
-Next, we {{domxref("Window.cancelAnimationFrame()", "cancel the animation loop")}} previously set in motion by the {{domxref("Window.requestAnimationFrame()")}} call inside the `drawScene()` function, and instead invoke `drawVRScene()`. This function renders the same scene as before, but with some special WebVR magic going on. The loop inside here is maintained by WebVR's special {{domxref("VRDisplay.requestAnimationFrame")}} method.
+Next, we [cancel the animation loop](/en-US/docs/Web/API/Window/cancelAnimationFrame) previously set in motion by the {{domxref("Window.requestAnimationFrame()")}} call inside the `drawScene()` function, and instead invoke `drawVRScene()`. This function renders the same scene as before, but with some special WebVR magic going on. The loop inside here is maintained by WebVR's special {{domxref("VRDisplay.requestAnimationFrame")}} method.
 
 ```js
 // stop the normal presentation, and start the vr presentation
@@ -198,7 +202,7 @@ drawVRScene();
 Finally, we update the button text so that the next time it is pressed, it will stop presentation to the VR display.
 
 ```js
-              btn.textContent = 'Exit VR display';
+              btn.textContent = "Exit VR display";
             });
 ```
 
@@ -207,9 +211,9 @@ To stop the VR presentation when the button is subsequently pressed, we call {{d
 ```js
           } else {
             vrDisplay.exitPresent();
-            console.log('Stopped presenting to WebVR display');
+            console.log("Stopped presenting to WebVR display");
 
-            btn.textContent = 'Start VR display';
+            btn.textContent = "Start VR display";
 
             // Stop the VR presentation, and start the normal presentation
             vrDisplay.cancelAnimationFrame(vrSceneFrame);
@@ -219,7 +223,7 @@ To stop the VR presentation when the button is subsequently pressed, we call {{d
       }
     });
   } else {
-    console.log('WebVR API not supported by this browser.');
+    console.log("WebVR API not supported by this browser.");
   }
 }
 ```
@@ -460,7 +464,7 @@ You should note that we've used a conditional expression to detect whether the l
 
 The WebVR spec features a number of events that are fired, allowing our app code to react to changes in the state of the VR display (see [Window events](/en-US/docs/Web/API/WebVR_API#window_events)). For example:
 
-- {{domxref("Window/vrdisplaypresentchange_event", "vrdisplaypresentchange")}} — Fires when the presenting state of a VR display changes — i.e. goes from presenting to not presenting, or vice versa.
+- {{domxref("Window/vrdisplaypresentchange_event", "vrdisplaypresentchange")}} — Fires when the presenting state of a VR display changes — i.e., goes from presenting to not presenting, or vice versa.
 - {{domxref("Window.vrdisplayconnect_event", "vrdisplayconnect")}} — Fires when a compatible VR display has been connected to the computer.
 - {{domxref("Window.vrdisplaydisconnect_event", "vrdisplaydisconnect")}} — Fires when a compatible VR display has been disconnected from the computer.
 
@@ -474,9 +478,9 @@ window.addEventListener("vrdisplaypresentchange", (e) => {
 });
 ```
 
-As you can see, the {{domxref("VRDisplayEvent", "event object")}} provides two useful properties — {{domxref("VRDisplayEvent.display")}}, which contains a reference to the {{domxref("VRDisplay")}} the event was fired in response to, and {{domxref("VRDisplayEvent.reason")}}, which contains a human-readable reason why the event was fired.
+As you can see, the {{domxref("VRDisplayEvent")}} object provides two useful properties — {{domxref("VRDisplayEvent.display")}}, which contains a reference to the {{domxref("VRDisplay")}} the event was fired in response to, and {{domxref("VRDisplayEvent.reason")}}, which contains a human-readable reason why the event was fired.
 
-This is a very useful event; you could use it to handle cases where the display gets disconnected unexpectedly, stopping errors from being thrown and making sure the user is aware of the situation. In Google's Webvr.info presentation demo, the event is used to run an [`onVRPresentChange()` function](https://github.com/toji/webvr.info/blob/master/samples/03-vr-presentation.html#L174), which updates the UI controls as appropriate and resizes the canvas.
+This is a very useful event; you could use it to handle cases where the display gets disconnected unexpectedly, stopping errors from being thrown and making sure the user is aware of the situation. In Google's webvr.info presentation demo, the event is used to run an [`onVRPresentChange()` function](https://github.com/toji/webvr.info/blob/master/samples/03-vr-presentation.html#L174), which updates the UI controls as appropriate and resizes the canvas.
 
 ## Summary
 

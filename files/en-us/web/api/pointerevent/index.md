@@ -24,10 +24,12 @@ A pointer's _hit test_ is the process a browser uses to determine the target ele
 
 _This interface inherits properties from {{domxref("MouseEvent")}} and {{domxref("Event")}}._
 
-- {{domxref('PointerEvent.altitudeAngle')}} {{ReadOnlyInline}} {{experimental_inline}}
+- {{domxref('PointerEvent.altitudeAngle')}} {{ReadOnlyInline}}
   - : Represents the angle between a transducer (a pointer or stylus) axis and the X-Y plane of a device screen.
-- {{domxref('PointerEvent.azimuthAngle')}} {{ReadOnlyInline}} {{experimental_inline}}
+- {{domxref('PointerEvent.azimuthAngle')}} {{ReadOnlyInline}}
   - : Represents the angle between the Y-Z plane and the plane containing both the transducer (a pointer or stylus) axis and the Y axis.
+- {{domxref('PointerEvent.persistentDeviceId')}} {{ReadOnlyInline}} {{experimental_inline}}
+  - : A unique identifier for the pointing device generating the `PointerEvent`.
 - {{domxref('PointerEvent.pointerId')}} {{ReadOnlyInline}}
   - : A unique identifier for the pointer causing the event.
 - {{domxref('PointerEvent.width')}} {{ReadOnlyInline}}
@@ -39,11 +41,11 @@ _This interface inherits properties from {{domxref("MouseEvent")}} and {{domxref
 - {{domxref('PointerEvent.tangentialPressure')}} {{ReadOnlyInline}}
   - : The normalized tangential pressure of the pointer input (also known as barrel pressure or [cylinder stress](https://en.wikipedia.org/wiki/Cylinder_stress)) in the range `-1` to `1`, where `0` is the neutral position of the control.
 - {{domxref('PointerEvent.tiltX')}} {{ReadOnlyInline}}
-  - : The plane angle (in degrees, in the range of `-90` to `90`) between the Y–Z plane and the plane containing both the pointer (e.g. pen stylus) axis and the Y axis.
+  - : The plane angle (in degrees, in the range of `-90` to `90`) between the Y–Z plane and the plane containing both the pointer (e.g., pen stylus) axis and the Y axis.
 - {{domxref('PointerEvent.tiltY')}} {{ReadOnlyInline}}
-  - : The plane angle (in degrees, in the range of `-90` to `90`) between the X–Z plane and the plane containing both the pointer (e.g. pen stylus) axis and the X axis.
+  - : The plane angle (in degrees, in the range of `-90` to `90`) between the X–Z plane and the plane containing both the pointer (e.g., pen stylus) axis and the X axis.
 - {{domxref('PointerEvent.twist')}} {{ReadOnlyInline}}
-  - : The clockwise rotation of the pointer (e.g. pen stylus) around its major axis in degrees, with a value in the range `0` to `359`.
+  - : The clockwise rotation of the pointer (e.g., pen stylus) around its major axis in degrees, with a value in the range `0` to `359`.
 - {{domxref('PointerEvent.pointerType')}} {{ReadOnlyInline}}
   - : Indicates the device type that caused the event (mouse, pen, touch, etc.).
 - {{domxref('PointerEvent.isPrimary')}} {{ReadOnlyInline}}
@@ -51,7 +53,7 @@ _This interface inherits properties from {{domxref("MouseEvent")}} and {{domxref
 
 ## Instance methods
 
-- {{DOMxRef('PointerEvent.getCoalescedEvents()')}}
+- {{DOMxRef('PointerEvent.getCoalescedEvents()')}} {{SecureContext_Inline}}
   - : Returns a sequence of all `PointerEvent` instances that were coalesced into the dispatched {{domxref("Element/pointermove_event", "pointermove")}} event.
 - {{DOMxRef('PointerEvent.getPredictedEvents()')}}
   - : Returns a sequence of `PointerEvent` instances that the browser predicts will follow the dispatched {{domxref("Element/pointermove_event", "pointermove")}} event's coalesced events.
@@ -60,17 +62,18 @@ _This interface inherits properties from {{domxref("MouseEvent")}} and {{domxref
 
 The `PointerEvent` interface has several event types. To determine which event fired, look at the event's {{domxref("Event.type", "type")}} property.
 
-> **Note:** It's important to note that in many cases, both pointer and mouse events get sent (in order to let non-pointer-specific code still interact with the user). If you use pointer events, you should call {{domxref("Event.preventDefault()", "preventDefault()")}} to keep the mouse event from being sent as well.
+> [!NOTE]
+> It's important to note that in many cases, both pointer and mouse events get sent (in order to let non-pointer-specific code still interact with the user). If you use pointer events, you should call {{domxref("Event.preventDefault()", "preventDefault()")}} to keep the mouse event from being sent as well.
 
 - {{domxref('Element/pointerover_event', 'pointerover')}}
   - : This event is fired when a pointing device is moved into an element's hit test boundaries.
 - {{domxref('Element/pointerenter_event', 'pointerenter')}}
   - : This event is fired when a pointing device is moved into the hit test boundaries of an element or one of its descendants, including as a result of a `pointerdown` event from a device that does not support hover (see `pointerdown`). This event type is similar to `pointerover`, but differs in that it does not bubble.
 - {{domxref('Element/pointerdown_event', 'pointerdown')}}
-
   - : The event is fired when a pointer becomes _active_. For mouse, it is fired when the device transitions from no buttons pressed to at least one button pressed. For touch, it is fired when physical contact is made with the digitizer. For pen, it is fired when the stylus makes physical contact with the digitizer.
 
-    > **Note:** For touchscreen browsers that allow [direct manipulation](https://w3c.github.io/pointerevents/#dfn-direct-manipulation), a `pointerdown` event triggers [implicit pointer capture](https://w3c.github.io/pointerevents/#dfn-implicit-pointer-capture), which causes the target to capture all subsequent pointer events as if they were occurring over the capturing target. Accordingly, `pointerover`, `pointerenter`, `pointerleave`, and `pointerout` **will not fire** as long as this capture is set. The capture can be released manually by calling {{ domxref('element.releasePointerCapture') }} on the target element, or it will be implicitly released after a `pointerup` or `pointercancel` event.
+    > [!NOTE]
+    > For touchscreen browsers that allow [direct manipulation](https://w3c.github.io/pointerevents/#dfn-direct-manipulation), a `pointerdown` event triggers [implicit pointer capture](https://w3c.github.io/pointerevents/#dfn-implicit-pointer-capture), which causes the target to capture all subsequent pointer events as if they were occurring over the capturing target. Accordingly, `pointerover`, `pointerenter`, `pointerleave`, and `pointerout` **will not fire** as long as this capture is set. The capture can be released manually by calling {{ domxref('element.releasePointerCapture') }} on the target element, or it will be implicitly released after a `pointerup` or `pointercancel` event.
 
 - {{domxref('Element/pointermove_event', 'pointermove')}}
   - : This event is fired when a pointer changes coordinates.
@@ -103,6 +106,6 @@ Examples of each property, event type, and global event handler are included in 
 
 ## See also
 
-- {{domxref("Touch_events","Touch Events")}}
+- [Touch events](/en-US/docs/Web/API/Touch_events)
 - {{domxref("GestureEvent")}}
 - {{cssxref("touch-action")}}

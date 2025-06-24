@@ -33,13 +33,9 @@ Events have three functions:
 ### Parameters
 
 - `listener`
-
   - : The function called when this event occurs. The function is passed these arguments:
-
     - `details`
-
       - : An `object` containing details of the change that occurred. Its properties are as follows:
-
         - `value`
           - : The new value of the setting. The type of this property is determined by the particular setting.
         - `levelOfControl`
@@ -75,7 +71,8 @@ Events have three functions:
 
 {{WebExtExamples}}
 
-> **Note:** This API is based on Chromium's [`chrome.types`](https://developer.chrome.com/docs/extensions/reference/types/) API.
+> [!NOTE]
+> This API is based on Chromium's [`chrome.types`](https://developer.chrome.com/docs/extensions/reference/api/types) API.
 
 <!--
 // Copyright 2015 The Chromium Authors. All rights reserved.

@@ -11,7 +11,7 @@ spec-urls:
 
 {{CSSRef}}
 
-The **`<custom-ident>`** [CSS](/en-US/docs/Web/CSS) [data type](/en-US/docs/Web/CSS/CSS_Types) denotes an arbitrary user-defined string used as an {{glossary("identifier")}}. It is case-sensitive, and certain values are forbidden in various contexts to prevent ambiguity.
+The **`<custom-ident>`** [CSS](/en-US/docs/Web/CSS) [data type](/en-US/docs/Web/CSS/CSS_Values_and_Units/CSS_data_types) denotes an arbitrary user-defined string used as an {{glossary("identifier")}}. It is case-sensitive, and certain values are forbidden in various contexts to prevent ambiguity.
 
 ## Syntax
 
@@ -54,15 +54,12 @@ To prevent ambiguity, each property that uses `<custom-ident>` forbids the use o
 - {{CSSxRef("counter-reset")}}, {{CSSxRef("counter-increment")}}
   - : Forbids the global CSS values (`unset`, `initial`, and `inherit`), as well as `none`.
 - {{CSSxRef("@counter-style")}}, {{CSSxRef("list-style-type")}}
-
   - : Forbids the global CSS values (`unset`, `initial`, and `inherit`), as well as the values:
-
     - `none`
     - `inline`
     - `outside`
 
     Also, quite a few predefined values are implemented by the different browsers:
-
     - `disc`
     - `circle`
     - `square`
@@ -119,8 +116,8 @@ To prevent ambiguity, each property that uses `<custom-ident>` forbids the use o
     - `disclosure-open`
     - `disclosure-close`
 
-- {{CSSxRef("grid-row-start")}}, {{CSSxRef("grid-row-end")}}, {{CSSxRef("grid-column-start")}}, {{CSSxRef("grid-column-end")}}
-  - : Forbids the `span` value.
+- {{CSSxRef("grid-row-start")}}, {{CSSxRef("grid-row-end")}}, {{CSSxRef("grid-column-start")}}, {{CSSxRef("grid-column-end")}}, {{CSSxRef("grid-template-rows")}}, {{CSSxRef("grid-template-columns")}}
+  - : Forbids the `span` and `auto` values.
 - {{CSSxRef("view-transition-name")}}
   - : Forbids the global CSS values (`unset`, `initial`, and `inherit`), as well as `none`.
 - {{CSSxRef("will-change")}}
@@ -136,7 +133,7 @@ ground-level      A mix of alphanumeric characters and a dash
 -test             A dash followed by alphanumeric characters
 _internal         An underscore followed by alphanumeric characters
 \22 toto          A Unicode character followed by a sequence of alphanumeric characters
-bili\.bob         A correctly escaped period
+scooby\.doo       A correctly escaped period
 ```
 
 ### Invalid identifiers
@@ -144,9 +141,9 @@ bili\.bob         A correctly escaped period
 ```plain example-bad
 34rem             It must not start with a decimal digit.
 -12rad            It must not start with a dash followed by a decimal digit.
-bili.bob          Only alphanumeric characters, _, and - needn't be escaped.
-'bilibob'         This would be a <string>.
-"bilibob"         This would be a <string>.
+scooby.doo        Only alphanumeric characters, _, and - needn't be escaped.
+'scoobyDoo'       This would be a <string>.
+"scoobyDoo"       This would be a <string>.
 ```
 
 ## Specifications

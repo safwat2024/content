@@ -148,7 +148,8 @@ The whole thing is wrapped in a test that checks whether `getUserMedia` is suppo
 - **The success callback**: This code is run once the `getUserMedia` call has been completed successfully.
 - **The error/failure callback**: The code is run if the `getUserMedia` call fails for whatever reason.
 
-> **Note:** All of the code below is placed inside the `getUserMedia` success callback.
+> [!NOTE]
+> All of the code below is placed inside the `getUserMedia` success callback.
 
 ## Capturing the media stream
 
@@ -182,7 +183,8 @@ mediaRecorder.ondataavailable = (e) => {
 };
 ```
 
-> **Note:** The browser will fire `dataavailable` events as needed, but if you want to intervene you can also include a timeslice when invoking the `start()` method — for example `start(10000)` — to control this interval, or call {{domxref("MediaRecorder.requestData()")}} to trigger an event when you need it.
+> [!NOTE]
+> The browser will fire `dataavailable` events as needed, but if you want to intervene you can also include a timeslice when invoking the `start()` method — for example `start(10000)` — to control this interval, or call {{domxref("MediaRecorder.requestData()")}} to trigger an event when you need it.
 
 Lastly, we use the {{domxref("MediaRecorder.stop()")}} method to stop the recording when the stop button is pressed, and finalize the {{domxref("Blob")}} ready for use somewhere else in our application.
 
@@ -196,7 +198,7 @@ stop.onclick = () => {
 };
 ```
 
-Note that the recording may also stop naturally if the media stream ends (e.g. if you were grabbing a song track and the track ended, or the user stopped sharing their microphone).
+Note that the recording may also stop naturally if the media stream ends (e.g., if you were grabbing a song track and the track ended, or the user stopped sharing their microphone).
 
 ## Grabbing and using the blob
 
@@ -215,8 +217,8 @@ mediaRecorder.onstop = (e) => {
 
   clipContainer.classList.add("clip");
   audio.setAttribute("controls", "");
-  deleteButton.innerHTML = "Delete";
-  clipLabel.innerHTML = clipName;
+  deleteButton.textContent = "Delete";
+  clipLabel.textContent = clipName;
 
   clipContainer.appendChild(audio);
   clipContainer.appendChild(clipLabel);
@@ -249,7 +251,7 @@ Next, we create an HTML structure like the following, inserting it into our clip
 </article>
 ```
 
-After that, we create a combined {{domxref("Blob")}} out of the recorded audio chunks, and create an object URL pointing to it, using `window.URL.createObjectURL(blob)`. We then set the value of the {{HTMLElement("audio")}} element's [`src`](/en-US/docs/Web/HTML/Element/audio#src) attribute to the object URL, so that when the play button is pressed on the audio player, it will play the `Blob`.
+After that, we create a combined {{domxref("Blob")}} out of the recorded audio chunks, and create an object URL pointing to it, using `window.URL.createObjectURL(blob)`. We then set the value of the {{HTMLElement("audio")}} element's [`src`](/en-US/docs/Web/HTML/Reference/Elements/audio#src) attribute to the object URL, so that when the play button is pressed on the audio player, it will play the `Blob`.
 
 Finally, we set an `onclick` handler on the delete button to be a function that deletes the whole clip HTML structure.
 

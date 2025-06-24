@@ -2,18 +2,51 @@
 title: radial-gradient()
 slug: Web/CSS/gradient/radial-gradient
 page-type: css-function
-browser-compat: css.types.image.gradient.radial-gradient
+browser-compat: css.types.gradient.radial-gradient
 ---
 
 {{CSSRef}}
 
-The **`radial-gradient()`** [CSS](/en-US/docs/Web/CSS) [function](/en-US/docs/Web/CSS/CSS_Functions) creates an image consisting of a progressive transition between two or more colors that radiate from an origin. Its shape may be a circle or an ellipse. The function's result is an object of the {{cssxref("&lt;gradient&gt;")}} data type, which is a special kind of {{cssxref("&lt;image&gt;")}}.
+The **`radial-gradient()`** [CSS](/en-US/docs/Web/CSS) [function](/en-US/docs/Web/CSS/CSS_Values_and_Units/CSS_Value_Functions) creates an image consisting of a progressive transition between two or more colors that radiate from an origin. Its shape may be a circle or an ellipse. The function's result is an object of the {{cssxref("&lt;gradient&gt;")}} data type, which is a special kind of {{cssxref("&lt;image&gt;")}}.
 
-{{EmbedInteractiveExample("pages/css/function-radial-gradient.html")}}
+{{InteractiveExample("CSS Demo: radial-gradient()")}}
+
+```css interactive-example-choice
+background: radial-gradient(#e66465, #9198e5);
+```
+
+```css interactive-example-choice
+background: radial-gradient(closest-side, #3f87a6, #ebf8e1, #f69d3c);
+```
+
+```css interactive-example-choice
+background: radial-gradient(circle at 100%, #333, #333 50%, #eee 75%, #333 75%);
+```
+
+```css interactive-example-choice
+background:
+  radial-gradient(ellipse at top, #e66465, transparent),
+  radial-gradient(ellipse at bottom, #4d9f0c, transparent);
+```
+
+```html interactive-example
+<section class="display-block" id="default-example">
+  <div id="example-element"></div>
+</section>
+```
+
+```css interactive-example
+#example-element {
+  min-height: 100%;
+}
+```
 
 ## Syntax
 
 ```css
+/* A gradient with a single color of red */
+radial-gradient(red)
+
 /* A gradient at the center of its container,
    starting red, changing to blue, and finishing green */
 radial-gradient(circle at center, red 0, blue, green 100%)
@@ -31,7 +64,6 @@ A radial gradient is specified by indicating the center of the gradient (where t
 - `<ending-shape>`
   - : The gradient's ending-shape. The value can be `circle` (meaning that the gradient's shape is a circle with a constant radius) or `ellipse` (meaning that the shape is an axis-aligned ellipse). If unspecified, it defaults to `ellipse`.
 - `<size>`
-
   - : Determines the size of the gradient's ending shape. If omitted it defaults to farthest-corner. It can be given explicitly or by keyword. For the purpose of the keyword definitions, consider the gradient box edges as extending infinitely in both directions, rather than being finite line segments.
 
     Both circle and ellipse gradients accept the following keywords for their `<size>`:
@@ -47,7 +79,7 @@ A radial gradient is specified by indicating the center of the gradient (where t
 
     If `<ending-shape>` is specified as `ellipse`, the size may be given as a {{cssxref("length-percentage")}} with two values to provide an explicit ellipse size. The first value represents the horizontal radius and the second is the vertical radius. Percentage values are relative to the corresponding dimension of the gradient box. Negative values are invalid.
 
-    When the `<ending-shape>` keyword is omitted, the gradient shape is determined by the size given. One `<length>` value provides a circle, while two values in `<length-percentage>`units provide an ellipse. A single `<percentage>` value is not valid.
+    When the `<ending-shape>` keyword is omitted, the gradient shape is determined by the size given. One `<length>` value provides a circle, while two values in `<length-percentage>` units provide an ellipse. A single `<percentage>` value is not valid.
 
 - `<linear-color-stop>`
   - : A color-stop's {{cssxref("&lt;color&gt;")}} value, followed by one or two optional stop positions (either a {{cssxref("&lt;percentage&gt;")}} or a {{cssxref("&lt;length&gt;")}} along the gradient's axis). A percentage of `0%`, or a length of `0`, represents the center of the gradient; the value `100%` represents the intersection of the ending shape with the virtual gradient ray. Percentage values in between are linearly positioned on the gradient ray. Including two stop positions is equivalent to declaring two color stops with the same color at the two positions.
@@ -78,7 +110,7 @@ Color-stop points are positioned on a _virtual gradient ray_ that extends horizo
 
 ## Examples
 
-### Simple gradient
+### Basic gradient
 
 ```html hidden
 <div class="radial-gradient"></div>
@@ -97,7 +129,7 @@ Color-stop points are positioned on a _virtual gradient ray_ that extends horizo
 }
 ```
 
-{{EmbedLiveSample('Simple_gradient', 120, 120)}}
+{{EmbedLiveSample('Basic_gradient', 120, 120)}}
 
 ### Non-centered gradient
 

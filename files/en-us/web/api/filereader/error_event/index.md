@@ -8,7 +8,7 @@ browser-compat: api.FileReader.error_event
 
 {{APIRef("File API")}}{{AvailableInWorkers}}
 
-The **`error`** event is fired when the read failed due to an error (for example, because the file was not found or not readable).
+The **`error`** event of the {{domxref("FileReader")}} interface is fired when the read failed due to an error (for example, because the file was not found or not readable).
 
 This event is not cancelable and does not bubble.
 
@@ -16,10 +16,10 @@ This event is not cancelable and does not bubble.
 
 Use the event name in methods like {{domxref("EventTarget.addEventListener", "addEventListener()")}}, or set an event handler property.
 
-```js
-addEventListener("error", (event) => {});
+```js-nolint
+addEventListener("error", (event) => { })
 
-onerror = (event) => {};
+onerror = (event) => { }
 ```
 
 ## Event type

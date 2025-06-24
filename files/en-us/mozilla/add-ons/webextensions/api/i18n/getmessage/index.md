@@ -23,14 +23,11 @@ browser.i18n.getMessage(
 ### Parameters
 
 - `messageName`
-
   - : `string`. The name of the message, as specified in the messages.json file. If the message can't be found in messages.json:
-
     - Firefox returns "" and logs an error.
     - Chrome returns "" and does not log an error.
 
 - `substitutions` {{optional_inline}}
-
   - : `string` or `array` of `string`. A single substitution string, or an array of substitution strings.
 
     In Chrome, if you supply more than 9 substitution strings, `getMessage()` will return `undefined`.
@@ -77,7 +74,8 @@ If `target.url` is "https\://developer.mozilla.org", then the value of message, 
 
 {{WebExtExamples}}
 
-> **Note:** This API is based on Chromium's [`chrome.i18n`](https://developer.chrome.com/docs/extensions/reference/i18n/#method-getMessage) API. This documentation is derived from [`i18n.json`](https://chromium.googlesource.com/chromium/src/+/refs/heads/main/extensions/common/api/i18n.json) in the Chromium code.
+> [!NOTE]
+> This API is based on Chromium's [`chrome.i18n`](https://developer.chrome.com/docs/extensions/reference/api/i18n#method-getMessage) API. This documentation is derived from [`i18n.json`](https://chromium.googlesource.com/chromium/src/+/refs/heads/main/extensions/common/api/i18n.json) in the Chromium code.
 
 <!--
 // Copyright 2015 The Chromium Authors. All rights reserved.

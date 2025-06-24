@@ -1,5 +1,6 @@
 ---
 title: BigUint64Array() constructor
+short-title: BigUint64Array()
 slug: Web/JavaScript/Reference/Global_Objects/BigUint64Array/BigUint64Array
 page-type: javascript-constructor
 browser-compat: javascript.builtins.BigUint64Array.BigUint64Array
@@ -7,7 +8,7 @@ browser-compat: javascript.builtins.BigUint64Array.BigUint64Array
 
 {{JSRef}}
 
-The **`BigUint64Array()`** constructor creates {{jsxref("BigUint64Array")}} objects. The contents are initialized to `0n`.
+The **`BigUint64Array()`** constructor creates {{jsxref("BigUint64Array")}} objects. The contents are initialized to `0n` unless initialization data is explicitly provided.
 
 ## Syntax
 

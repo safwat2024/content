@@ -26,7 +26,7 @@ let getAlarm = browser.alarms.get(
 
 ### Return value
 
-A [`Promise`](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) that will be fulfilled with an `{{WebExtAPIRef('alarms.Alarm', "Alarm")}}` object. This represents the alarm whose name matches `name`. If no alarms match, this will be `undefined`.
+A [`Promise`](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) that will be fulfilled with an {{WebExtAPIRef('alarms.Alarm', "Alarm")}} object. This represents the alarm whose name matches `name`. If no alarms match, this will be `undefined`.
 
 ## Examples
 
@@ -47,4 +47,5 @@ getAlarm.then(gotAlarm);
 
 {{Compat}}
 
-> **Note:** This API is based on Chromium's [`chrome.alarms`](https://developer.chrome.com/docs/extensions/reference/alarms/) API.
+> [!NOTE]
+> This API is based on Chromium's [`chrome.alarms`](https://developer.chrome.com/docs/extensions/reference/api/alarms) API.

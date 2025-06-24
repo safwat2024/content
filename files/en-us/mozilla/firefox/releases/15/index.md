@@ -39,8 +39,8 @@ Firefox 15 shipped on August 28, 2012. This article lists key changes that are u
 - The [WebSMS API](https://web.archive.org/web/20210620092659/https://developer.mozilla.org/en-US/docs/Archive/B2G_OS/API/Mobile_Messaging_API) has been updated and now supports a `read` attribute indicating whether an SMS text message is read or unread.
 - The [FileHandle API](https://wiki.mozilla.org/WebAPI/FileHandleAPI) has been implemented.
 - The [`Blob`](/en-US/docs/Web/API/Blob) constructor now takes `ArrayBufferView` as a member of `blobParts` parameter in addition to `ArrayBuffer`. ([bug 752402](https://bugzil.la/752402))
-- The `DeviceLightEvent` specified in the [Ambient Light Events Working Draft](https://www.w3.org/TR/ambient-light/) has been implemented.
-- The `DeviceProximityEvent` and `UserProximityEvent` [Proximity Events](https://www.w3.org/TR/proximity/) have been implemented.
+- The `DeviceLightEvent` specified in the [Ambient Light Events Working Draft](https://w3c.github.io/ambient-light/) has been implemented.
+- The `DeviceProximityEvent` and `UserProximityEvent` [Proximity Events](https://w3c.github.io/proximity/) have been implemented.
 - The {{domxref("File")}} `lastModifiedDate` property has been implemented. ([Firefox bug 673586](https://bugzil.la/673586))
 
 ### JavaScript
@@ -59,7 +59,7 @@ Firefox 15 shipped on August 28, 2012. This article lists key changes that are u
 - Mathematical operators can now use downloadable fonts specified with {{cssxref("@font-face")}}. This makes the [MathML-fonts add-on](https://addons.mozilla.org/en-US/firefox/addon/mathml-fonts/) work with stretchy operators too.
 - The `selection` attribute of the {{MathMLElement("maction")}} is now only taken into account with the `toggle` actiontype.
 - [Deprecated namedspace binding](https://www.w3.org/TR/MathML3/chapter3.html#id.3.3.4.2.1) has been removed ([Firefox bug 673759](https://bugzil.la/673759)).
-- Supported syntax for [Length](/en-US/docs/Web/MathML/Values) and {{MathMLElement("mpadded")}} values have been made closer to the one specified in MathML3 spec.
+- Supported syntax for [Length](/en-US/docs/Web/MathML/Reference/Values) and {{MathMLElement("mpadded")}} values have been made closer to the one specified in MathML3 spec.
 - New MathML mirrorable operators for Arabic math have been added to the operator dictionary ([Firefox bug 757125](https://bugzil.la/757125)).
 
 ### SVG
@@ -78,8 +78,8 @@ Firefox 15 shipped on August 28, 2012. This article lists key changes that are u
   - : `aModifiers` of `sendMouseEvent()`, `sendTouchEvent()`, `sendMouseEventToWindow()`, `sendMouseScrollEvent()` and `sendKeyEvent()` supports all modifier keys which are supported by [`KeyboardEvent.getModifierState()`](/en-US/docs/Web/API/KeyboardEvent#getmodifierstate%28%29). Use `MODIFIER_*` values. And now the 5th parameter of `sendKeyEvent()` is changed from `boolean` to `unsigned long`. For backward compatibility, if caller passes `true` or `false` to it, the behavior isn't changed. This change allows callers to specify the key's location.
 - `nsIBrowserHistory`
   - : The `hidePage()` method was never implemented, and has been removed entirely in this release. The `addPageWithDetails()` method has also been removed as part of the ongoing work to make all 'Places APIs' asynchronous; use `mozIAsyncHistory.updatePlaces()` instead. Also, the `count` attribute was removed; it had not returned an actual count in some time (instead, it was indicating whether or not any entries existed). You can use `nsINavHistoryService.hasHistoryEntries` instead.
-- `inIDOMUtils`
-  - : The `inlDOMUtils.parseStyleSheet()` method has been added and allows the (re-)parsing of Cascading Style Sheets.
+- `nsIDOMUtils`
+  - : The `nsIDOMUtils.parseStyleSheet()` method has been added and allows the (re-)parsing of Cascading Style Sheets.
 - `nsIINIParserWriter`
   - : The `nsIINIParserWriter.writeFile()` method now accepts a `flags` property. This currently offers only one option: you can now tell it to write the file in UTF-16 format instead of UTF-8, for better compatibility with Windows and certain installers.
 
@@ -96,4 +96,4 @@ The following interfaces have been removed.
 
 ## See also
 
-{{Firefox_for_developers('14')}}
+{{Firefox_for_developers}}

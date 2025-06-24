@@ -23,7 +23,8 @@ lookupPrefix(namespace)
 
 - `namespace`
   - : A string containing the namespace to look the prefix up.
-    > **Note:** This parameter is not optional but can be set to `null`.
+    > [!NOTE]
+    > This parameter is not optional but can be set to `null`.
 
 ### Return value
 
@@ -84,7 +85,3 @@ button.addEventListener("click", () => {
 ## Browser compatibility
 
 {{Compat}}
-
-## See also
-
-- [http://www.w3.org/TR/DOM-Level-3-Cor...amespacePrefix](https://www.w3.org/TR/DOM-Level-3-Core/core.html#Node3-lookupNamespacePrefix)

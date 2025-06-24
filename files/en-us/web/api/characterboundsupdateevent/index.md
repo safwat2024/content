@@ -9,7 +9,7 @@ browser-compat: api.CharacterBoundsUpdateEvent
 
 {{APIRef("EditContext API")}}{{SeeCompatTable}}
 
-The **`CharacterBoundsUpdateEvent`** interface is a {{domxref("Event", "DOM event")}} that represents a request from the operating system to know the bounds of certain characters within an editable region that's attached to an {{domxref("EditContext")}} instance.
+The **`CharacterBoundsUpdateEvent`** interface is a [DOM event](/en-US/docs/Web/API/Event) that represents a request from the operating system to know the bounds of certain characters within an editable region that's attached to an {{domxref("EditContext")}} instance.
 
 This interface inherits properties from {{domxref("Event")}}.
 
@@ -81,9 +81,10 @@ editContext.addEventListener("characterboundsupdate", (e) => {
   console.log(
     "The required character bounds are",
     charBounds
-      .map((bound) => {
-        return `(x: ${bound.x}, y: ${bound.y}, width: ${bound.width}, height: ${bound.height})`;
-      })
+      .map(
+        (bound) =>
+          `(x: ${bound.x}, y: ${bound.y}, width: ${bound.width}, height: ${bound.height})`,
+      )
       .join(", "),
   );
 });

@@ -9,14 +9,15 @@ browser-compat: api.Navigator.sendBeacon
 {{APIRef("HTML DOM")}}
 
 The **`navigator.sendBeacon()`**
-method {{glossary("Asynchronous", "asynchronously")}} sends an [HTTP POST](/en-US/docs/Web/HTTP/Methods/POST) request containing a small amount of data to a web server.
+method {{glossary("Asynchronous", "asynchronously")}} sends an [HTTP POST](/en-US/docs/Web/HTTP/Reference/Methods/POST) request containing a small amount of data to a web server.
 
 It's intended to be used for
 sending analytics data to a web server, and avoids some of the problems with
 legacy techniques for sending analytics, such as the use of
 {{domxref("XMLHttpRequest","XMLHttpRequest")}}.
 
-> **Note:** For use cases that need the ability to send requests with methods other than `POST`, or to change any request properties, or that need access to the server response, instead use the [`fetch()`](/en-US/docs/Web/API/fetch) method with [`keepalive`](/en-US/docs/Web/API/fetch#keepalive) set to true.
+> [!NOTE]
+> For use cases that need the ability to send requests with methods other than `POST`, or to change any request properties, or that need access to the server response, instead use the [`fetch()`](/en-US/docs/Web/API/Window/fetch) method with [`keepalive`](/en-US/docs/Web/API/RequestInit#keepalive) set to true.
 
 ## Syntax
 
@@ -69,7 +70,7 @@ This means:
 - It's sent asynchronously
 - It doesn't impact the loading of the next page
 
-The data is sent as an [HTTP POST](/en-US/docs/Web/HTTP/Methods/POST) request.
+The data is sent as an [HTTP POST](/en-US/docs/Web/HTTP/Reference/Methods/POST) request.
 
 ### Sending analytics at the end of a session
 
@@ -77,7 +78,7 @@ Websites often want to send analytics or diagnostics to the server when the user
 The most reliable way to do this is to send the data on the [`visibilitychange`](/en-US/docs/Web/API/Document/visibilitychange_event) event:
 
 ```js
-document.addEventListener("visibilitychange", function logData() {
+document.addEventListener("visibilitychange", () => {
   if (document.visibilityState === "hidden") {
     navigator.sendBeacon("/log", analyticsData);
   }
@@ -111,7 +112,7 @@ Like `beforeunload` and `unload`, this event is not reliably fired, especially o
 The following example specifies a handler for the {{domxref("document.visibilitychange_event", "visibilitychange")}} event. The handler calls `sendBeacon()` to send analytics.
 
 ```js
-document.addEventListener("visibilitychange", function logData() {
+document.addEventListener("visibilitychange", () => {
   if (document.visibilityState === "hidden") {
     navigator.sendBeacon("/log", analyticsData);
   }
@@ -133,7 +134,7 @@ document.addEventListener("visibilitychange", function logData() {
 - [Don't lose user and app state, use Page Visibility](https://www.igvita.com/2015/11/20/dont-lose-user-and-app-state-use-page-visibility/) explains in
   detail why you should use `visibilitychange`, not
   `beforeunload`/`unload`.
-- [Page Lifecycle API](https://developer.chrome.com/blog/page-lifecycle-api/#developer-recommendations-for-each-state) gives best-practices guidance on handling
+- [Page Lifecycle API](https://developer.chrome.com/docs/web-platform/page-lifecycle-api#developer-recommendations-for-each-state) gives best-practices guidance on handling
   page lifecycle behavior in your web applications.
 - [PageLifecycle.js](https://github.com/GoogleChromeLabs/page-lifecycle): a JavaScript library that deals with cross-browser inconsistencies in page lifecycle behavior.
 - [Back/forward cache](https://web.dev/articles/bfcache) explains what the back/forward cache is, and its implications for various page lifecycle events.

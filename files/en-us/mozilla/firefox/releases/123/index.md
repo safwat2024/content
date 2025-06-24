@@ -16,12 +16,16 @@ This article provides information about the changes in Firefox 123 that affect d
 
 - The {{htmlelement("template")}} element now supports a `shadowrootmode` attribute that allows declarative creation of a shadow DOM subtree. The attribute can be set to either `open` or `closed`, which expose or hide JavaScript in the shadow DOM from external code, respectively. These are the same values as the `mode` option of the {{domxref("Element.attachShadow()", "attachShadow()")}} method. ([Firefox bug 1870052](https://bugzil.la/1870052))
 
+### CSS
+
+No notable changes.
+
 ### JavaScript
 
 - The {{jsxref("Date.parse()")}} global object has had a number of bug fixes to bring it into line with how other browsers parse the values being passed.
-  - Incorrect day of month (e.g. "31 April") now skips over to the following month (e.g. "1 May"). ([Firefox bug 1872333](https://bugzil.la/1872333)).
-  - Incomplete time zone (e.g. "1/1/70 gm") or AM/PM (e.g. "1/1/70 10:00 a") are no longer accepted. ([Firefox bug 1870570](https://bugzil.la/1870570)).
-  - Single number dates are now accepted (e.g. `Date.parse("0")` now returns `946684800000` - Sat Jan 01 2000 00:00:00). ([Firefox bug 1870434](https://bugzil.la/1870434)).
+  - Incorrect day of month (e.g., "31 April") now skips over to the following month (e.g., "1 May"). ([Firefox bug 1872333](https://bugzil.la/1872333)).
+  - Incomplete time zone (e.g., "1/1/70 gm") or AM/PM (e.g., "1/1/70 10:00 a") are no longer accepted. ([Firefox bug 1870570](https://bugzil.la/1870570)).
+  - Single number dates are now accepted (e.g., `Date.parse("0")` now returns `946684800000` - Sat Jan 01 2000 00:00:00). ([Firefox bug 1870434](https://bugzil.la/1870434)).
 
 ### SVG
 
@@ -29,15 +33,15 @@ This article provides information about the changes in Firefox 123 that affect d
 
 ### HTTP
 
-- The [`103 Early Hints`](/en-US/docs/Web/HTTP/Status/103) HTTP [information response](/en-US/docs/Web/HTTP/Status#information_responses) status code is now enabled for [preloading](/en-US/docs/Web/HTML/Attributes/rel/preload) resources that the page is likely to need while the server is still preparing the full response.
+- The [`103 Early Hints`](/en-US/docs/Web/HTTP/Reference/Status/103) HTTP [informational response](/en-US/docs/Web/HTTP/Reference/Status#informational_responses) status code is now enabled for [preloading](/en-US/docs/Web/HTML/Reference/Attributes/rel/preload) resources that the page is likely to need while the server is still preparing the full response.
   This can significantly reduce page load time.
-  Note that support for using the `103 Early Hints` header for [preconnecting](/en-US/docs/Web/HTML/Attributes/rel/preconnect) was added in [Firefox 120](/en-US/docs/Mozilla/Firefox/Releases/120#http).
+  Note that support for using the `103 Early Hints` header for [preconnecting](/en-US/docs/Web/HTML/Reference/Attributes/rel/preconnect) was added in [Firefox 120](/en-US/docs/Mozilla/Firefox/Releases/120#http).
   For more details see [Firefox bug 1874445](https://bugzil.la/1874445).
 
 ### APIs
 
 - The [Web Authentication API](/en-US/docs/Web/API/Web_Authentication_API) now supports cross-origin credential creation.
-  Specifically [`navigator.credentials.create({publicKey})`](/en-US/docs/Web/API/CredentialsContainer/create) can now be called in nested browsing contexts loaded from a different origin to the top-most document, if allowed by a [`Feature-Policy: publickey-credentials-create`](/en-US/docs/Web/HTTP/Headers/Permissions-Policy/publickey-credentials-create) on the top level nesting [`<iframe>`](/en-US/docs/Web/HTML/Element/iframe#allow).
+  Specifically [`navigator.credentials.create({publicKey})`](/en-US/docs/Web/API/CredentialsContainer/create) can now be called in nested browsing contexts loaded from a different origin to the top-most document, if allowed by a [`Feature-Policy: publickey-credentials-create`](/en-US/docs/Web/HTTP/Reference/Headers/Permissions-Policy/publickey-credentials-create) on the top level nesting [`<iframe>`](/en-US/docs/Web/HTML/Reference/Elements/iframe#allow).
   ([Firefox bug 1870863](https://bugzil.la/1870863)).
 
 #### DOM
@@ -67,7 +71,7 @@ The `IDBLocaleAwareKeyRange` interface has been removed ([Firefox bug 1730706](h
 
 ## Changes for add-on developers
 
-- Addition of fhe {{WebExtAPIRef("contextualIdentities.move")}} function enables items to be moved in the list of contextual identities. This function enables extensions to customize the order in which contextual identities display in the UI ([Firefox bug 1333395](https://bugzil.la/1333395)).
+- Addition of the {{WebExtAPIRef("contextualIdentities.move")}} function enables items to be moved in the list of contextual identities. This function enables extensions to customize the order in which contextual identities display in the UI ([Firefox bug 1333395](https://bugzil.la/1333395)).
 
 ## Experimental web features
 
@@ -81,4 +85,4 @@ These features are newly shipped in Firefox 123 but are disabled by default. To 
 
 ## Older versions
 
-{{Firefox_for_developers(122)}}
+{{Firefox_for_developers}}

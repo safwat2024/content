@@ -11,21 +11,19 @@ The History API enables a website to interact with the browser's session history
 The main interface defined in the History API is the {{domxref("History")}} interface, and this defines two quite distinct sets of methods:
 
 1. Methods to navigate to a page in the session history:
-
    - {{domxref("History.back()")}}
    - {{domxref("History.forward()")}}
    - {{domxref("History.go()")}}
 
 2. Methods to modify the session history:
-
    - {{domxref("History.pushState()")}}
    - {{domxref("History.replaceState()")}}
 
 In this guide we'll be concerned only with the second set of methods, as these have more complex behavior.
 
-The `pushState()` method adds a new entry to the session history, while the `replaceState()` method updates the session history entry for the current page. Both these methods take a `state` parameter which can contain any {{Glossary("Serializable_object", "serializable object")}} . When the browser navigates to this history entry, the browser fires a {{domxref("Window.popstate_event", "popstate")}} event, which contains the state object associated with that entry.
+The `pushState()` method adds a new entry to the session history, while the `replaceState()` method updates the session history entry for the current page. Both these methods take a `state` parameter which can contain any {{Glossary("Serializable_object", "serializable object")}}. When the browser navigates to this history entry, the browser fires a {{domxref("Window.popstate_event", "popstate")}} event, which contains the state object associated with that entry.
 
-The main purpose of these APIs is to support websites like {{Glossary("SPA", "Single-page applications")}}, that use JavaScript APIs such as {{domxref("fetch()")}} to update the page with new content, instead of loading a whole new page.
+The main purpose of these APIs is to support websites like {{Glossary("SPA", "Single-page applications")}}, that use JavaScript APIs such as {{domxref("Window/fetch", "fetch()")}} to update the page with new content, instead of loading a whole new page.
 
 ## Single-page applications and session history
 
@@ -39,7 +37,7 @@ While this is great for many sites, it can have some disadvantages:
 For these reasons, a popular pattern for web apps is the {{Glossary("SPA", "single-page application")}} (SPA), in which the site consists of a single page, and when the user clicks links, the page:
 
 1. Prevents the default behavior of loading a new page
-2. {{domxref("fetch()", "Fetches", "", "nocode")}} new content to display
+2. {{domxref("Window/fetch", "Fetches", "", "nocode")}} new content to display
 3. Updates the page with the new content
 
 For example:

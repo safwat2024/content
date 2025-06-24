@@ -6,7 +6,7 @@ page-type: web-api-instance-method
 browser-compat: api.LockManager.request
 ---
 
-{{APIRef("Web Locks API")}}{{securecontext_header}}
+{{APIRef("Web Locks API")}}{{securecontext_header}} {{AvailableInWorkers}}
 
 The **`request()`** method of the {{domxref("LockManager")}} interface requests a {{domxref('Lock')}} object with parameters specifying its name and characteristics.
 The requested `Lock` is passed to a callback, while the function itself returns a {{jsxref('Promise')}} that resolves (or rejects) with the result of the callback after the lock is released, or rejects if the request is aborted.
@@ -24,8 +24,6 @@ This shared/exclusive lock pattern is common in database transaction architectur
 This is known as the readers-writer pattern.
 In the [IndexedDB API](/en-US/docs/Web/API/IndexedDB_API), this is exposed as `"readonly"` and `"readwrite"` transactions which have the same semantics.
 
-{{AvailableInWorkers}}
-
 ## Syntax
 
 ```js-nolint
@@ -36,31 +34,26 @@ request(name, options, callback)
 ### Parameters
 
 - `name`
-
   - : An identifier for the lock you want to request.
 
 - `options` {{optional_inline}}
-
   - : An object describing characteristics of the lock you want to create.
     Valid values are:
-
     - `mode` {{optional_inline}}
-
       - : Either `"exclusive"` or `"shared"`.
         The default value is `"exclusive"`.
 
     - `ifAvailable` {{optional_inline}}
-
       - : If `true`, the lock request will only be granted if it is not already held.
         If it cannot be granted, the callback will be invoked with `null` instead of a `Lock` instance.
         The default value is `false`.
 
     - `steal` {{optional_inline}}
-
       - : If `true`, then any held locks with the same name will be released, and the request will be granted, preempting any queued requests for it.
         The default value is `false`.
 
-        > **Warning:** Use with care!
+        > [!WARNING]
+        > Use with care!
         > Code that was previously running inside the lock continues to run, and may clash with the code that now holds the lock.
 
     - `signal` {{optional_inline}}

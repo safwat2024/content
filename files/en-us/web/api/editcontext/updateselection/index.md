@@ -30,8 +30,7 @@ If the `start` and `end` values are the same, the selection is equivalent to a c
 ### Exceptions
 
 - If only one argument is provided, a `TypeError` {{domxref("DOMException")}} is thrown.
-- If either argument is not a positive number, a {{domxref("DOMException")}} is thrown.
-- If `start` is greater than `end`, a {{domxref("DOMException")}} is thrown.
+- If either argument is not a non-negative number, a {{domxref("DOMException")}} is thrown.
 
 ## Examples
 
@@ -49,7 +48,7 @@ const editContext = new EditContext();
 canvas.editContext = editContext;
 
 canvas.addEventListener("keydown", (e) => {
-  if (e.key == "ArrowLeft") {
+  if (e.key === "ArrowLeft") {
     const newPosition = Math.max(editContext.selectionStart - 1, 0);
 
     if (e.shiftKey) {
@@ -57,7 +56,7 @@ canvas.addEventListener("keydown", (e) => {
     } else {
       editContext.updateSelection(newPosition, newPosition);
     }
-  } else if (e.key == "ArrowRight") {
+  } else if (e.key === "ArrowRight") {
     const newPosition = Math.min(
       editContext.selectionEnd + 1,
       editContext.text.length,

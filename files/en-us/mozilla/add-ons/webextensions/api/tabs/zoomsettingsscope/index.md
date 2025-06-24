@@ -16,9 +16,7 @@ Values of this type are strings. Possible values are:
 - "per-origin"
   - : All other tabs with the same origin as this tab will have the zoom changes applied to them. This scope is only available if {{WebExtAPIRef("tabs.zoomSettingsMode")}} is "automatic".
 - "per-tab"
-
   - : Zoom changes only take effect in this tab, and zoom changes in other tabs will not affect the zooming of this tab. Also:
-
     - in Firefox the zoom level persists across page loads and navigation within the tab.
     - in Chrome-based browsers zoom changes are reset on navigation; navigating a tab will always load pages with their per-origin zoom factors.
 
@@ -28,7 +26,8 @@ Values of this type are strings. Possible values are:
 
 {{WebExtExamples}}
 
-> **Note:** This API is based on Chromium's [`chrome.tabs`](https://developer.chrome.com/docs/extensions/reference/tabs/#type-ZoomSettingsScope) API. This documentation is derived from [`tabs.json`](https://chromium.googlesource.com/chromium/src/+/master/chrome/common/extensions/api/tabs.json) in the Chromium code.
+> [!NOTE]
+> This API is based on Chromium's [`chrome.tabs`](https://developer.chrome.com/docs/extensions/reference/api/tabs#type-ZoomSettingsScope) API. This documentation is derived from [`tabs.json`](https://chromium.googlesource.com/chromium/src/+/master/chrome/common/extensions/api/tabs.json) in the Chromium code.
 
 <!--
 // Copyright 2015 The Chromium Authors. All rights reserved.

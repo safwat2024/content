@@ -6,7 +6,7 @@ page-type: web-api-instance-method
 browser-compat: api.WritableStreamDefaultWriter.abort
 ---
 
-{{APIRef("Streams")}}
+{{APIRef("Streams")}}{{AvailableInWorkers}}
 
 The **`abort()`** method of the
 {{domxref("WritableStreamDefaultWriter")}} interface aborts the stream, signaling that
@@ -46,23 +46,23 @@ rejects with an error if the writer was inactive or the receiver stream is inval
 const writableStream = new WritableStream(
   {
     write(chunk) {
-      // ...
+      // …
     },
     close() {
-      // ...
+      // …
     },
     abort(err) {
-      // ...
+      // …
     },
   },
   queuingStrategy,
 );
 
-// ...
+// …
 
 const writer = writableStream.getWriter();
 
-// ...
+// …
 
 // abort the stream when desired
 await writer.abort("WritableStream aborted. Reason: ...");
